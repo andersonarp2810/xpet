@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // talvez precise de parâmetros
+        return view('user.index');
     }
 
     /**
@@ -25,6 +27,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('user.create');
     }
 
     /**
@@ -40,7 +43,8 @@ class UserController extends Controller
         $user = new User($request->all());
 
         $user->save();
-        
+
+        return redirect('/');
     }
 
     /**
@@ -52,6 +56,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
+        $this->authorize('view', $user);
+        return view('user.show', ['user' => $user]);
     }
 
     /**
@@ -63,6 +69,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+        $this->authorize('update', $user);
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -75,6 +83,11 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
+        $this->authorize('update', $user);
+        $user->update($request->all());
+        $user->save();
+
+        return redirect()->route('user.show', [$user])->with('status', 'Perfil atualizado');
     }
 
     /**
@@ -86,5 +99,9 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $this->authorize('delete', $user);
+        $user->delete();
+
+        return redirect('/');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Address;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddressRequest;
 
 class AddressController extends Controller
 {
@@ -15,6 +16,7 @@ class AddressController extends Controller
     public function index()
     {
         //
+        return view('address.index');
     }
 
     /**
@@ -25,6 +27,7 @@ class AddressController extends Controller
     public function create()
     {
         //
+        return view('address.create');
     }
 
     /**
@@ -33,9 +36,13 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddressRequest $request)
     {
         //
+        $this->authorize('create', Address::class);
+        $endereço = new Address($request->all());
+        $endereço->save();
+        return redirect('/');
     }
 
     /**
@@ -47,6 +54,8 @@ class AddressController extends Controller
     public function show(Address $address)
     {
         //
+        $this->authorize('view', $address);
+        return view('address.show', ['address' => $address]);
     }
 
     /**
@@ -58,6 +67,8 @@ class AddressController extends Controller
     public function edit(Address $address)
     {
         //
+        $this->authorize('edit', $address);
+        return view('address.edit', ['address' => $address]);
     }
 
     /**
@@ -70,6 +81,10 @@ class AddressController extends Controller
     public function update(Request $request, Address $address)
     {
         //
+        $this->authorize('update', $address);
+        $endereço->update($request->all());
+
+        return  redirect()->route('address.show', [$address])->with('status', 'Endereco atualizado');
     }
 
     /**
@@ -81,5 +96,9 @@ class AddressController extends Controller
     public function destroy(Address $address)
     {
         //
+        $this->authorize('delete', $address);
+        $address->delete();
+
+        return redirect('/');
     }
 }

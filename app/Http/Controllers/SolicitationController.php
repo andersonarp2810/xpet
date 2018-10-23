@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Solicitation;
+use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\SolicitationRequest;
 
 class SolicitationController extends Controller
 {
@@ -15,6 +17,7 @@ class SolicitationController extends Controller
     public function index()
     {
         //
+        //$solicitations = Solicitation::all()->where(id, Auth::user()->id);
     }
 
     /**
@@ -25,6 +28,9 @@ class SolicitationController extends Controller
     public function create()
     {
         //
+        $users = User::all();
+
+        return view('solicitation.create', ['users' => $users]);
     }
 
     /**
@@ -33,9 +39,13 @@ class SolicitationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SolicitationRequest $request)
     {
         //
+        $this->authorize('create', Solicitation::class);
+        $solicitation = Solicitation::create($request->all());
+
+        return view('/')->with('status', 'Solicitação enviada');
     }
 
     /**
@@ -47,6 +57,9 @@ class SolicitationController extends Controller
     public function show(Solicitation $solicitation)
     {
         //
+        $this->authorize('view', $solicitation);
+
+        return view('solicitation.show', ['solicitation' => $solicitation]);
     }
 
     /**
@@ -58,6 +71,9 @@ class SolicitationController extends Controller
     public function edit(Solicitation $solicitation)
     {
         //
+        $this->authorize('update', $solicitation);
+
+        return view('solicitation.edit', ['solicitation' => $solicitation]);
     }
 
     /**
@@ -70,6 +86,11 @@ class SolicitationController extends Controller
     public function update(Request $request, Solicitation $solicitation)
     {
         //
+        $this->authorize('update', $solicitation);
+
+        $solicitation->update($request->all());
+
+        return redirect()->route('solicitation.show', [$solicitation]);
     }
 
     /**
@@ -81,5 +102,10 @@ class SolicitationController extends Controller
     public function destroy(Solicitation $solicitation)
     {
         //
+        $this->authorize('delete', $solicitation);
+
+        $solicitation->delete();
+
+        return redirect('/')->with('status', 'Solicitação excluída');
     }
 }

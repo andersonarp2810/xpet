@@ -85,7 +85,7 @@ class UserController extends Controller
         //
         $this->authorize('update', $user);
         $user->update($request->all());
-        $user->save();
+        
 
         return redirect()->route('user.show', [$user])->with('status', 'Perfil atualizado');
     }

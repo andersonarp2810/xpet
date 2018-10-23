@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Phone;
 use Illuminate\Http\Request;
+use Illuminate\Http\Requests\PhoneRequest;
 
 class PhoneController extends Controller
 {
@@ -15,6 +16,7 @@ class PhoneController extends Controller
     public function index()
     {
         //
+        return view('phone.index');
     }
 
     /**
@@ -25,6 +27,7 @@ class PhoneController extends Controller
     public function create()
     {
         //
+        return view('phone.create');
     }
 
     /**
@@ -36,6 +39,10 @@ class PhoneController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create', Phone::class);
+        $phone = new Phone($request->all());
+        $phone->save();
+        return redirect('/');
     }
 
     /**
@@ -47,6 +54,9 @@ class PhoneController extends Controller
     public function show(Phone $phone)
     {
         //
+        $this->authorize('view', $phone);
+        return view('phone.show', ['phone' => $phone]);
+
     }
 
     /**
@@ -58,6 +68,8 @@ class PhoneController extends Controller
     public function edit(Phone $phone)
     {
         //
+        $this->authorize('edit', $phone);
+        return view('phone.edit',['phone' => $phone]);
     }
 
     /**
@@ -70,6 +82,11 @@ class PhoneController extends Controller
     public function update(Request $request, Phone $phone)
     {
         //
+        $this->authorize('update', $phone);
+        $phone->update($request->all());
+
+        return redirect()->route('phone.show', [$phone])->with('status', 'Contatos atualizados');
+
     }
 
     /**
@@ -81,5 +98,9 @@ class PhoneController extends Controller
     public function destroy(Phone $phone)
     {
         //
+        $this->authorize('destroy', $phone);
+        $phone::delete();
+
+        return redirect('/');
     }
 }

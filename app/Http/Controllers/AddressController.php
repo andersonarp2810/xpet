@@ -41,7 +41,9 @@ class AddressController extends Controller
         //
         $this->authorize('create', Address::class);
         $endereço = new Address($request->all());
+
         $endereço->save();
+        
         return redirect('/');
     }
 

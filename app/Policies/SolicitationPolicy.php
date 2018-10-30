@@ -30,10 +30,10 @@ class SolicitationPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Solicitation $solicitation)
     {
         //
-        return true;
+        return $solicitation->requester_user_id == $user->id;
     }
 
     /**

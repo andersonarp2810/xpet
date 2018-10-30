@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\Http\Requests\AddressRequest;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\AddressRequest;
 
 class AddressController extends Controller
 {
@@ -46,7 +46,7 @@ class AddressController extends Controller
         $this->authorize('create', $endereço);
 
         $endereço->save();
-        
+
         return redirect('/');
     }
 
@@ -89,7 +89,7 @@ class AddressController extends Controller
         $this->authorize('update', $address);
         $endereço->update($request->all());
 
-        return  redirect()->route('address.show', [$address])->with('status', 'Endereco atualizado');
+        return redirect()->route('address.show', [$address])->with('status', 'Endereco atualizado');
     }
 
     /**

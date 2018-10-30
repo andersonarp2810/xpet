@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PetRequest;
 use App\Pet;
 use App\Solicitation;
 use Auth;
@@ -37,7 +38,7 @@ class PetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PetRequest $request)
     {
         //
         $pet = new Pet($request->all());
@@ -62,7 +63,7 @@ class PetController extends Controller
         $phones = [];
         $address = null;
         $user = Auth::user();
-        if ($user->id == $pet->user_id) {
+        if ($user->id == $pet->user_id) { //dono
             $phones = $user->phones;
             $address = $user->address;
         } else if ($pet->user->public_contact_info) {
@@ -78,8 +79,7 @@ class PetController extends Controller
                 if (count($solicitations) > 0) {
                     $phones = $pet->user->phones;
                     $address = $pet->user->address;
-                }
-                else{
+                } else { // visualização pública
                     $address = $pet->user->address;
                     unset($address['district']);
                     unset($address['street']);

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SolicitationRequest;
 use App\Solicitation;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\SolicitationRequest;
+use Auth;
 
 class SolicitationController extends Controller
 {
@@ -17,7 +18,10 @@ class SolicitationController extends Controller
     public function index()
     {
         //
-        //$solicitations = Solicitation::all()->where(id, Auth::user()->id);
+        $sent = Solicitation::all()->where('requester_user_id', Auth::user()->id);
+        $received = Solicitation::all()->where('requested_user_id', Auth::user()->id);
+
+        return view('solicitation.index', ['sent' => $sent, 'received' => $received]);
     }
 
     /**
@@ -42,8 +46,9 @@ class SolicitationController extends Controller
     public function store(SolicitationRequest $request)
     {
         //
-        $this->authorize('create', Solicitation::class);
-        $solicitation = Solicitation::create($request->all());
+        $solicitation = new Solicitation($request->all());
+        $this->authorize('create', $solicitation);
+        $solicitation->save();
 
         return view('/')->with('status', 'Solicitação enviada');
     }

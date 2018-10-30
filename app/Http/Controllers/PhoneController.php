@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Phone;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests\PhoneRequest;
-use App\User;
 
 class PhoneController extends Controller
 {
@@ -43,7 +43,7 @@ class PhoneController extends Controller
     {
         //
         $phone = new Phone($request->all());
-        $this->authorize('create', $phone); 
+        $this->authorize('create', $phone);
         $phone->save();
         return redirect('/');
     }
@@ -72,7 +72,7 @@ class PhoneController extends Controller
     {
         //
         $this->authorize('edit', $phone);
-        return view('phone.edit',['phone' => $phone]);
+        return view('phone.edit', ['phone' => $phone]);
     }
 
     /**

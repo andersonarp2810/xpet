@@ -25,8 +25,9 @@ class PhoneRequest extends FormRequest
     {
         return [
             //
-        	'number' => 'required'
-        	'whatsapp_available' =>'required'
+            'user_id' => 'required',
+        	'number' => 'required',
+        	'whatsapp_available' =>'required',
 
         ];
     }

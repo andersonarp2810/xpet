@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddressRequest;
 
@@ -13,10 +14,12 @@ class AddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        //
-        return view('address.index');
+        //$user requisitado
+        $this->authorize('index', $user);
+        $addresses = Address::all()->where('user_id', $user->id);
+        return view('address.index', ['addresses' => $addresses]);
     }
 
     /**
@@ -39,8 +42,8 @@ class AddressController extends Controller
     public function store(AddressRequest $request)
     {
         //
-        $this->authorize('create', Address::class);
         $endereço = new Address($request->all());
+        $this->authorize('create', $endereço);
 
         $endereço->save();
         

@@ -2,8 +2,9 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Phone;
+use App\Solicitation;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PhonePolicy
@@ -20,7 +21,48 @@ class PhonePolicy
     public function view(User $user, Phone $phone)
     {
         //
-        return true;
+        if ($phone->user->public_contact_info) {
+            return true;
+        }
+
+        if ($phone->user_id == $user->id) {
+            return true;
+        }
+
+        $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $phone->user->id)->where('status', 'aceito');
+        if (count($solicitations) > 0) {
+            return true;
+        }
+
+        $solicitations = Solicitation::all()->where('requester_user_id', $phone->user->id)->where('requested_user_id', $user->id)->where('status', 'aceito');
+        if (count($solicitations) > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function index(User $user, User $requisitado){ //$user é o autenticado 
+        
+        if ($requisitado->public_contact_info) {
+            return true;
+        }
+
+        if ($requisitado->id == $user->id) {
+            return true;
+        }
+
+        $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $requisitado->id)->where('status', 'aceito');
+        if (count($solicitations) > 0) {
+            return true;
+        }
+
+        $solicitations = Solicitation::all()->where('requester_user_id', $requisitado->id)->where('requested_user_id', $user->id)->where('status', 'aceito');
+        if (count($solicitations) > 0) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -29,10 +71,10 @@ class PhonePolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Phone $phone)
     {
         //
-        return true;
+        return $user->id === $phone->user_id;
     }
 
     /**

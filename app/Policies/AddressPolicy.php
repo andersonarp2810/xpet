@@ -20,7 +20,49 @@ class AddressPolicy
     public function view(User $user, Address $address)
     {
         //
-        return true;
+        if ($address->user->public_contact_info) {
+            return true;
+        }
+
+        if ($address->user_id == $user->id) {
+            return true;
+        }
+
+        $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $address->user->id)->where('status', 'aceito');
+        if (count($solicitations) > 0) {
+            return true;
+        }
+
+        $solicitations = Solicitation::all()->where('requester_user_id', $address->user->id)->where('requested_user_id', $user->id)->where('status', 'aceito');
+        if (count($solicitations) > 0) {
+            return true;
+        }
+
+
+        return false;
+    }
+
+    public function index(User $user, User $requisitado){ //$user é o autenticado 
+        
+        if ($requisitado->public_contact_info) {
+            return true;
+        }
+
+        if ($requisitado->id == $user->id) {
+            return true;
+        }
+
+        $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $requisitado->id)->where('status', 'aceito');
+        if (count($solicitations) > 0) {
+            return true;
+        }
+
+        $solicitations = Solicitation::all()->where('requester_user_id', $requisitado->id)->where('requested_user_id', $user->id)->where('status', 'aceito');
+        if (count($solicitations) > 0) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -29,10 +71,10 @@ class AddressPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Address $address)
     {
         //
-        return true;
+        return $user->id == $address->user_id;
     }
 
     /**

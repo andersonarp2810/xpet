@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Phone;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests\PhoneRequest;
+use App\User;
 
 class PhoneController extends Controller
 {
@@ -13,10 +14,12 @@ class PhoneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        //
-        return view('phone.index');
+        //$user requisitado
+        $this->authorize('phone.index', $user);
+        $phones = Phone::all()->where('user_id', $user->id);
+        return view('phone.index', ['phones' => $phones]);
     }
 
     /**
@@ -36,11 +39,11 @@ class PhoneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PhoneRequest $request)
     {
         //
-        $this->authorize('create', Phone::class);
         $phone = new Phone($request->all());
+        $this->authorize('create', $phone); 
         $phone->save();
         return redirect('/');
     }

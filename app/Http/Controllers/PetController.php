@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pet;
+use App\Solicitation;
+use Auth;
 use Illuminate\Http\Request;
 
 class PetController extends Controller
@@ -38,8 +40,8 @@ class PetController extends Controller
     public function store(Request $request)
     {
         //
-        $this->authorize('create', Pet::class);
         $pet = new Pet($request->all());
+        $this->authorize('create', $pet);
 
         $pet->save();
 
@@ -56,7 +58,45 @@ class PetController extends Controller
     {
         //
         $this->authorize('show', $pet);
-        return view('pet.show', ['pet' => $pet]);
+        //logica de ser pode ver contato ou não
+        $phones = [];
+        $address = null;
+        $user = Auth::user();
+        if ($user->id == $pet->user_id) {
+            $phones = $user->phones;
+            $address = $user->address;
+        } else if ($pet->user->public_contact_info) {
+            $phones = $pet->user->phones;
+            $address = $pet->user->address;
+        } else { //user autenticado é requisitador
+            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id)->where('status', 'aceito');
+            if (count($solicitations) > 0) {
+                $phones = $pet->user->phones;
+                $address = $pet->user->address;
+            } else { //user autenticado é requisitado
+                $solicitations = Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id)->where('status', 'aceito');
+                if (count($solicitations) > 0) {
+                    $phones = $pet->user->phones;
+                    $address = $pet->user->address;
+                }
+                else{
+                    $address = $pet->user->address;
+                    unset($address['district']);
+                    unset($address['street']);
+                    unset($address['number']);
+                    unset($address['complement']);
+                    unset($address['coordinateX']);
+                    unset($address['coordinateY']);
+                }
+            }
+        }
+
+        return view('pet.show',
+            [
+                'pet' => $pet,
+                'phones' => $phones,
+                'address' => $address,
+            ]);
     }
 
     /**

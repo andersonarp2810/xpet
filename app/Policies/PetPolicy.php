@@ -29,10 +29,10 @@ class PetPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Pet $pet)
     {
         //
-        return true;
+        return $user->id == $pet->user_id;
     }
 
     /**

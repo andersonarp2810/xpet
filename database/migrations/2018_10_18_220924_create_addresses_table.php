@@ -22,7 +22,7 @@ class CreateAddressesTable extends Migration
             $table->string('district');
             $table->string('street');
             $table->string('number');
-            $table->text('complement');
+            $table->text('complement')->nullable();
             $table->string('coordinateX');
             $table->string('coordinateY');
 

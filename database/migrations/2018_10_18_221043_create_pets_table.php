@@ -26,7 +26,7 @@ class CreatePetsTable extends Migration
 
             $table->timestampsTz();
 
-            $table->foreing('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

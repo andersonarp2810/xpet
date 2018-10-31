@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestampsTz();
 
-            $table->boolean('public_contact_info');
+            $table->boolean('public_contact_info')->default(false);
         });
     }
 

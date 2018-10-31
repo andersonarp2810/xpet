@@ -20,9 +20,10 @@ class CreatePetsTable extends Migration
             $table->string('type')->default('Cachorro');
             $table->string('race');
             $table->string('size');
-            $table->string('color');
+            $table->string('color')->default('');
             $table->string('gender');
-            $table->text('description');
+            $table->boolean('pedigree');
+            $table->text('description')->default('');
 
             $table->timestampsTz();
 

@@ -14,6 +14,7 @@ class Pet extends Model
         'size', // string
         'color',
         'gender',
+        'pedigree',
         'description'
     ];
 

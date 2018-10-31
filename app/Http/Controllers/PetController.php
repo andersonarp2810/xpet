@@ -18,7 +18,8 @@ class PetController extends Controller
     public function index()
     {
         //
-        return view('pet.index');
+        $pets = Pet::all()->where('user_id', Auth::user()->id);
+        return view('pet.index', ['pets' => $pets]);
     }
 
     /**
@@ -42,6 +43,7 @@ class PetController extends Controller
     {
         //
         $pet = new Pet($request->all());
+        $pet['user_id'] = $request->user()->id;
         $this->authorize('create', $pet);
 
         $pet->save();

@@ -25,14 +25,12 @@ class PetRequest extends FormRequest
     {
         return [
             //
-            'user_id' => 'required',
             'name' => 'required',
-            'type' => 'required',
+            //'type' => 'required', // mvp só cachorro
             'race' => 'required',
             'size' => 'required',
-            'color' => 'required',
             'gender' => 'required',
-            'description' => 'required',
+            'pedigree' => 'required'
         ];
     }
 }

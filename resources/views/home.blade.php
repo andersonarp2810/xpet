@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Cachorrada rola solta
                 </div>
             </div>
         </div>

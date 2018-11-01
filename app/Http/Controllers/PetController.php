@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PetRequest;
 use App\Pet;
+use App\Services\PhotoService;
 use App\Solicitation;
 use Auth;
 use Illuminate\Http\Request;
 
 class PetController extends Controller
 {
+
+    public function __construct(PhotoService $photoService)
+    {
+        $this->photoService = $photoService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,11 +49,22 @@ class PetController extends Controller
     public function store(PetRequest $request)
     {
         //
-        $pet = new Pet($request->all());
-        $pet['user_id'] = $request->user()->id;
+        $pet = new Pet([
+            'name' => $request->name,
+            //'type' => $request->type, // mvp só cachorro
+            'race' => $request->race,
+            'size' => $request->size,
+            'gender' => $request->gender,
+            'pedigree' => $request->pedigree,
+            'user_id' => $request->user_id,
+        ]);
         $this->authorize('create', $pet);
 
         $pet->save();
+
+        if ($request['images'] != null) {
+            $this->photoService->store($request, $pet->id);
+        }
 
         return redirect('/');
     }
@@ -142,5 +160,24 @@ class PetController extends Controller
         $pet->delete();
 
         return redirect('/');
+    }
+
+
+    public function addPhoto(Request $request, Pet $pet){
+        $this->authorize('create', $pet);
+
+        if($request['images'] != null){
+            $this->photoService->store($request, $pet->id);
+        }
+
+        return redirect()->back();
+    }
+
+    public function destroyPhoto($photo_id, Pet $pet){
+        $this->authorize('delete', $pet);
+
+        $this->photoService->delete($photo_id, $pet->id);
+
+        return redirect()->back();
     }
 }

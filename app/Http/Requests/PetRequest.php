@@ -30,7 +30,9 @@ class PetRequest extends FormRequest
             'race' => 'required',
             'size' => 'required',
             'gender' => 'required',
-            'pedigree' => 'required'
+            'pedigree' => 'required',
+            'images' => '',
+            'user_id' => 'required'
         ];
     }
 }

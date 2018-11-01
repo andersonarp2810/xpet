@@ -2,8 +2,9 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Pet;
+use App\Photo;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PetPolicy

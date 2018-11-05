@@ -39,7 +39,6 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         //
-        $this->authorize('create', User::class);
         $user = new User($request->all());
 
         $user->save();
@@ -56,7 +55,6 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-        $this->authorize('view', $user);
         return view('user.show', ['user' => $user]);
     }
 

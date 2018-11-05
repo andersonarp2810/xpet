@@ -71,61 +71,9 @@ class PhonePolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user, Phone $phone)
+    public function isOwner(User $user, Phone $phone)
     {
         //
         return $user->id === $phone->user_id;
-    }
-
-    /**
-     * Determine whether the user can update the address.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Address  $address
-     * @return mixed
-     */
-    public function update(User $user, Phone $phone)
-    {
-        //
-        return $user->id === $phone->user_id;
-    }
-
-    /**
-     * Determine whether the user can delete the address.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Address  $address
-     * @return mixed
-     */
-    public function delete(User $user, Phone $phone)
-    {
-        //
-        return $user->id == $phone->user_id;
-    }
-
-    /**
-     * Determine whether the user can restore the address.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Address  $address
-     * @return mixed
-     */
-    public function restore(User $user, Phone $phone)
-    {
-        //
-        return $user->id == $phone->user_id;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the address.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Address  $address
-     * @return mixed
-     */
-    public function forceDelete(User $user, Phone $phone)
-    {
-        //
-        return $user->id == $phone->user_id;
     }
 }

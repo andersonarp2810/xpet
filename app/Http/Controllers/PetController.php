@@ -58,7 +58,7 @@ class PetController extends Controller
             'pedigree' => $request->pedigree,
             'user_id' => $request->user_id,
         ]);
-        $this->authorize('create', $pet);
+        $this->authorize('isOwner', $pet);
 
         $pet->save();
 
@@ -78,7 +78,6 @@ class PetController extends Controller
     public function show(Pet $pet)
     {
         //
-        $this->authorize('show', $pet);
         //logica de ser pode ver contato ou não
         $phones = [];
         $address = null;
@@ -128,7 +127,7 @@ class PetController extends Controller
     public function edit(Pet $pet)
     {
         //
-        $this->authorize('edit', $pet);
+        $this->authorize('isOwner', $pet);
         return view('pet.edit', ['pet' => $pet]);
     }
 
@@ -142,7 +141,7 @@ class PetController extends Controller
     public function update(Request $request, Pet $pet)
     {
         //
-        $this->authorize('update', $pet);
+        $this->authorize('isOwner', $pet);
         $pet->update($request->all());
         return redirect()->route('pet.show', [$pet])->with('status', 'Pet atualizado');
     }
@@ -156,7 +155,7 @@ class PetController extends Controller
     public function destroy(Pet $pet)
     {
         //
-        $this->authorize('delete', $pet);
+        $this->authorize('isOwner', $pet);
         $pet->delete();
 
         return redirect('/');
@@ -164,7 +163,7 @@ class PetController extends Controller
 
 
     public function addPhoto(Request $request, Pet $pet){
-        $this->authorize('create', $pet);
+        $this->authorize('isOwner', $pet);
 
         if($request['images'] != null){
             $this->photoService->store($request, $pet->id);
@@ -174,7 +173,7 @@ class PetController extends Controller
     }
 
     public function destroyPhoto($photo_id, Pet $pet){
-        $this->authorize('delete', $pet);
+        $this->authorize('isOwner', $pet);
 
         $this->photoService->delete($photo_id, $pet->id);
 

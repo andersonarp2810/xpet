@@ -43,7 +43,7 @@ class AddressController extends Controller
     {
         //
         $endereço = new Address($request->all());
-        $this->authorize('create', $endereço);
+        $this->authorize('isOwner', $endereço);
 
         $endereço->save();
 
@@ -72,7 +72,7 @@ class AddressController extends Controller
     public function edit(Address $address)
     {
         //
-        $this->authorize('edit', $address);
+        $this->authorize('isOwner', $address);
         return view('address.edit', ['address' => $address]);
     }
 
@@ -86,7 +86,7 @@ class AddressController extends Controller
     public function update(Request $request, Address $address)
     {
         //
-        $this->authorize('update', $address);
+        $this->authorize('isOwner', $address);
         $endereço->update($request->all());
 
         return redirect()->route('address.show', [$address])->with('status', 'Endereco atualizado');
@@ -101,7 +101,7 @@ class AddressController extends Controller
     public function destroy(Address $address)
     {
         //
-        $this->authorize('delete', $address);
+        $this->authorize('isOwner', $address);
         $address->delete();
 
         return redirect('/');

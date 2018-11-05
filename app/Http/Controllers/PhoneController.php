@@ -17,7 +17,7 @@ class PhoneController extends Controller
     public function index(User $user)
     {
         //$user requisitado
-        $this->authorize('phone.index', $user);
+        $this->authorize('index', $user);
         $phones = Phone::all()->where('user_id', $user->id);
         return view('phone.index', ['phones' => $phones]);
     }
@@ -43,7 +43,7 @@ class PhoneController extends Controller
     {
         //
         $phone = new Phone($request->all());
-        $this->authorize('create', $phone);
+        $this->authorize('isOwner', $phone);
         $phone->save();
         return redirect('/');
     }
@@ -71,7 +71,7 @@ class PhoneController extends Controller
     public function edit(Phone $phone)
     {
         //
-        $this->authorize('edit', $phone);
+        $this->authorize('isOwner', $phone);
         return view('phone.edit', ['phone' => $phone]);
     }
 
@@ -85,7 +85,7 @@ class PhoneController extends Controller
     public function update(Request $request, Phone $phone)
     {
         //
-        $this->authorize('update', $phone);
+        $this->authorize('isOwner', $phone);
         $phone->update($request->all());
 
         return redirect()->route('phone.show', [$phone])->with('status', 'Contatos atualizados');
@@ -101,7 +101,7 @@ class PhoneController extends Controller
     public function destroy(Phone $phone)
     {
         //
-        $this->authorize('destroy', $phone);
+        $this->authorize('isOwner', $phone);
         $phone::delete();
 
         return redirect('/');

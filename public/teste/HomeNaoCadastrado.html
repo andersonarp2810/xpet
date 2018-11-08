@@ -9,17 +9,17 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
-    <link href="teste/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="teste/css/mdb.min.css" rel="stylesheet">
+    <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
-    <link href="teste/css/style.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
     <style type="text/css">
     html,
     body,
     header,
     .view{
-      background-image: url("teste/img/background5.jpg");
+      background-image: url("img/background5.jpg");
       background-size: 1420px 750px;
 
     }
@@ -58,13 +58,13 @@
                     <ul class="navbar-nav nav-flex-icons">
                         <li class="nav-item">
                             <a class="nav-link waves-effect" href="#">
-                                <img src="teste/img/icon/note.png" class="mr-2">Cadastro
+                                <img src="img/icon/note.png" class="mr-2">Cadastro
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link waves-effect"data-toggle="modal" data-target="#modalLoginAvatarDemo" href="#">
-                                <img src="teste/img/icon/enter.png" class="mr-2">Login
+                                <img src="img/icon/enter.png" class="mr-2">Login
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -80,7 +80,7 @@
         <div  class="sidebar-fixed position-fixed"style="background-color: #ffefc0 !important" >
 
             <a class=" waves-effect">
-                <img src="teste/img/logo.png" height="300" width="1100" class="img-fluid" alt="">
+                <img src="img/logo.png" height="300" width="1100" class="img-fluid" alt="">
             </a>
 
             <div class="list-group list-group-flush">
@@ -88,14 +88,14 @@
                     <i class=""></i>Dashboard
                 </a>
                             <a class="list-group-item list-group-item-action waves-effect" href="#">
-                                <img src="teste/img/icon/dog-house2.png" class="mr-2"> Home
+                                <img src="img/icon/dog-house2.png" class="mr-2"> Home
                                 <span class="sr-only">(current)</span>
                             </a>
 
                 <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#modalLoginAvatarDemo">
-                    <img src="teste/img/icon/dog.png" class="mr-2"></i>  Pets</a>
+                    <img src="img/icon/dog.png" class="mr-2"></i>  Pets</a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#modalLoginAvatarDemo">
-                    <img src="teste/img/icon/boy.png" class="mr-2"></i>Perfil</a>
+                    <img src="img/icon/boy.png" class="mr-2"></i>Perfil</a>
                <!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="img/icon/exit.png"></i>  Sair</a>-->
             </div>
@@ -152,7 +152,7 @@
 
   <!-- Card image -->
   <div class="view view-cascade overlay">
-    <img  class="card-img-top thumb-post" src="teste/img/pet1.jpg" alt="Card image cap" height="285" width="100">
+    <img  class="card-img-top thumb-post" src="img/pet1.jpg" alt="Card image cap" height="285" width="100">
     <a href="#!">
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -184,7 +184,7 @@
 
   <!-- Card image -->
   <div class="view view-cascade overlay">
-    <img  class="thumb-post" src="teste/img/pet2.jpg" alt="Card image cap" height="285" width="100">
+    <img  class="thumb-post" src="img/pet2.jpg" alt="Card image cap" height="285" width="100">
     <a href="#!">
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -214,7 +214,7 @@
 
   <!-- Card image -->
   <div class="view view-cascade overlay">
-    <img  class="card-img-top thumb-post" src="teste/img/pet3.jpg" alt="Card image cap"  height="285" width="100">
+    <img  class="card-img-top thumb-post" src="img/pet3.jpg" alt="Card image cap"  height="285" width="100">
     <a href="#!">
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -241,7 +241,7 @@
 
   <!-- Card image -->
   <div class="view view-cascade overlay">
-    <img  class="card-img-top thumb-post" src="teste/img/pet1.jpg" alt="Card image cap" height="285" width="100">
+    <img  class="card-img-top thumb-post" src="img/pet1.jpg" alt="Card image cap" height="285" width="100">
     <a href="#!">
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -273,7 +273,7 @@
 
   <!-- Card image -->
   <div class="view view-cascade overlay">
-    <img  class="card-img-top thumb-post" src="teste/img/pet2.jpg" alt="Card image cap" height="285" width="100">
+    <img  class="card-img-top thumb-post" src="img/pet2.jpg" alt="Card image cap" height="285" width="100">
     <a href="#!">
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -303,7 +303,7 @@
 
   <!-- Card image -->
   <div class="view view-cascade overlay">
-    <img  class="card-img-top thumb-post" src="teste/img/pet3.jpg" alt="Card image cap"  height="285" width="100">
+    <img  class="card-img-top thumb-post" src="img/pet3.jpg" alt="Card image cap"  height="285" width="100">
     <a href="#!">
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -345,17 +345,14 @@
                             
                             <!--Modal Form Login with Avatar Demo-->
                             <div class="modal fade" id="modalLoginAvatarDemo" tabindex="-1" role="dialog"
-                                aria-labelledby="myModalLabel" aria-hidden="true" method="POST" action="{{ route('login') }}">
-
-                                @csrf
-
+                                aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
                                     <!--Content-->
                                     <div class="modal-content">
 
                                         <!--Header-->
                                         <div class="modal-header">
-                                            <img src="teste/img/pawprintvector.jpg"
+                                            <img src="img/pawprintvector.jpg"
                                                 class="rounded-circle img-responsive" alt="Avatar photo">
                                         </div>
                                         <!--Body-->
@@ -364,32 +361,17 @@
                                             <!--<h5 class="mt-1 mb-2">Maria Doe</h5>-->
 
                                             <div class="md-form ml-0 mr-0">
-                                                <input type="email" id="email" class="form-control ml-0 {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" required autofocus>
-
-                                                @if ($errors->has('email'))
-                                                    <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                    </span>
-                                                    @endif
-
-                                                <label for="email" class="ml-0">Email</label>
-
+                                                <input type="email" type="text" id="form1" class="form-control ml-0">
+                                                <label for="form1" class="ml-0">Email</label>
                                             </div>
                                             <div class="md-form ml-0 mr-0">
-                                                <input type="password" id="password" class="form-control ml-0 {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-                                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                                                <label for="password" class="ml-0">Senha</label>
+                                                <input type="email" type="text" id="form1" class="form-control ml-0">
+                                                <label for="form1" class="ml-0">Senha</label>
                                             </div>
 
 
                                             <div class="text-center mt-4">
-
-
-                                                <button type="submit" class="btn btn-success">Login
+                                                <button class="btn btn-success">Login
                                                     <i class="fa fa-sign-in ml-1"></i>
                                                 </button>
                                                 <button class="btn btn-cyan">Cadastrar
@@ -557,13 +539,13 @@
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
-    <script type="text/javascript" src="teste/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="teste/js/popper.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="teste/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="teste/js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Initializations -->
     <script type="text/javascript">
         // Animations initialization

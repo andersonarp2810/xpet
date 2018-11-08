@@ -8,7 +8,8 @@ class Pet extends Model
 {
     //
     protected $fillable = [
-        'user_id', 'name',
+        'user_id', 
+        'name',
         'type', // default Cachorro
         'race',
         'size', // string

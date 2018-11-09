@@ -75,7 +75,7 @@
                         </li>
                         @else
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" data-toggle="modal" data-target="#modalLoginAvatarDemo" href="#">
+                            <a class="nav-link waves-effect" data-target="#modalLoginAvatarDemo" href="/logout">
                                 <img src="teste/img/icon/exit.png" class="mr-2">Logout
                                 <span class="sr-only">(current)</span>
                             </a>
@@ -118,10 +118,10 @@
 
     </header>
     <!--Main Navigation-->
-    
+
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
-    @yield('content')
+        @yield('content')
     </main>
     <!--Main layout-->
 
@@ -141,34 +141,41 @@
                 <!--Body-->
                 <div class="modal-body text-center mb-1">
 
-                    <!--<h5 class="mt-1 mb-2">Maria Doe</h5>-->
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div class="md-form ml-0 mr-0">
+                            <input name="email" type="email" id="email" class="form-control ml-0 {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus> 
+                            @if ($errors->has('email'))
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                            </span> 
+                            @endif
 
-                    <div class="md-form ml-0 mr-0">
-                        <input type="email" id="email" class="form-control ml-0 {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" required autofocus> @if ($errors->has('email'))
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                        </span> @endif
+                            <label for="email" class="ml-0">Email</label>
 
-                        <label for="email" class="ml-0">Email</label>
-
-                    </div>
-                    <div class="md-form ml-0 mr-0">
-                        <input type="password" id="password" class="form-control ml-0 {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required> @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
+                        </div>
+                        <div class="md-form ml-0 mr-0">
+                            <input name="password" type="password" id="password" class="form-control ml-0 {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                            @if ($errors->has('password'))
+                            <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>
-                        </span> @endif
-                        <label for="password" class="ml-0">Senha</label>
-                    </div>
+                            </span>
+                            @endif
+                            <label for="password" class="ml-0">Senha</label>
+                        </div>
 
-                    <div class="text-center mt-4">
+                        <div class="text-center mt-4">
 
-                        <button type="submit" class="btn btn-success">Login
-                            <i class="fa fa-sign-in ml-1"></i>
-                        </button>
-                        <button class="btn btn-cyan">Cadastrar
-                            <i class="fa fa-sign-in ml-1"></i>
-                        </button>
-                    </div>
+                            <button type="submit" class="btn btn-success">
+                                Login
+                                <i class="fa fa-sign-in ml-1"></i>
+                            </button>
+                            <a href="/register"  class="btn btn-cyan">
+                                Cadastrar
+                                <i class="fa fa-sign-in ml-1"></i>
+                            </a>
+                        </div>
+                    </form>
                 </div>
 
             </div>

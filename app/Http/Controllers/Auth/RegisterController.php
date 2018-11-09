@@ -52,8 +52,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'e-mail' => 'required|string|email|max:255|unique:users',
-            'senha' => 'required|string|min:6|confirmed',
+            'e-mail' => 'required|string|email|max:255|unique:users,email',
+            'senha' => 'required|string|min:6',
             'public_contact_info' => 'required',
             'number' => 'required',
             'whatsapp_available' => 'required',
@@ -77,13 +77,13 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['e-mail'],
             'password' => Hash::make($data['senha']),
-            'public_contact_info' => $data['public_contact_info'],
+            'public_contact_info' => $data['public_contact_info'] == 'true' ? true : false,
         ]);
 
         $phone = Phone::create([
             'user_id' => $user->id,
             'number' => $data['number'],
-            'whatsapp_available' => $data['whatsapp_available'],
+            'whatsapp_available' => $data['whatsapp_available'] == 'true' ? true : false,
         ]);
 
         $address = Address::create([

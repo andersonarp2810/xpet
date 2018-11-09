@@ -66,8 +66,8 @@
                         <div class="md-form ml-0 mr-0">
                             <select id="whatsapp_available" name="whatsapp_available" class="custom-select d-block w-100 {{ $errors->has('whatsapp_available') ? ' is-invalid' : '' }}" required>
                                     <option value="" disabled selected>WhatsApp nesse número?</option>
-                                    <option value="{{true}}">Sim</option>
-                                    <option value="{{false}}">Não</option>
+                                    <option value="true">Sim</option>
+                                    <option value="false">Não</option>
                             </select>
                             @if ($errors->has('whatsapp_available'))
                                 <span class="invalid-feedback" role="alert">
@@ -146,7 +146,7 @@
                         </div>
 
                         <div class="md-form ml-0 mr-0">
-                            <input name="number" type="number" id="number" class="form-control ml-0 {{ $errors->has('number') ? ' is-invalid' : '' }}" required>
+                            <input name="number" type="text" id="number" class="form-control ml-0 {{ $errors->has('number') ? ' is-invalid' : '' }}" required>
                             <label for="number" class="ml-0">Número</label>
                             @if ($errors->has('number'))
                                 <span class="invalid-feedback" role="alert">
@@ -163,8 +163,8 @@
                         <div class="md-form ml-0 mr-0">
                             <select name="public_contact_info" class="custom-select d-block w-100 {{ $errors->has('public_contact_info') ? ' is-invalid' : '' }}" id="whatsapp" required>
                                     <option value="" disabled selected>Permitir que qualquer um veja seus contatos?</option>
-                                    <option value="{{true}}">Sim</option>
-                                    <option value="{{false}}">Não</option>
+                                    <option value="true">Sim</option>
+                                    <option value="false">Não</option>
                             </select>
                             @if ($errors->has('public_contact_info'))
                                 <span class="invalid-feedback" role="alert">

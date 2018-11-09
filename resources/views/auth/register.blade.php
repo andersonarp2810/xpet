@@ -1,10 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<!--Grid row-->
-<div class="row wow fadeIn">
-    <br>
-</div>
+
 
 <div class="container-fluid mt-5">
 
@@ -189,3 +186,4 @@
     </div>
 
 </div>
+@endsection

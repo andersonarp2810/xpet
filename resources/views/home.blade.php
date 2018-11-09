@@ -39,7 +39,7 @@
 
         <!--Grid column dinamic -->
         @foreach ($pets as $pet)
-        <div class="col-lg-4 col-md-12 mb-4">
+        <div class="col-lg-4 col-md-4 mb-4">
 
             <div class="card card-cascade wider">
 
@@ -69,7 +69,7 @@
             <!--Grid column dinamic-->
 
         <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
+        <div class="col-lg-4 col-md-4 mb-4">
 
             <div class="card card-cascade wider">
 
@@ -98,7 +98,7 @@
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-4 mb-4">
 
             <!-- Card Wider -->
             <div class="card card-cascade wider">
@@ -128,7 +128,7 @@
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-4 mb-4">
 
             <!-- Card Wider -->
             <div class="card card-cascade wider">

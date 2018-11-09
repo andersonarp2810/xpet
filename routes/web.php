@@ -18,7 +18,8 @@ Route::get('/', function () {
 
 Route::post('login', 'Auth\LoginController@login')->name('login')->middleware('guest');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::post('register', 'Auth\RegisterController@register')->name('register')->middleware('guest');
+Route::post('register', 'Auth\RegisterController@register')->middleware('guest');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register')->middleware('guest');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

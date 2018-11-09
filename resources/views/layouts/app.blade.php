@@ -62,7 +62,7 @@
                     <ul class="navbar-nav nav-flex-icons">
                         @if(Auth::guest())
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="#">
+                            <a class="nav-link waves-effect" href="/register">
                                 <img src="teste/img/icon/note.png" class="mr-2">Cadastro
                                 <span class="sr-only">(current)</span>
                             </a>
@@ -222,9 +222,6 @@
         // Animations initialization
         new WOW().init();
     </script-->
-    <script>
-        $(".input-phone").mask("(99) 9 9999-9999");
-    </script>
 
 </body>
 

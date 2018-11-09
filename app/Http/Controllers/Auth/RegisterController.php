@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Phone;
+use App\Address;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,9 +52,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'public_contact_info' => 'required'
+            'e-mail' => 'required|string|email|max:255|unique:users',
+            'senha' => 'required|string|min:6|confirmed',
+            'public_contact_info' => 'required',
+            'number' => 'required',
+            'whatsapp_available' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+            'district' => 'required',
+            'street' => 'required',
+            'number' => 'required',
         ]);
     }
 
@@ -66,9 +75,26 @@ class RegisterController extends Controller
     {
         $user = User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'email' => $data['e-mail'],
+            'password' => Hash::make($data['senha']),
             'public_contact_info' => $data['public_contact_info'],
+        ]);
+
+        $phone = Phone::create([
+            'user_id' => $user->id,
+            'number' => $data['number'],
+            'whatsapp_available' => $data['whatsapp_available'],
+        ]);
+
+        $address = Address::create([
+            'user_id' => $user->id,
+            //'country' , // brasil por default
+            'state' => $data['state'] ,
+            'city' => $data['city'] ,
+            'district' => $data['district'] , 
+            'street' => $data['street'] ,
+            'number' => $data['number'] ,
+            'complement' => $data['complement'] 
         ]);
 
         return $user;

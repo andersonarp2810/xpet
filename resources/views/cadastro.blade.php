@@ -61,20 +61,20 @@
                         </div>
 
                         <div class="md-form ml-0 mr-0">
-                            <select name="whatsapp" class="custom-select d-block w-100 {{ $errors->has('whatsapp') ? ' is-invalid' : '' }}" id="whatsapp" required>
+                            <select id="whatsapp_available" name="whatsapp_available" class="custom-select d-block w-100 {{ $errors->has('whatsapp_available') ? ' is-invalid' : '' }}" required>
                                     <option value="" disabled selected>WhatsApp nesse número?</option>
                                     <option value="{{true}}">Sim</option>
                                     <option value="{{false}}">Não</option>
                             </select>
-                            @if ($errors->has('whatsapp'))
+                            @if ($errors->has('whatsapp_available'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('whatsapp') }}</strong>
+                                    <strong>{{ $errors->first('whatsapp_available') }}</strong>
                                 </span>
                             @endif
                         </div>
 
                         <div class="md-form ml-0 mr-0">
-                            <select name="country" class="custom-select d-block w-100 {{ $errors->has('country') ? ' is-invalid' : '' }}" id="country" required>
+                            <select id="state" name="state" class="custom-select d-block w-100 {{ $errors->has('state') ? ' is-invalid' : '' }}" required>
 
                                 <option value="" disabled selected>Estado</option>
                                 <option value="AC">Acre</option>
@@ -105,9 +105,9 @@
                                 <option value="SE">Sergipe</option>
                                 <option value="TO">Tocantins</option>
                             </select>
-                            @if ($errors->has('country'))
+                            @if ($errors->has('state'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('country') }}</strong>
+                                    <strong>{{ $errors->first('state') }}</strong>
                                 </span>
                             @endif
                         </div>

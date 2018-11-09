@@ -103,17 +103,19 @@
                 <a href="#" class="list-group-item active waves-effect">
                     <i class=""></i>Dashboard
                 </a>
-                <a class="list-group-item list-group-item-action waves-effect" href="#">
+                <a class="list-group-item list-group-item-action waves-effect" href="/home">
                     <img src="teste/img/icon/dog-house2.png" class="mr-2"> Home
                     <span class="sr-only">(current)</span>
                 </a>
 
-                <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#modalLoginAvatarDemo">
+                @if(!Auth::guest())
+                <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="teste/img/icon/dog.png" class="mr-2"></i> Pets</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#modalLoginAvatarDemo">
+                <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="teste/img/icon/boy.png" class="mr-2"></i>Perfil</a>
                 <!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="img/icon/exit.png"></i>  Sair</a>-->
+                @endif
             </div>
 
         </div>

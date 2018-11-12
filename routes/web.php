@@ -23,5 +23,8 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/pet', 'PetController');
+Route::resource('/pet', 'PetController')->middleware('auth');
 
+Route::get('profile', function(){
+    return view('user.profile');
+});

@@ -95,7 +95,7 @@
         <!-- Sidebar -->
         <div class="sidebar-fixed position-fixed" style="background-color: #ffefc0 !important">
 
-            <a class=" waves-effect">
+            <a class=" waves-effect" href="/home">
                 <img src="teste/img/logo.png" height="300" width="1100" class="img-fluid" alt="">
             </a>
 
@@ -109,7 +109,7 @@
                 </a>
 
                 @if(!Auth::guest())
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="/profile" class="list-group-item list-group-item-action waves-effect">
                     <img src="teste/img/icon/dog.png" class="mr-2"></i> Pets</a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="teste/img/icon/boy.png" class="mr-2"></i>Perfil</a>

@@ -48,6 +48,7 @@ class PetController extends Controller
      */
     public function store(PetRequest $request)
     {
+        //dd($request);
         //
         $pet = new Pet([
             'name' => $request->name,
@@ -58,8 +59,8 @@ class PetController extends Controller
             'pedigree' => $request->pedigree,
             'user_id' => $request->user_id,
         ]);
-        $this->authorize('isOwner', $pet);
-
+        
+        //dd($pet);
         $pet->save();
 
         if ($request['images'] != null) {

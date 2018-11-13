@@ -111,7 +111,7 @@
                 @if(!Auth::guest())
                 <a href="/pet" class="list-group-item list-group-item-action waves-effect">
                     <img src="teste/img/icon/dog.png" class="mr-2"></i> Pets</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="/user" class="list-group-item list-group-item-action waves-effect">
                     <img src="teste/img/icon/boy.png" class="mr-2"></i>Perfil</a>
                 <!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="img/icon/exit.png"></i>  Sair</a>-->

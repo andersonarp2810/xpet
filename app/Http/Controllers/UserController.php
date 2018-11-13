@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Address;
+use App\Phone;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests\UserRequest;
+use Auth;
 
 class UserController extends Controller
 {
@@ -15,8 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        // talvez precise de parâmetros
-        return view('user.index');
+        $user = Auth::User();
+        return view('user.index', ['user' => $user]);
     }
 
     /**

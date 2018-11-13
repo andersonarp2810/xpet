@@ -82,7 +82,7 @@ class RegisterController extends Controller
 
         $phone = Phone::create([
             'user_id' => $user->id,
-            'number' => $data['number'],
+            'number' => $data['phone'],
             'whatsapp_available' => $data['whatsapp_available'] == 'true' ? true : false,
         ]);
 

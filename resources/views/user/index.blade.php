@@ -93,22 +93,22 @@
                 <div class="card-body card-body-cascade text-center">
 
                     <!-- Title -->
-                    <h4 class="card-title"><strong>Cadastro do Usuário</strong></h4>
+                    <h4 class="card-title"><strong>Perfil</strong></h4>
                     <!-- Subtitle -->
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h4 class="card-title"><strong>Nome completo:</strong> Matador de figurante Madara</h4>
-                        <h4 class="card-title"><strong>Pais:</strong> Narnia</h4>
-                        <h4 class="card-title"><strong>Email:</strong> ascronicas@narnia.com</h4>
-                        <h4 class="card-title"><strong>Telefone:</strong> (xx)xxxx-xxxx</h4>
-                        <h4 class="card-title"><strong>Whatsapp:</strong> (xx)xxxx-xxxx</h4>
-                        <h4 class="card-title"><strong>Estado:</strong> Guarda roupa</h4>
-                        <h4 class="card-title"><strong>Cidade:</strong> Leão</h4>
-                        <h4 class="card-title"><strong>Bairro:</strong> Bruxa</h4>
-                        <h4 class="card-title"><strong>Rua:</strong> Poste</h4>
-                        <h4 class="card-title"><strong>Complemento:</strong> Reino</h4>
-                        <!--   <h4 class="card-title"><strong>Contato:</strong> (00)91111-1111 </h4>
-                                            <h4 class="card-title"><strong>Email:</strong> bla@gmail.com </h4>-->
+                        <h4 class="card-title"><strong>Nome completo: </strong>{{ $user->name }}</h4>
+                        <h4 class="card-title"><strong>Email: </strong>{{ $user->email }}</h4>
+                        @foreach($user->phones as $phone)
+                        <h4 class="card-title"><strong>Telefone: </strong>{{ $phone->number }}</h4>
+                        @endforeach
+                        <h4 class="card-title"><strong>País: </strong>{{ $user->address->country }}</h4>
+                        <h4 class="card-title"><strong>Estado: </strong>{{ $user->address->state }}</h4>
+                        <h4 class="card-title"><strong>Cidade: </strong>{{ $user->address->city }}</h4>
+                        <h4 class="card-title"><strong>Bairro: </strong>{{ $user->address->district }}</h4>
+                        <h4 class="card-title"><strong>Rua: </strong>{{ $user->address->street }}</h4>
+                        <h4 class="card-title"><strong>Número: </strong>{{ $user->address->number }}</h4>
+                        <h4 class="card-title"><strong>Complemento: </strong>{{ $user->address->complement }}</h4>
 
                     </div>
 

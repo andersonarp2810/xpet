@@ -55,8 +55,10 @@ class PetController extends Controller
             //'type' => $request->type, // mvp só cachorro
             'race' => $request->race,
             'size' => $request->size,
+            'color' => $request->color,
             'gender' => $request->gender,
             'pedigree' => $request->pedigree,
+            'description' => $request->description ? $request->description : '',
             'user_id' => $request->user_id,
         ]);
         

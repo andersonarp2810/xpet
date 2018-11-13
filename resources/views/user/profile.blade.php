@@ -288,7 +288,7 @@
                                             <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Imagens') }}</label>
 
                                             <div class="col-md-6">
-                                                <input type="file" name="images" id="images" accept="image/*" multiple class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" value="{{ old('images') }}">
+                                                <input type="file" name="images[]" id="images" accept="image/*" multiple class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" value="{{ old('images') }}">
                                                 @if ($errors->has('images'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('images') }}</strong>

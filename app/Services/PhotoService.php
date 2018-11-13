@@ -21,12 +21,14 @@ class PhotoService
         if($request['images'] != null){
             $files = $request->file('images');
 
+            //dd([$files, $request]);
+
             foreach ($files as $file){
                 $fname = $file->getClientOriginalName();
 
                 Photo::create([
-                    'path' => Storage::disk('public')->putFileAs('pets/'.$request['pet_id'], $file, $fname),
-                    'pet_id' => $request->pet_id
+                    'path' => Storage::disk('public')->putFileAs('pets/'.$pet_id, $file, $fname),
+                    'pet_id' => $pet_id
                 ]);
             }
         }

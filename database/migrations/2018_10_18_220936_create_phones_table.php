@@ -19,7 +19,7 @@ class CreatePhonesTable extends Migration
             $table->string('number');
             $table->boolean('whatsapp_available');
 
-            $table->timestampsTz();
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

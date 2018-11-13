@@ -18,7 +18,7 @@ class CreatePhotosTable extends Migration
             $table->integer('pet_id');
             $table->string('path');
 
-            $table->timestampsTz();
+            $table->timestamps();
 
             $table->foreign('pet_id')->references('id')->on('pets');
         });

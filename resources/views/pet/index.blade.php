@@ -88,17 +88,7 @@
 
         <div class="card card-cascade wider">
 
-            <!-- Card image -->
-            <div class="view view-cascade overlay">
-                @if($pet->photos->first() != null) 
-                <img class="card-img-top" src="{{ URL::asset('storage/' . $pet->photos->first()->path)}}" alt="Card image cap" height="285" width="100">
-                @else
-                <img class="card-img-top" src="teste/img/pet3.jpg" alt="Card image cap" height="285" width="100">
-                @endif
-                <a href="#!">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
+            @include('layouts.pet-card-image', ['pet' => $pet])
 
             <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
@@ -194,7 +184,7 @@
                 <section>
 
                     <!-- Create modal -->
-                    @include('layouts.pet-form', [])
+                    @include('layouts.pet-form', ['pet' => null])
                     <!-- Create modal -->
 
                     @foreach($pets as $pet)

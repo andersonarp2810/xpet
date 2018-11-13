@@ -26,7 +26,7 @@ class CreateAddressesTable extends Migration
             $table->string('coordinateX')->nullable();
             $table->string('coordinateY')->nullable();
 
-            $table->timestampsTz();
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

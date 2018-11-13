@@ -22,7 +22,7 @@ class CreateSolicitationsTable extends Migration
 
             $table->string('status');
 
-            $table->timestampsTz();
+            $table->timestamps();
 
             $table->foreign('requester_user_id')->references('id')->on('users');
             $table->foreign('requested_user_id')->references('id')->on('users');

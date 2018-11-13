@@ -100,19 +100,30 @@
             </a>
 
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item active waves-effect">
-                    <i class=""></i>Dashboard
-                </a>
                 <a class="list-group-item list-group-item-action waves-effect" href="/home">
-                    <img src="teste/img/icon/dog-house2.png" class="mr-2"> Home
+                    <img src="teste/img/icon/dog-house2.png" class="mr-2">Home
                     <span class="sr-only">(current)</span>
                 </a>
 
                 @if(!Auth::guest())
                 <a href="/pet" class="list-group-item list-group-item-action waves-effect">
-                    <img src="teste/img/icon/dog.png" class="mr-2"></i> Pets</a>
+                    <img src="teste/img/icon/dog.png" class="mr-2">Pets
+                </a>
                 <a href="/user" class="list-group-item list-group-item-action waves-effect">
-                    <img src="teste/img/icon/boy.png" class="mr-2"></i>Perfil</a>
+                    <img src="teste/img/icon/boy.png" class="mr-2">Perfil
+                </a>
+                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                    <img src="teste/img/icon/pdog2.png" class="mr-2">Adotar
+                </a>
+                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                    <img src="teste/img/icon/donation.png" class="mr-2">Doar
+                </a>
+                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                        <img src="teste/img/icon/dog3.png" class="mr-2">Filhotes
+                </a>
+                <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
+                    <img src="teste/img/icon/invitation.png" class="mr-2"> Solicitações
+                </a>
                 <!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="img/icon/exit.png"></i>  Sair</a>-->
                 @endif

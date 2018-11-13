@@ -25,7 +25,7 @@ class CreatePetsTable extends Migration
             $table->boolean('pedigree');
             $table->text('description')->default('');
 
-            $table->timestampsTz();
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

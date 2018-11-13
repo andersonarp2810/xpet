@@ -42,32 +42,22 @@
         <div class="col-lg-4 col-md-4 mb-4">
 
             <div class="card card-cascade wider">
-
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    @if($pet->photos->first() != null)
-                        <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $pet->photos->first()->path)}}" alt="Card image cap" height="285" width="100">
-                    @else
-                        <img class="card-img-top thumb-post" src="teste/img/pet1.jpg" alt="Card image cap" height="285" width="100">
-                    @endif
-                    <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-
+        
+                @include('layouts.pet-card-image', ['pet' => $pet])
+        
                 <!-- Card content -->
                 <div class="card-body card-body-cascade text-center">
-
+        
                     <!-- Title -->
                     <h4 class="card-title"><strong>{{ $pet->name }}</strong></h4>
                     <!-- Subtitle -->
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Conferir</button>
                     <br>
-
+        
                 </div>
-
+        
             </div>
-
+        
         </div>
         @endforeach
             <!--Grid column dinamic-->

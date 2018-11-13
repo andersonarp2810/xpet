@@ -20,7 +20,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $pet ? $pet->name : old('name') }}" required autofocus>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $pet ? $pet->name : old('name') }}" {{ $pet ? '' : 'required' }} autofocus>
                             @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -34,7 +34,7 @@
 
                         <div class="col-md-6">
                             Tem que mudar pra um select
-                            <input id="race" type="text" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}" name="race" value="{{ $pet ? $pet->race : old('race') }}" required>
+                            <input id="race" type="text" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}" name="race" value="{{ $pet ? $pet->race : old('race') }}" {{ $pet ? '' : 'required' }}>
                             @if ($errors->has('race'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('race') }}</strong>
@@ -48,7 +48,7 @@
 
                         <div class="col-md-6">
 
-                            <select name="size" id="size" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->size : old('size') }}" required>
+                            <select name="size" id="size" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->size : old('size') }}" {{ $pet ? '' : 'required' }}>
                                 <option value="{{$pet ? $pet->size : ''}}" disabled selected>Selecionar</option>
                                 <option value="Micro">Micro</option>
                                 <option value="Pequeno">Pequeno</option>
@@ -83,7 +83,7 @@
 
                         <div class="col-md-6">
 
-                            <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->gender : old('gender') }}" required>
+                            <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->gender : old('gender') }}" {{ $pet ? '' : 'required' }}>
                                 <option value="{{$pet ? $pet->gender : ''}}" disabled selected>Selecionar</option>
                                 <option value="Macho">Macho</option>
                                 <option value="Fêmea">Fêmea</option>
@@ -101,8 +101,8 @@
                         <label for="pedigree" class="col-md-4 col-form-label text-md-right">{{ __('Pedigree') }}</label>
 
                         <div class="col-md-6">
-                            <select name="pedigree" id="pedigree" class="form-control{{ $errors->has('pedigree') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->pedigree . '' : old('pedigree') }}" required>
-                                <option value="{{$pet ? $pet->pedigree . '' : ''}}" disabled selected>Selecionar</option>
+                            <select name="pedigree" id="pedigree" class="form-control{{ $errors->has('pedigree') ? ' is-invalid' : '' }}" value="{{ old('pedigree') }}" {{ $pet ? '' : 'required' }}>
+                                <option value="" disabled selected>Selecionar</option>
                                 <option value="true">Sim</option>
                                 <option value="false">Não</option>
                             </select>

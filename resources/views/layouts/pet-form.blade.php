@@ -20,7 +20,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $pet ? $pet->name : old('name') }}" {{ $pet ? '' : 'required' }} autofocus>
+                            <input id="{{ $pet ? 'name-' . $pet->id : 'name'}}" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $pet ? $pet->name : old('name') }}" {{ $pet ? '' : 'required' }} autofocus>
                             @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -34,7 +34,7 @@
 
                         <div class="col-md-6">
                             Tem que mudar pra um select
-                            <input id="race" type="text" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}" name="race" value="{{ $pet ? $pet->race : old('race') }}" {{ $pet ? '' : 'required' }}>
+                            <input id="{{ $pet ? 'race-' . $pet->id : 'race'}}" type="text" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}" name="race" value="{{ $pet ? $pet->race : old('race') }}" {{ $pet ? '' : 'required' }}>
                             @if ($errors->has('race'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('race') }}</strong>
@@ -48,7 +48,7 @@
 
                         <div class="col-md-6">
 
-                            <select name="size" id="size" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->size : old('size') }}" {{ $pet ? '' : 'required' }}>
+                            <select name="size" id="{{ $pet ? 'size-' . $pet->id : 'size'}}" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->size : old('size') }}" {{ $pet ? '' : 'required' }}>
                                 <option value="{{$pet ? $pet->size : ''}}" disabled selected>Selecionar</option>
                                 <option value="Micro">Micro</option>
                                 <option value="Pequeno">Pequeno</option>
@@ -69,7 +69,7 @@
                         <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Cor') }}</label>
 
                         <div class="col-md-6">
-                            <input id="color" type="text" class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}" name="color" value="{{ $pet ? $pet->color : old('color') }}">
+                            <input id="{{ $pet? 'color-' . $pet->id : 'color'}}" type="text" class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}" name="color" value="{{ $pet ? $pet->color : old('color') }}">
                             @if ($errors->has('color'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('color') }}</strong>
@@ -83,7 +83,7 @@
 
                         <div class="col-md-6">
 
-                            <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->gender : old('gender') }}" {{ $pet ? '' : 'required' }}>
+                            <select name="gender" id="{{ $pet? 'gender-' . $pet->id : 'gender'}}" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->gender : old('gender') }}" {{ $pet ? '' : 'required' }}>
                                 <option value="{{$pet ? $pet->gender : ''}}" disabled selected>Selecionar</option>
                                 <option value="Macho">Macho</option>
                                 <option value="Fêmea">Fêmea</option>
@@ -101,7 +101,7 @@
                         <label for="pedigree" class="col-md-4 col-form-label text-md-right">{{ __('Pedigree') }}</label>
 
                         <div class="col-md-6">
-                            <select name="pedigree" id="pedigree" class="form-control{{ $errors->has('pedigree') ? ' is-invalid' : '' }}" value="{{ old('pedigree') }}" {{ $pet ? '' : 'required' }}>
+                            <select name="pedigree" id="{{ $pet? 'pedigree-' . $pet->id : 'pedigree'}}" class="form-control{{ $errors->has('pedigree') ? ' is-invalid' : '' }}" value="{{ old('pedigree') }}" {{ $pet ? '' : 'required' }}>
                                 <option value="" disabled selected>Selecionar</option>
                                 <option value="true">Sim</option>
                                 <option value="false">Não</option>
@@ -119,7 +119,7 @@
                         <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
 
                         <div class="col-md-6">
-                            <textarea name="description" id="description" cols="30" rows="3" style="resize: vertical" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->description : old('description') }}">{{ $pet ? $pet->description : '' }}</textarea>
+                            <textarea name="description" id="{{ $pet? 'description-' . $pet->id : 'description'}}" cols="30" rows="3" style="resize: vertical" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->description : old('description') }}">{{ $pet ? $pet->description : '' }}</textarea>
 
                             @if ($errors->has('description'))
                             <span class="invalid-feedback" role="alert">
@@ -133,7 +133,7 @@
                         <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Imagens') }}</label>
 
                         <div class="col-md-6">
-                            <input type="file" name="images[]" id="images" accept="image/*" multiple class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" value="{{ old('images') }}">
+                            <input type="file" name="images[]" id="{{ $pet? 'images-' . $pet->id : 'images'}}" accept="image/*" multiple class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" value="{{ old('images') }}">
                             @if ($errors->has('images'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('images') }}</strong>

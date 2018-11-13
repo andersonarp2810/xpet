@@ -31,6 +31,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('pet/{pet}', 'PetController@update')->name('pet.update');
 });
 
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('user', 'UserController@index')->name('user.index');
+    Route::post('user/{user}', 'UserController@update')->name('user.update');
+});
+
 Route::get('/', function () {return redirect('home');});
 
 Route::get('aaa', function () {

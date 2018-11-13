@@ -145,8 +145,9 @@ class PetController extends Controller
     {
         //
         $this->authorize('isOwner', $pet);
+        //dd($request->all());
         $pet->update($request->all());
-        return redirect()->route('pet.show', [$pet])->with('status', 'Pet atualizado');
+        return redirect('/pet');
     }
 
     /**

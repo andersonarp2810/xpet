@@ -9,12 +9,12 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 /*
 Route::get('/', function () {
-    return view('welcome');
+return view('welcome');
 });
-*/
+ */
 
 Route::post('login', 'Auth\LoginController@login')->name('login')->middleware('guest');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
@@ -23,8 +23,17 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/pet', 'PetController')->middleware('auth');
+//Route::resource('/pet', 'PetController')->middleware('auth');
 
-Route::get('profile', function(){
-    return view('user.profile');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('pet', 'PetController@index')->name('pet.index');
+    Route::post('pet', 'PetController@store')->name('pet.store');
+    Route::post('pet/{pet}', 'PetController@update')->name('pet.update');
+});
+
+Route::get('/', function () {return redirect('home');});
+
+Route::get('aaa', function () {
+    dd(new App\Pet());
+    return redirect('home'); 
 });

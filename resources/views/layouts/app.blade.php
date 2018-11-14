@@ -36,6 +36,10 @@
             /* Center the image within the element */
             width: 100%;
         }
+        .modal-content1{
+        width: 800px;
+}
+
     </style>
 </head>
 

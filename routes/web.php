@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('pet', 'PetController@index')->name('pet.index');
     Route::post('pet', 'PetController@store')->name('pet.store');
     Route::post('pet/{pet}', 'PetController@update')->name('pet.update');
+
+    ##### PET PROFILE #####
+    Route::get('pet/profile/{pet}', 'PetController@profile')->name('pet.profile');
 });
 
 Route::group(['middleware' => 'auth'], function(){
@@ -41,4 +44,15 @@ Route::get('/', function () {return redirect('home');});
 Route::get('aaa', function () {
     dd(new App\Pet());
     return redirect('home'); 
+});
+
+/*
+Route::group([''], function(){
+    Route::get('pet/profile/{pet}', 'PetController@profile')->name('pet.profile');
+});
+*/
+
+Route::get('coiso', function () {
+    $pet = App\Pet::all()->first();
+    return view('pet.profile', ['pet' => $pet]); 
 });

@@ -2,23 +2,27 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <base href="/" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>XPetX</title>
     <link rel="shortcut icon" type="image/png" href="teste/img/logo2.png"/>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- Bootstrap core CSS -->
-    <link href="teste/css/bootstrap.min.css" rel="stylesheet">
+    <link href="teste/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Material Design Bootstrap -->
-    <link href="teste/css/mdb.min.css" rel="stylesheet">
+    <link href="teste/css/mdb.min.css" rel="stylesheet"/>
     <!-- Your custom styles (optional) -->
-    <link href="teste/css/style.min.css" rel="stylesheet">
+    <link href="teste/css/style.min.css" rel="stylesheet"/>
     
     <style type="text/css">
         html,

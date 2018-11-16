@@ -50,6 +50,13 @@
         
                     <!-- Title -->
                     <h4 class="card-title"><strong>{{ $pet->name }}</strong></h4>
+
+                    <i class="fa fa-paw"></i>
+                    <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw"></i>
+
                     <!-- Subtitle -->
                     <p class="card-title">{{$pet->user->address->city}}</p>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Conferir</button>

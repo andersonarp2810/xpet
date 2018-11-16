@@ -183,4 +183,9 @@ class PetController extends Controller
 
         return redirect()->back();
     }
+
+    public function profile(Request $request, Pet $pet){
+
+        return view('pet.profile', ['pet' => $pet]);
+    }
 }

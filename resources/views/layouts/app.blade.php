@@ -211,15 +211,15 @@
 
         <!-- Social icons -->
         <div class="pb-4">
-            <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+            <a href="https://www.facebook.com/" target="_blank">
                 <i class="fa fa-facebook mr-3"></i>
             </a>
 
-            <a href="https://twitter.com/MDBootstrap" target="_blank">
+            <a href="https://twitter.com/" target="_blank">
                 <i class="fa fa-twitter mr-3"></i>
             </a>
 
-            <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+            <a href="https://www.youtube.com/" target="_blank">
                 <i class="fa fa-youtube mr-3"></i>
             </a>
 

@@ -46,13 +46,6 @@ Route::get('aaa', function () {
     return redirect('home'); 
 });
 
-/*
-Route::group([''], function(){
-    Route::get('pet/profile/{pet}', 'PetController@profile')->name('pet.profile');
-});
-*/
-
-Route::get('coiso', function () {
-    $pet = App\Pet::all()->first();
-    return view('pet.profile', ['pet' => $pet]); 
+Route::get('image', function () {
+    return view('pet.image'); 
 });

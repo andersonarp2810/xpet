@@ -9,13 +9,25 @@
 
             <div class="card card-cascade wider">
 
-                @include('layouts.pet-card-image', ['pet' => $pet])
+                <div id="main-gallery">
+                    <div class="large-img">
+                        @include('layouts.pet-card-image', ['pet' => $pet])
+                    </div>
+                    
+                    <div class="small-img">
+                    @foreach($pet->photos as $photo)
+                        <div class="img-holder">
+                        <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $photo->path)}}" alt="Card image cap" height="285" width="100" />
+                        </div>
+                    @endforeach
+                    </div>
 
+                </div>
+                
                 <!-- Card content -->
-                <div class="card-body card-body-cascade text-center">
-
+                <div class="card-body card-body-cascade text-center mt-5">
                     <!-- Title -->
-                    <h4 class="card-title"><strong>{{$pet->name}}</strong></h4>
+                    <h5 class="card-title"><strong>{{$pet->name}}</strong></h5>
                     <!-- Subtitle -->
 
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Combinar </button>
@@ -105,4 +117,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    $('.small-img img').hover(function() {
+      var imgSrc = $(this).attr('src');
+      $('.large-img img').attr('src', imgSrc);
+    });
+  });
+  </script>
 @endsection

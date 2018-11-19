@@ -16,29 +16,29 @@ body{
   background-color: #f9f9f9;
 }
 #main-gallery{ 
-  width: 900px; 
-  height: 500px; 
+  width: 300px; 
+  height: 300px; 
   margin: 50px auto;
   background-color: #FFF;
   border: 1px solid #ddd;
 }
 #main-gallery .large-img{ 
-  width: 900px; 
-  height: 400px; 
+  width: 300px; 
+  height: 300px; 
   overflow: hidden;
 }
 #main-gallery .large-img img{
-  max-width: 900px;
-  height: auto;
+  max-width: 300px;
+  height: 300px;
 }
 #main-gallery .small-img{ 
-  width: 900px; 
+  width: 300px; 
   height: 100px; 
   background-color: #222;
 }
 #main-gallery .small-img .img-holder{ 
-  width: 140px; 
-  height: 90px; 
+  width: 60px; 
+  height: 50px; 
   margin: 5px 0px 5px 5px;
   overflow: hidden;
   float: left;

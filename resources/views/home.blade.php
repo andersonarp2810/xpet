@@ -2,6 +2,17 @@
 @section('content')
     <div class="container-fluid mt-5">
 
+        @if(session('erro'))
+        <div class="row justify-content-center">
+            <span class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong> {{ session('erro') }} </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>   
+            </span>
+        </div>
+        @endif
+
         <!-- Heading -->
         <div class="card mb-4 wow fadeIn">
 

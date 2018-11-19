@@ -70,7 +70,7 @@
                         <h5 class="card-title"><strong>Número: </strong>{{ $address->number ? $address->number : 'Oculto'  }}</h5>
                         <h5 class="card-title"><strong>Complemento: </strong>{{ $address->complement ? $address->complement : 'Oculto' }}</h5>
                         @foreach($phones as $phone)
-                        <h5 class="card-title"><strong>Telefone: </strong>{{ $phone->number }}</h5>
+                        <h5 class="card-title"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h5>
                         @endforeach
                         <h5 class="card-title"><strong>Cidade: </strong>{{ $address->city }}</h5>
                         <h5 class="card-title"><strong>Bairro: </strong>{{ $address->district ? $address->district : 'Oculto' }}</h5>

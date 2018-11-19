@@ -71,6 +71,16 @@
 
                     <!-- Right -->
                     <ul class="navbar-nav nav-flex-icons">
+                        
+                        @if(session('erro'))
+                            <span class="nav-item alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong> {{ session('erro') }} </strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>   
+                            </span>
+                        @endif
+
                         @if(Auth::guest())
                         <li class="nav-item">
                             <a class="nav-link waves-effect" href="/register">

@@ -49,13 +49,13 @@
                 <div class="card-body card-body-cascade text-center">
         
                     <!-- Title -->
-                    <h4 class="card-title"><strong>{{ $pet->name }}</strong></h4>
-
-                    <i class="fa fa-paw"></i>
-                    <i class="fas fa-paw"></i>
-                    <i class="fas fa-paw"></i>
-                    <i class="fas fa-paw"></i>
-                    <i class="fas fa-paw"></i>
+                    <h5 class="card-title"><strong>{{ $pet->name }}</strong></h5>
+                    
+                    <i class="fas fa-paw" style="font-size:24px;color:green"></i>
+                    <i class="fas fa-paw" style="font-size:24px"></i>
+                    <i class="fas fa-paw" style="font-size:24px"></i>
+                    <i class="fas fa-paw" style="font-size:24px"></i>
+                    <i class="fas fa-paw" style="font-size:24px"></i>
 
                     <!-- Subtitle -->
                     <p class="card-title">{{$pet->user->address->city}}</p>

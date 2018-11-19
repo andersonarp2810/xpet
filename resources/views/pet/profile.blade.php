@@ -19,7 +19,7 @@
                 <!-- Subtitle -->
 
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Combinar </button>
-
+                
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar </button>
                 <br>
 
@@ -42,12 +42,12 @@
                 <div class="card-body card-body-cascade text-center">
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h4 class="card-title"><strong>Raça: </strong>{{ $pet->race }}</h4>
-                        <h4 class="card-title"><strong>Tamanho: </strong>{{ $pet->size }}</h4>
-                        <h4 class="card-title"><strong>Cor: </strong>{{ $pet->color }}</h4>
-                        <h4 class="card-title"><strong>Gênero: </strong>{{ $pet->gender }}</h4>
-                        <h4 class="card-title"><strong>Pedigree: </strong>{{ $pet->pedigree }}</h4>
-                        <h4 class="card-title"><strong>Descrição: </strong>{{ $pet->description }}</h4>
+                        <h5 class="card-title"><strong>Raça: </strong>{{ $pet->race }}</h5>
+                        <h5 class="card-title"><strong>Tamanho: </strong>{{ $pet->size }}</h5>
+                        <h5 class="card-title"><strong>Cor: </strong>{{ $pet->color }}</h5>
+                        <h5 class="card-title"><strong>Gênero: </strong>{{ $pet->gender }}</h5>
+                        <h5 class="card-title"><strong>Pedigree: </strong>{{ $pet->pedigree }}</h5>
+                        <h5 class="card-title"><strong>Descrição: </strong>{{ $pet->description }}</h5>
 
                     </div>
 
@@ -74,10 +74,17 @@
                 <div class="card-body card-body-cascade text-center">
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h4 class="card-title"><strong>Dono: </strong>{{ $pet->user->name }}</h4>
-                        <h4 class="card-title"><strong>Cidade: </strong>{{ $pet->user->address->city }}</h4>
-                        <h4 class="card-title"><strong>Estado: </strong>{{ $pet->user->address->state }}</h4>
-                        <h4 class="card-title"><strong>País: </strong>{{ $pet->user->address->country }}</h4>
+                        <h5 class="card-title"><strong>Dono: </strong>{{ $pet->user->name }}</h5>
+                        <h5 class="card-title"><strong>Rua: </strong>{{ $address->street }}</h5>
+                        <h5 class="card-title"><strong>Número: </strong>{{ $address->number }}</h5>
+                        <h5 class="card-title"><strong>Complemento: </strong>{{ $address->complement }}</h5>
+                        @foreach($phones as $phone)
+                        <h5 class="card-title"><strong>Telefone: </strong>{{ $phone->number }}</h5>
+                        @endforeach
+                        <h5 class="card-title"><strong>Cidade: </strong>{{ $address->city }}</h5>
+                        <h5 class="card-title"><strong>Bairro: </strong>{{ $address->district }}</h5>
+                        <h5 class="card-title"><strong>Estado: </strong>{{ $address->state }}</h5>
+                        <h5 class="card-title"><strong>País: </strong>{{ $address->country }}</h5>
 
                     </div>
 
@@ -101,9 +108,6 @@
 
                 <!--Section: Modals-->
                 <section>
-                <!-- Create modal -->
-                @include('layouts.pet-form', ['pet' => null])
-                    <!-- Create modal -->
                 @include('layouts.pet-form', ['pet' => $pet])
                 </section>
             </div>

@@ -113,7 +113,7 @@ class PetController extends Controller
             }
         }
 
-        return view('pet.show',
+        return view('pet.profile',
             [
                 'pet' => $pet,
                 'phones' => $phones,
@@ -182,10 +182,5 @@ class PetController extends Controller
         $this->photoService->delete($photo_id, $pet->id);
 
         return redirect()->back();
-    }
-
-    public function profile(Request $request, Pet $pet){
-
-        return view('pet.profile', ['pet' => $pet]);
     }
 }

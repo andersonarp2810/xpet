@@ -26,8 +26,6 @@
 
                     <!-- Subtitle -->
                     <p class="card-title">{{$pet->user->address->city}}</p>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Conferir</button>
-                    <br>
         
                 </div>
         

@@ -27,7 +27,8 @@
     <link href="teste/css/mdb.min.css" rel="stylesheet"/>
     <!-- Your custom styles (optional) -->
     <link href="teste/css/style.min.css" rel="stylesheet"/>
-
+    <!-- Image show profile -->
+    <link href="teste/css/image-show.css" rel="stylesheet"/>
     <script src="teste/js/jquery.js"></script>
     
     <style type="text/css">
@@ -98,54 +99,7 @@
 }
 
     </style>
-    <style type="text/css">
-        *{
-        margin: 0px; 
-        padding: 0px;
-        }
-        body{
-        background-color: #f9f9f9;
-        }
-        #main-gallery{ 
-        width: 300px; 
-        height: 300px; 
-        background-color: #FFF;
-        border: 1px solid #ddd;
-        }
-        #main-gallery .large-img{ 
-        width: 300px; 
-        height: 300px; 
-        overflow: hidden;
-        }
-        #main-gallery .large-img img{
-        max-width: 300px;
-        height: 300px;
-        }
-        #main-gallery .small-img{ 
-        width: 300px; 
-        height: 60px; 
-        background-color: #222;
-        }
-        #main-gallery .small-img .img-holder{ 
-        width: 60px; 
-        height: 50px; 
-        margin: 5px 0px 5px 5px;
-        overflow: hidden;
-        float: left;
-        }
-        #main-gallery .small-img img{ 
-        max-width: 200px; 
-        height: auto;
-        opacity: .5;
-        border-radius: 4px;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -o-border-radius: 4px;
-        }
-        #main-gallery .small-img img:hover{
-        opacity: 1;
-        }
-    </style>
+    
 </head>
 
 <body class="grey lighten-3">

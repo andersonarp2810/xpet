@@ -21,7 +21,7 @@
             <div class="card-body card-body-cascade text-center">
 
                 <!-- Title -->
-                <h4 class="card-title"><strong>Novo Pet</strong></h4>
+                <h5 class="card-title"><strong>Novo Pet</strong></h5>
                 <!-- Subtitle -->
 
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-create">Cadastrar </button>
@@ -46,7 +46,7 @@
             <div class="card-body card-body-cascade text-center">
 
                 <!-- Title -->
-                <h4 class="card-title"><strong>{{$pet->name}}</strong></h4>
+                <h5 class="card-title"><strong>{{$pet->name}}</strong></h5>
                 <!-- Subtitle -->
 
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Dados </button>

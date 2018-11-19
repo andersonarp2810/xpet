@@ -46,7 +46,7 @@
                         <h5 class="card-title"><strong>Tamanho: </strong>{{ $pet->size }}</h5>
                         <h5 class="card-title"><strong>Cor: </strong>{{ $pet->color }}</h5>
                         <h5 class="card-title"><strong>Gênero: </strong>{{ $pet->gender }}</h5>
-                        <h5 class="card-title"><strong>Pedigree: </strong>{{ $pet->pedigree }}</h5>
+                        <h5 class="card-title"><strong>Pedigree: </strong>{{ $pet->pedigree ? 'Sim' : 'Não' }}</h5>
                         <h5 class="card-title"><strong>Descrição: </strong>{{ $pet->description }}</h5>
 
                     </div>

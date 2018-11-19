@@ -1,39 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid mt-5">
-
-        <!-- Heading -->
-        <div class="card mb-4 wow fadeIn">
-
-            <!--Card content-->
-            <div class="card-body d-sm-flex justify-content-between">
-
-                <h4 class="mb-2 mb-sm-0 pt-1">
-                        <span>Painel de seleção</span>
-                    </h4>
-
-                <form class="d-flex justify-content-center">
-                    <!-- Default input -->
-                    <input type="search" placeholder="Encontre um parceiro" aria-label="Search" class="form-control">
-                    <button class="btn btn-primary btn-sm my-0 p" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-
-                </form>
-
-            </div>
-
-        </div>
-        <!-- Heading -->
-
-        <!--Grid row-->
-        <div class="row wow fadeIn">
-            <br>
-        </div>
-
-    </div>
-    <!--Grid row-->
-
     <!--Grid row-->
     <div class="row wow fadeIn">
 

@@ -11,6 +11,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>XPetX</title>
     <link rel="shortcut icon" type="image/png" href="teste/img/logo2.png"/>
+    <!-- Seach -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Font Awesome -->
     <!-- FontAwesome -->
@@ -44,6 +48,53 @@
         width: 800px;
 }
 
+
+.search-box {
+    position:absolute;
+    top:50%;
+    left:23%;
+   /* transform:translate(-100%,-50%);*/
+   transform:translate(0%,-50%);
+    background:#ff6a3b;
+    height:40px;
+    border-radius:40px;
+    padding: 10px;
+}
+
+.search-box:hover> .search-txt {
+    width:340px;
+    padding:0 6px;
+}
+
+.search-box:hover> .search-btn {
+    background:#ffefc0;
+}
+
+.search-btn {
+    color:#ff6a3b;
+    float:right;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#ffefc0;
+    display:flex !important;
+    justify-content:center;
+    align-items:center;
+    transition:0.4s;
+}
+
+.search-txt {
+    border:none;
+    background:none;
+    outline:none;
+    float:left;
+    color:white;
+    font-size:20px;
+    transition:0.4s;
+    line-height:10px;
+    width:0px;
+}
+
     </style>
 </head>
 
@@ -66,7 +117,12 @@
 
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
-
+                                            <div class="search-box nav-item">
+                            <input class="search-txt" type="text" name="" placeholder="Type to search">
+                                <a class="search-btn" href="#">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                    </div>
                     </ul>
 
                     <!-- Right -->
@@ -92,7 +148,9 @@
                             </a>
                         </li>
                         @endif
+
                     </ul>
+
 
                 </div>
 

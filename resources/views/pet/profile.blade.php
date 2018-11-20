@@ -16,10 +16,14 @@
                     
                     <div class="small-img">
                     @foreach($pet->photos as $photo)
+                    <a href="{{ URL::asset('storage/' . $photo->path)}}">
                         <div class="img-holder">
                         <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $photo->path)}}" alt="Card image cap" height="285" width="100" />
                         </div>
+                    </a>
+                        
                     @endforeach
+                    
                     </div>
 
                 </div>
@@ -27,7 +31,15 @@
                 <!-- Card content -->
                 <div class="card-body card-body-cascade text-center mt-5">
                     <!-- Title -->
-                    <h5 class="card-title"><strong>{{$pet->name}}</strong></h5>
+                    <h5 class="card-title">
+                        <strong>
+                            {{$pet->name}}
+                        </strong>
+                        
+                        <a href="">
+                            <i class="fas fa-camera-retro"></i>
+                        </a>  
+                    </h5>
                     <!-- Subtitle -->
 
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Combinar </button>

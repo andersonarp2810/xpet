@@ -26,7 +26,7 @@
     <!-- Material Design Bootstrap -->
     <link href="teste/css/mdb.min.css" rel="stylesheet"/>
     <!-- Your custom styles (optional) -->
-    <link href="teste/css/style.min.css" rel="stylesheet"/>
+    <link href="teste/css/style.css" rel="stylesheet"/>
     <!-- Image show profile -->
     <link href="teste/css/image-show.css" rel="stylesheet"/>
     <script src="teste/js/jquery.js"></script>
@@ -98,8 +98,11 @@
     width:0px;
 }
 
+.card-imagem{
+    height: 30vh;
+}
+
     </style>
-    
 </head>
 
 <body class="grey lighten-3">
@@ -185,7 +188,6 @@
                     <span class="sr-only">(current)</span>
                 </a>
 
-                @if(!Auth::guest())
                 <a href="/pet" class="list-group-item list-group-item-action waves-effect">
                     <img src="teste/img/icon/dog.png" class="mr-2">Pets
                 </a>
@@ -206,7 +208,6 @@
                 </a>
                 <!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="img/icon/exit.png"></i>  Sair</a>-->
-                @endif
             </div>
 
         </div>

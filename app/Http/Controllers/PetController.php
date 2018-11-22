@@ -167,8 +167,9 @@ class PetController extends Controller
 
 
     public function addPhoto(Request $request, Pet $pet){
+        dd($pet);
         $this->authorize('isOwner', $pet);
-
+        
         if($request['images'] != null){
             $this->photoService->store($request, $pet->id);
         }

@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     ##### PET PROFILE #####
     Route::get('pet/profile/{pet}', 'PetController@show')->name('pet.profile');
-    Route::get('pet/foto/{pet}', 'PetController@addPhoto');
+    Route::post('pet/profile/{pet}', 'PetController@addPhoto')->name('pet.addphoto');
 
 });
 

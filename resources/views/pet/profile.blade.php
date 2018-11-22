@@ -35,10 +35,16 @@
                         <strong>
                             {{$pet->name}}
                         </strong>
-                        
+
+                    <form action="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
+                        @csrf
                         <a href="">
+                        <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
+                        <label id="upload_btn" for="upload_file">
                             <i class="fas fa-camera-retro"></i>
-                        </a>  
+                        </label>
+                        </a>
+                    </form>
                     </h5>
                     <!-- Subtitle -->
 

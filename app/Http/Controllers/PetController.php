@@ -85,6 +85,7 @@ class PetController extends Controller
         $phones = [];
         $address = null;
         $user = Auth::user();
+        $solicitations = [];
         if ($user->id == $pet->user_id) { //dono
             $phones = $user->phones;
             $address = $user->address;
@@ -92,12 +93,12 @@ class PetController extends Controller
             $phones = $pet->user->phones;
             $address = $pet->user->address;
         } else { //user autenticado é requisitador
-            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id)->where('status', 'aceito');
+            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id);
             if (count($solicitations) > 0) {
                 $phones = $pet->user->phones;
                 $address = $pet->user->address;
             } else { //user autenticado é requisitado
-                $solicitations = Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id)->where('status', 'aceito');
+                $solicitations = Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id);
                 if (count($solicitations) > 0) {
                     $phones = $pet->user->phones;
                     $address = $pet->user->address;
@@ -118,6 +119,7 @@ class PetController extends Controller
                 'pet' => $pet,
                 'phones' => $phones,
                 'address' => $address,
+                'solicitations' => $solicitations,
             ]);
     }
 

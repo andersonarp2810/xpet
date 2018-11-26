@@ -33,6 +33,7 @@ class SolicitationPolicy
     public function create(User $user, Solicitation $solicitation)
     {
         //
+        dd($solicitation);
         return $solicitation->requester_user_id == $user->id;
     }
 

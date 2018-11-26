@@ -10,7 +10,7 @@
         <div class="card card-cascade wider">
 
             <!-- Card image -->
-            <div class="view view-cascade overlay">
+            <div class="view view-cascade overlay card-imagem">
                 <img class="card-img-top" src="teste/img/maislaranja.png" alt="Card image cap" height="285" width="100">
                 <a href="#!" data-toggle="modal" data-target="#modal-create">
                     <div class="mask rgba-white-slight"></div>
@@ -178,7 +178,7 @@
                             <div class="modal-content">
                                 <!--Header-->
                                 <div class="modal-header">
-                                    <p class="heading lead">Propostas/Convites</p>
+                                    <p class="heading lead">Solicitações</p>
 
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true" class="white-text">&times;</span>

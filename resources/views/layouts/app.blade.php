@@ -189,7 +189,7 @@
                     <span class="sr-only">(current)</span>
                 </a>
 
-                <a href="/pet" class="list-group-item list-group-item-action waves-effect">
+                <a href="/pets" class="list-group-item list-group-item-action waves-effect">
                     <img src="teste/img/icon/dog.png" class="mr-2">Pets
                 </a>
                 <a href="/user" class="list-group-item list-group-item-action waves-effect">
@@ -204,7 +204,7 @@
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                         <img src="teste/img/icon/dog3.png" class="mr-2">Filhotes
                 </a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
+                <a href="/solicitation/show" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
                     <img src="teste/img/icon/invitation.png" class="mr-2"> Solicitações
                 </a>
                 <!-- <a href="#" class="list-group-item list-group-item-action waves-effect">

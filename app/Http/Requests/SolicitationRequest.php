@@ -28,7 +28,7 @@ class SolicitationRequest extends FormRequest
             'requester_user_id' => 'required',
             'requested_user_id' => 'required',
             'requesters_pet_id' => 'required',
-            'requesterds_pet_id' => 'required',
+            'requesteds_pet_id' => 'required',
         ];
     }
 }

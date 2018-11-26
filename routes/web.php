@@ -26,13 +26,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('/pet', 'PetController')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('pet', 'PetController@index')->name('pet.index');
+    Route::get('pets', 'PetController@index')->name('pet.index');
     Route::post('pet', 'PetController@store')->name('pet.store');
     Route::post('pet/{pet}', 'PetController@update')->name('pet.update');
 
     ##### PET PROFILE #####
     Route::get('pet/profile/{pet}', 'PetController@show')->name('pet.profile');
     Route::post('pet/profile/{pet}', 'PetController@addPhoto')->name('pet.addphoto');
+
+    ##### PET SOLICITATION #####
+    Route::post('solicitation', 'SolicitationController@store')->name('pet.solicitation');
+    Route::get('solicitation/show', 'SolicitationController@show')->name('solicitation.show');
 
 });
 

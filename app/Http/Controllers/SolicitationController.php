@@ -47,7 +47,7 @@ class SolicitationController extends Controller
     {
         //
         $solicitation = new Solicitation($request->all());
-        $this->authorize('create', $solicitation);
+        //$this->authorize('create', $solicitation);
         $solicitation->save();
 
         return view('/')->with('status', 'Solicitação enviada');

@@ -47,7 +47,6 @@ class SolicitationController extends Controller
     {
         //
         $solicitation = new Solicitation($request->all());
-        //$this->authorize('create', $solicitation);
         $solicitation->save();
 
         return redirect()->back()->with('status', 'Solicitação enviada');

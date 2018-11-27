@@ -16,36 +16,84 @@
             <div class="modal-body">
                 <div class="text-center">
                     <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
-                    <p>Pendentes</p>
+                    <p><strong>Pendentes</strong></p>
                 </div>
                 <ul class="list-group z-depth-0">
-                    @foreach($solicitations as $solicitation)
+                    @forelse($solicitations as $solicitation)
                         @if($solicitation->status == 'pendente')
-                        <li class="list-group-item justify-content-between">
-                            <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
-                            <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
-                            <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
-                            <i class="fa fa-eye animated rotateIn"></i>
-                            </a>
-                        </li>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <h6>De:</h6>
+                                <li class="list-group-item justify-content-between">
+                                    <p>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
+                                    <p>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
+                                    <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
+                                        <i class="fa fa-eye animated rotateIn"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa fa-check animated rotateIn"></i>
+                                    </a>
+                                </li>
+                            </div>
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <h6>Para:</h6>
+                                <li class="list-group-item justify-content-between">
+                                    <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
+                                    <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                                    <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
+                                        <i class="fa fa-eye animated rotateIn"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa fa-check animated rotateIn"></i>
+                                    </a>
+                                </li>
+                            </div>
+                        </div> <!--row-->
                         @endif
-                    @endforeach
+
+                    @empty
+                    <div class="text-center mt-3">
+                        <p>Não há solicitações.</p>
+                    </div>
+                        
+                    @endforelse
                     
                     <div class="text-center mt-3">
-                        <p>Aceitos</p>
+                        <p><strong>Aceitos</strong></p>
                     </div>
 
-                    @foreach($solicitations as $solicitation)
+                    @forelse($solicitations as $solicitation)
                         @if($solicitation->status == 'aceito')
-                        <li class="list-group-item justify-content-between">
-                            <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
-                            <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
-                            <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
-                            <i class="fa fa-eye animated rotateIn"></i>
-                            </a>
-                        </li>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <h6>De:</h6>
+                                <li class="list-group-item justify-content-between">
+                                    <p>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
+                                    <p>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
+                                    <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
+                                        <i class="fa fa-eye animated rotateIn"></i>
+                                    </a>
+                                </li>
+                            </div>
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <h6>Para:</h6>
+                                <li class="list-group-item justify-content-between">
+                                    <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
+                                    <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                                    <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
+                                        <i class="fa fa-eye animated rotateIn"></i>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
                         @endif
-                    @endforeach
+
+                    @empty
+                    <div class="text-center mt-3">
+                        <p>Não há solicitações.</p>
+                    </div>
+                    
+                    @endforelse
                 </ul>
             </div>
 

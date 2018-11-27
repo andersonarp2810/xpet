@@ -61,7 +61,7 @@ class PetController extends Controller
             'description' => $request->description ? $request->description : '',
             'user_id' => $request->user_id,
         ]);
-        
+
         //dd($pet);
         $pet->save();
 
@@ -87,30 +87,34 @@ class PetController extends Controller
         $user = Auth::user();
         $solicitations = [];
         if ($user->id == $pet->user_id) { //dono
-            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requesters_pet_id', $pet->id);
+            $solicitations = Solicitation::all()->where('requesters_pet_id', $pet->id)->merge(Solicitation::all()->where('requesteds_pet_id', $pet->id));
             $phones = $user->phones;
             $address = $user->address;
-        } else if ($pet->user->public_contact_info) {
-            $phones = $pet->user->phones;
-            $address = $pet->user->address;
         } else { //user autenticado é requisitador
-            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id);
+            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id)->where('status', 'aceito');
             if (count($solicitations) > 0) {
+                $solicitations = $solicitations->merge(Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id));
                 $phones = $pet->user->phones;
                 $address = $pet->user->address;
             } else { //user autenticado é requisitado
-                $solicitations = Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id);
+                $solicitations = Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id)->where('status', 'aceito');
                 if (count($solicitations) > 0) {
+                    $solicitations = $solicitations->merge(Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id));
                     $phones = $pet->user->phones;
                     $address = $pet->user->address;
                 } else { // visualização pública
-                    $address = $pet->user->address;
-                    unset($address['district']);
-                    unset($address['street']);
-                    unset($address['number']);
-                    unset($address['complement']);
-                    unset($address['coordinateX']);
-                    unset($address['coordinateY']);
+                    if ($pet->user->public_contact_info) {
+                        $phones = $pet->user->phones;
+                        $address = $pet->user->address;
+                    } else {
+                        $address = $pet->user->address;
+                        unset($address['district']);
+                        unset($address['street']);
+                        unset($address['number']);
+                        unset($address['complement']);
+                        unset($address['coordinateX']);
+                        unset($address['coordinateY']);
+                    }
                 }
             }
         }
@@ -168,19 +172,19 @@ class PetController extends Controller
         return redirect('/');
     }
 
-
-    public function addPhoto(Request $request, Pet $pet){
-        dd($pet);
+    public function addPhoto(Request $request, Pet $pet)
+    {
         $this->authorize('isOwner', $pet);
-        
-        if($request['images'] != null){
+
+        if ($request['images'] != null) {
             $this->photoService->store($request, $pet->id);
         }
 
         return redirect()->back();
     }
 
-    public function destroyPhoto($photo_id, Pet $pet){
+    public function destroyPhoto($photo_id, Pet $pet)
+    {
         $this->authorize('isOwner', $pet);
 
         $this->photoService->delete($photo_id, $pet->id);

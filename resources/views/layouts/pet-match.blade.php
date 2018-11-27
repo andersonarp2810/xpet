@@ -21,31 +21,38 @@
                         <div class="row wow fadeIn">
                             <!--Grid column dinamic -->
                             @foreach ($pets as $pet)
-                            <div class="col-lg-5 col-md-4 mb-4">
+                            <div class="col-lg-4 col-md-4 mb-4">
 
-                                <div class="card card-cascade wider">
+                                <div class="card card-cascade wider h-75">
                                     
                                     @include('layouts.pet-card-image', ['pet' => $pet])
                             
                                     <!-- Card content -->
-                                    <div class="card-body card-body-cascade text-center">
+                                    <div class="card-body card-body-cascade text-center" style="padding: 10px 0px 0px !important">
                             
                                         <!-- Title -->
-                                        <h5 class="card-title"><strong>{{ $pet->name }}</strong></h5>
+                                        <h5 class="card-title" style="margin-bottom: 6px !important"><strong>{{ $pet->name }}</strong></h5>
+                                        <div>
+                                            <input type="radio" name="requesters_pet_id" value="{{ $pet->id }}">
+                                        </div>
                             
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" name="requesters_pet_id" value="{{ $pet->id }}">
                                     </div>
                                 </div>
                             
+                                
                             </div>
                             @endforeach
                             <!--Grid column dinamic-->
                         </div>
-                        @if(Auth::user()->id == $pet->user->id)
-                            <button type="submit" class="btn btn-primary btn-sm" >Enviar</button>
-                        @endif
+
+                        
+                        <div class="row">
+                            <div class="col-md-12 text-center"> 
+                            @if(Auth::user()->id == $pet->user->id)
+                                <button type="submit" class="btn btn-primary btn-sm" >Enviar</button>
+                            @endif
+                            </div>
+                        </div>
                     </form>
             </div>
 

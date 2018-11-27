@@ -11,7 +11,7 @@
 
             <!-- Card image -->
             <div class="view view-cascade overlay card-imagem">
-                <img class="card-img-top" src="teste/img/maislaranja.png" alt="Card image cap" height="285" width="100">
+                <img class="card-img" src="teste/img/maislaranja.png" alt="Card image cap" height="285" width="100" style="object-fit: contain; object-position: center; height: 100%" >
                 <a href="#!" data-toggle="modal" data-target="#modal-create">
                     <div class="mask rgba-white-slight"></div>
                 </a>

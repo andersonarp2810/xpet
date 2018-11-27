@@ -22,9 +22,9 @@
                     @foreach($solicitations as $solicitation)
                         @if($solicitation->status == 'pendente')
                         <li class="list-group-item justify-content-between">
-                            <p>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
-                            <p>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
-                            <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
+                            <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
+                            <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                            <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
                             <i class="fa fa-eye animated rotateIn"></i>
                             </a>
                         </li>
@@ -36,11 +36,11 @@
                     </div>
 
                     @foreach($solicitations as $solicitation)
-                    @if($solicitation->status == 'aceito')
+                        @if($solicitation->status == 'aceito')
                         <li class="list-group-item justify-content-between">
-                            <p>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
-                            <p>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
-                            <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
+                            <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
+                            <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                            <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
                             <i class="fa fa-eye animated rotateIn"></i>
                             </a>
                         </li>

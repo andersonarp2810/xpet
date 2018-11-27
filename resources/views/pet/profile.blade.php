@@ -42,25 +42,18 @@
                     
                     <!-- Subtitle -->
 
-                    <form method="POST" action="{{ route('pet.solicitation') }}" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="requester_user_id" value="{{ Auth::user()->id }}" >
-                        <input type="hidden" name="requested_user_id" value="{{ $pet->user->id }}" >
-                        <input type="hidden" name="requesters_pet_id" value="2" >
-                        <input type="hidden" name="requesteds_pet_id" value="{{ $pet->id }}" >
-
-                        <input type="hidden" name="status" value="pendente" >
+                    
                         
                         @if(Auth::user()->id != $pet->user->id)
-                            <button type="submit" class="btn btn-primary btn-sm" >Combinar</button>
+
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar </button>
+
                         @else
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar </button>
                             
                             <button type="button" class="btn btn-primary btn-sm">Aceitar </button>
 
                         @endif
-
-                    </form>
                     <!--
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Combinar </button>
                     -->
@@ -118,7 +111,7 @@
                         <h5 class="card-title"><strong>Número: </strong>{{ $address->number ? $address->number : 'Oculto'  }}</h5>
                         <h5 class="card-title"><strong>Complemento: </strong>{{ $address->complement ? $address->complement : 'Oculto' }}</h5>
                         @foreach($phones as $phone)
-                        <h5 class="card-title"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h5>
+                            <h5 class="card-title"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h5>
                         @endforeach
                         <h5 class="card-title"><strong>Cidade: </strong>{{ $address->city }}</h5>
                         <h5 class="card-title"><strong>Bairro: </strong>{{ $address->district ? $address->district : 'Oculto' }}</h5>
@@ -149,8 +142,11 @@
                 <section>
                     @include('layouts.pet-form', ['pet' => $pet])
 
-
-                    @include('layouts.pet-solicitations-modal', ['solicitations' => $solicitations])
+                    @include('layouts.pet-match', ['pets' => Auth::User()->pet])
+                    
+                    @if(Auth::User()->id == $pet->user_id)
+                        @include('layouts.pet-solicitations', ['solicitations' => $solicitations, 'pet' => $pet])
+                   @endif
                 </section>
             </div>
         </div>

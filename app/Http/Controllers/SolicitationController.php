@@ -50,7 +50,7 @@ class SolicitationController extends Controller
         //$this->authorize('create', $solicitation);
         $solicitation->save();
 
-        return view('/')->with('status', 'Solicitação enviada');
+        return redirect()->back()->with('status', 'Solicitação enviada');
     }
 
     /**

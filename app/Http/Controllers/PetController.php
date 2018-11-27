@@ -87,6 +87,7 @@ class PetController extends Controller
         $user = Auth::user();
         $solicitations = [];
         if ($user->id == $pet->user_id) { //dono
+            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requesters_pet_id', $pet->id);
             $phones = $user->phones;
             $address = $user->address;
         } else if ($pet->user->public_contact_info) {

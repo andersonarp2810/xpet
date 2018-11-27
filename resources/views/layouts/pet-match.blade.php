@@ -18,34 +18,34 @@
                         <input type="hidden" name="requesteds_pet_id" value="{{ $pet->id }}" >
                         <input type="hidden" name="status" value="pendente" >
 
-                        <!--Grid column dinamic -->
-                        @foreach ($pets as $pet)
-                        <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="row wow fadeIn">
+                            <!--Grid column dinamic -->
+                            @foreach ($pets as $pet)
+                            <div class="col-lg-5 col-md-4 mb-4">
 
-                            <div class="card card-cascade wider">
-                                
-                                @include('layouts.pet-card-image', ['pet' => $pet])
-                        
-                                <!-- Card content -->
-                                <div class="card-body card-body-cascade text-center">
-                        
-                                    <!-- Title -->
-                                    <h5 class="card-title"><strong>{{ $pet->name }}</strong></h5>
-                        
+                                <div class="card card-cascade wider">
+                                    
+                                    @include('layouts.pet-card-image', ['pet' => $pet])
+                            
+                                    <!-- Card content -->
+                                    <div class="card-body card-body-cascade text-center">
+                            
+                                        <!-- Title -->
+                                        <h5 class="card-title"><strong>{{ $pet->name }}</strong></h5>
+                            
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="requesters_pet_id" value="{{ $pet->id }}">
+                                    </div>
                                 </div>
-                                <div>
-                                    <input type="checkbox" name="requesters_pet_id" value="{{ $pet->id }}">
-                                </div>
+                            
                             </div>
-                        
+                            @endforeach
+                            <!--Grid column dinamic-->
                         </div>
-                        @endforeach
-                        <!--Grid column dinamic-->
-
                         @if(Auth::user()->id == $pet->user->id)
                             <button type="submit" class="btn btn-primary btn-sm" >Enviar</button>
                         @endif
-
                     </form>
             </div>
 

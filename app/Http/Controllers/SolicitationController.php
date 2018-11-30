@@ -91,7 +91,7 @@ class SolicitationController extends Controller
     {
         //
         //$this->authorize('update', $solicitation);
-
+dd($solicitation);
         $solicitation->update($request->all());
 
         return redirect()->back()->with('status', 'Solicitação aceita');

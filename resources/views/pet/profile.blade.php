@@ -46,59 +46,15 @@
                             @endif
                         </div>
                         <div>
-                        <!--    
+                            
                         @if(Auth::user()->id == $pet->user_id)
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar 
                                 <i class="fas fa-pencil-alt ml-1 animated rotateIn"></i>
                             </button>
-                        @elseif(count($accepts) > 0)
-                            @foreach($accepts as $accet)
-                                aceitar
-                            @endforeach
-                        @elseif(count($no_accepts) > 0)
-                            @foreach($no_accepts as $no_accet)
-                                aceito
-                            @endforeach
+                        @elseif(count($requesters) > 0)
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-requests' }}">Solicitações</button>
                         @else
-                            pendente 
-                        @endif
-                        -->
-
-                        @if(Auth::user()->id == $pet->user_id)
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar 
-                                <i class="fas fa-pencil-alt ml-1 animated rotateIn"></i>
-                            </button>
-                        @else
-                            @if(count($solicitations) > 0)
-                                @foreach($solicitations as $solicitation)
-                                    @if($solicitation->status == 'pendente')
-                                        @if($solicitation->requested_pet->id == $pet->id)
-                                            <button type="button" class="btn btn-primary btn-sm" disabled >Pendente</button>
-                                        @elseif($solicitation->requested->id != $pet->user_id)
-                                            <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
-                                                @csrf
-                                                <input type="hidden" name="status" value="aceito" >
-                                                <button type="submit" class="btn btn-primary btn-sm">Aceitar
-                                                    <i class="fa fa-check animated rotateIn"></i>
-                                                </button>
-                                                <button type="submit" class="btn btn-primary btn-sm">Recusar
-                                                    <i class="fa fa-check animated rotateIn"></i>
-                                                </button>
-                                            </form>
-                                        @else
-                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
-                                        @endif
-                                    @else
-                                        @if($solicitation->requested_pet->id == $pet->id)
-                                            <button type="button" class="btn btn-primary btn-sm" disabled >Aceito</button>
-                                        @else
-                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            @else
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
-                            @endif
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
                         @endif
                         </div>
                         
@@ -107,9 +63,6 @@
                     </div>
 
                 </div>
-                
-                
-
             </div>
 
         </div>
@@ -187,6 +140,8 @@
                     @include('layouts.pet-form', ['pet' => $pet])
 
                     @include('layouts.pet-match', ['pets' => Auth::User()->pet])
+
+                    @include('layouts.pet-requests', ['requesters' => $requesters, 'pets' => Auth::User()->pet, 'pets2' => Auth::User()->pet])
                     
                     @if(Auth::User()->id == $pet->user_id)
                         @include('layouts.pet-solicitations', ['solicitations' => $solicitations, 'pet' => $pet])

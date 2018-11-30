@@ -87,8 +87,8 @@ class PetController extends Controller
         $user = Auth::user();
         $solicitations = [];
 
-        $accepts = Solicitation::all()->where('requesters_pet_id', $pet->id)->where('requested_user_id', $user->id)->where('status', 'pendente');
-        $no_accepts = Solicitation::all()->where('requesteds_pet_id', $pet->id)->where('requested_user_id', $pet->user->id)->where('status', 'aceito');
+        $requesters = Solicitation::all()->where('requester_user_id', $user->id)->where('requesteds_pet_id', $pet->id);
+        $requesters = $requesters->merge(Solicitation::all()->where('requested_user_id', $user->id)->where('requesters_pet_id', $pet->id));
 
         if ($user->id == $pet->user_id) { //dono
             $solicitations = Solicitation::all()->where('requesters_pet_id', $pet->id)->merge(Solicitation::all()->where('requesteds_pet_id', $pet->id));
@@ -129,8 +129,7 @@ class PetController extends Controller
                 'phones' => $phones,
                 'address' => $address,
                 'solicitations' => $solicitations,
-                'accepts' => $accepts,
-                'no_accepts' => $no_accepts,
+                'requesters' => $requesters,
             ]);
     }
 

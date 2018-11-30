@@ -5,7 +5,7 @@
         <div class="modal-content">
             <!--Header-->
             <div class="modal-header">
-                <p class="heading lead">Solicitações</p>
+                <p class="heading lead"><strong>Solicitações</strong></p>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="white-text">&times;</span>
@@ -23,10 +23,10 @@
                         @if($solicitation->status == 'pendente')
                         <div class="row">
                             <div class="col-lg-6 col-md-12 mb-4">
-                                <h6>De:</h6>
+                                <h6><strong>De:</strong></h6>
                                 <li class="list-group-item justify-content-between">
-                                    <p>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
-                                    <p>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
+                                    <p><strong>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
+                                    <p><strong>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
                                     <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
                                         <i class="fa fa-eye animated rotateIn"></i>
                                     </a>
@@ -36,10 +36,10 @@
                                 </li>
                             </div>
                             <div class="col-lg-6 col-md-12 mb-4">
-                                <h6>Para:</h6>
+                                <h6><strong>Para:</strong></h6>
                                 <li class="list-group-item justify-content-between">
-                                    <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
-                                    <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                                    <p><strong>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
+                                    <p><strong>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
                                     <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
                                         <i class="fa fa-eye animated rotateIn"></i>
                                     </a>

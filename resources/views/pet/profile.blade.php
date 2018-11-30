@@ -23,45 +23,86 @@
                     </a>
                     @endforeach
                     <!-- Card content -->
-                <div class="card-body card-body-cascade text-center mt-5">
+                <div class="card-body card-body-cascade text-center">
                     <!-- Title -->
-                    <h5 class="card-title">
-                        <strong>
+                    <div class="card-title mt-5">
+                    <h6><strong>
                             {{$pet->name}}
-                        </strong>
-                    </h5>
+                        </strong></h6>
 
-                    @if(Auth::user()->id == $pet->user->id)
-                    <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
-                        @csrf
-                        <a href="">
-                        <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
-                        <label id="upload_btn" for="upload_file">
-                            <i class="fas fa-camera-retro"></i> Adicionar foto
-                        </label>
-                        </a>
-                    </form>
-                    @endif
-                    
-                    <!-- Subtitle -->
-
-                    
-                        
-                        @if(Auth::user()->id != $pet->user->id)
-
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar </button>
-
+                        <div>
+                            @if(Auth::user()->id == $pet->user->id && count($pet->photos) < 5)
+                            <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
+                                @csrf
+                                <a href="">
+                                <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
+                                <label id="upload_btn" for="upload_file">
+                                    <i class="fas fa-camera-retro animated rotateIn"></i><h6><strong> Adicionar foto</strong></h6>
+                                </label>
+                                </a>
+                            </form>
+                            @else
+                            <i class="fas fa-camera-retro animated rotateIn" disabled></i><h6><strong>Limite de fotos</strong></h6>
+                            @endif
+                        </div>
+                        <div>
+                        <!--    
+                        @if(Auth::user()->id == $pet->user_id)
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar 
+                                <i class="fas fa-pencil-alt ml-1 animated rotateIn"></i>
+                            </button>
+                        @elseif(count($accepts) > 0)
+                            @foreach($accepts as $accet)
+                                aceitar
+                            @endforeach
+                        @elseif(count($no_accepts) > 0)
+                            @foreach($no_accepts as $no_accet)
+                                aceito
+                            @endforeach
                         @else
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar </button>
-                            
-                            <button type="button" class="btn btn-primary btn-sm">Aceitar </button>
-
+                            pendente 
                         @endif
-                    <!--
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-' . $pet->id }}">Combinar </button>
-                    -->
-                    <br>
+                        -->
 
+                        @if(Auth::user()->id == $pet->user_id)
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar 
+                                <i class="fas fa-pencil-alt ml-1 animated rotateIn"></i>
+                            </button>
+                        @else
+                            @if(count($solicitations) > 0)
+                                @foreach($solicitations as $solicitation)
+                                    @if($solicitation->status == 'pendente')
+                                        @if($solicitation->requested_pet->id == $pet->id)
+                                            <button type="button" class="btn btn-primary btn-sm" disabled >Pendente</button>
+                                        @elseif($solicitation->requested->id != $pet->user_id)
+                                            <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="status" value="aceito" >
+                                                <button type="submit" class="btn btn-primary btn-sm">Aceitar
+                                                    <i class="fa fa-check animated rotateIn"></i>
+                                                </button>
+                                                <button type="submit" class="btn btn-primary btn-sm">Recusar
+                                                    <i class="fa fa-check animated rotateIn"></i>
+                                                </button>
+                                            </form>
+                                        @else
+                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
+                                        @endif
+                                    @else
+                                        @if($solicitation->requested_pet->id == $pet->id)
+                                            <button type="button" class="btn btn-primary btn-sm" disabled >Aceito</button>
+                                        @else
+                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            @else
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
+                            @endif
+                        @endif
+                        </div>
+                        
+                </div>
                 </div>
                     </div>
 
@@ -84,12 +125,12 @@
                 <div class="card-body card-body-cascade text-center">
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h5 class="card-title"><strong>Raça: </strong>{{ $pet->race }}</h5>
-                        <h5 class="card-title"><strong>Tamanho: </strong>{{ $pet->size }}</h5>
-                        <h5 class="card-title"><strong>Cor: </strong>{{ $pet->color }}</h5>
-                        <h5 class="card-title"><strong>Gênero: </strong>{{ $pet->gender }}</h5>
-                        <h5 class="card-title"><strong>Pedigree: </strong>{{ $pet->pedigree ? 'Sim' : 'Não' }}</h5>
-                        <h5 class="card-title"><strong>Descrição: </strong>{{ $pet->description }}</h5>
+                        <h6 class="card-title"><strong>Raça: </strong>{{ $pet->race }}</h6>
+                        <h6 class="card-title"><strong>Tamanho: </strong>{{ $pet->size }}</h6>
+                        <h6 class="card-title"><strong>Cor: </strong>{{ $pet->color }}</h6>
+                        <h6 class="card-title"><strong>Gênero: </strong>{{ $pet->gender }}</h6>
+                        <h6 class="card-title"><strong>Pedigree: </strong>{{ $pet->pedigree ? 'Sim' : 'Não' }}</h6>
+                        <h6 class="card-title"><strong>Descrição: </strong>{{ $pet->description }}</h6>
 
                     </div>
 
@@ -109,17 +150,17 @@
                 <div class="card-body card-body-cascade text-center">
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h5 class="card-title"><strong>Dono: </strong>{{ $pet->user->name }}</h5>
-                        <h5 class="card-title"><strong>Rua: </strong>{{ $address->street ? $address->street : 'Oculto' }}</h5>
-                        <h5 class="card-title"><strong>Número: </strong>{{ $address->number ? $address->number : 'Oculto'  }}</h5>
-                        <h5 class="card-title"><strong>Complemento: </strong>{{ $address->complement ? $address->complement : 'Oculto' }}</h5>
+                        <h6 class="card-title"><strong>Dono: </strong>{{ $pet->user->name }}</h6>
+                        <h6 class="card-title"><strong>Rua: </strong>{{ $address->street ? $address->street : 'Oculto' }}</h6>
+                        <h6 class="card-title"><strong>Número: </strong>{{ $address->number ? $address->number : 'Oculto'  }}</h6>
+                        <h6 class="card-title"><strong>Complemento: </strong>{{ $address->complement ? $address->complement : 'Oculto' }}</h6>
                         @foreach($phones as $phone)
-                            <h5 class="card-title"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h5>
+                            <h6 class="card-title"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h6>
                         @endforeach
-                        <h5 class="card-title"><strong>Cidade: </strong>{{ $address->city }}</h5>
-                        <h5 class="card-title"><strong>Bairro: </strong>{{ $address->district ? $address->district : 'Oculto' }}</h5>
-                        <h5 class="card-title"><strong>Estado: </strong>{{ $address->state }}</h5>
-                        <h5 class="card-title"><strong>País: </strong>{{ $address->country }}</h5>
+                        <h6 class="card-title"><strong>Cidade: </strong>{{ $address->city }}</h6>
+                        <h6 class="card-title"><strong>Bairro: </strong>{{ $address->district ? $address->district : 'Oculto' }}</h6>
+                        <h6 class="card-title"><strong>Estado: </strong>{{ $address->state }}</h6>
+                        <h6 class="card-title"><strong>País: </strong>{{ $address->country }}</h6>
 
                     </div>
 

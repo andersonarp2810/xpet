@@ -90,11 +90,11 @@ class SolicitationController extends Controller
     public function update(Request $request, Solicitation $solicitation)
     {
         //
-        $this->authorize('update', $solicitation);
+        //$this->authorize('update', $solicitation);
 
         $solicitation->update($request->all());
 
-        return redirect()->route('solicitation.show', [$solicitation]);
+        return redirect()->back()->with('status', 'Solicitação aceita');
     }
 
     /**

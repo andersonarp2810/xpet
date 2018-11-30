@@ -15,26 +15,29 @@
                 <div class="card-body card-body-cascade text-center">
 
                     <!-- Title -->
-                    <h4 class="card-title"><strong>Perfil</strong></h4>
+                    <h5 class="card-title"><strong>Perfil</strong></h5>
                     <!-- Subtitle -->
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h4 class="card-title"><strong>Nome completo: </strong>{{ $user->name }}</h4>
-                        <h4 class="card-title"><strong>Email: </strong>{{ $user->email }}</h4>
+                        <h6 class="card-title"><strong>Nome completo: </strong>{{ $user->name }}</h6>
+                        <h6 class="card-title"><strong>Email: </strong>{{ $user->email }}</h6>
                         @foreach($user->phones as $phone)
-                        <h4 class="card-title"><strong>Telefone: </strong>{{ $phone->number }}</h4>
+                        <h6 class="card-title"><strong>Telefone: </strong>{{ $phone->number }}</h6>
                         @endforeach
-                        <h4 class="card-title"><strong>País: </strong>{{ $user->address->country }}</h4>
-                        <h4 class="card-title"><strong>Estado: </strong>{{ $user->address->state }}</h4>
-                        <h4 class="card-title"><strong>Cidade: </strong>{{ $user->address->city }}</h4>
-                        <h4 class="card-title"><strong>Bairro: </strong>{{ $user->address->district }}</h4>
-                        <h4 class="card-title"><strong>Rua: </strong>{{ $user->address->street }}</h4>
-                        <h4 class="card-title"><strong>Número: </strong>{{ $user->address->number }}</h4>
-                        <h4 class="card-title"><strong>Complemento: </strong>{{ $user->address->complement }}</h4>
+                        <h6 class="card-title"><strong>País: </strong>{{ $user->address->country }}</h6>
+                        <h6 class="card-title"><strong>Estado: </strong>{{ $user->address->state }}</h6>
+                        <h6 class="card-title"><strong>Cidade: </strong>{{ $user->address->city }}</h6>
+                        <h6 class="card-title"><strong>Bairro: </strong>{{ $user->address->district }}</h6>
+                        <h6 class="card-title"><strong>Rua: </strong>{{ $user->address->street }}</h6>
+                        <h6 class="card-title"><strong>Número: </strong>{{ $user->address->number }}</h6>
+                        <h6 class="card-title"><strong>Complemento: </strong>{{ $user->address->complement }}</h6>
 
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal">Editar</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal">
+                        Editar
+                        <i class="fas fa-pencil-alt ml-1"></i>
+                    </button>
                     <br>
 
                 </div>

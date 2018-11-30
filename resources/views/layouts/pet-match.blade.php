@@ -20,7 +20,7 @@
 
                         <div class="row wow fadeIn">
                             <!--Grid column dinamic -->
-                            @foreach ($pets as $pet)
+                            @forelse ($pets as $pet)
                             <div class="col-lg-4 col-md-4 mb-4">
 
                                 <div class="card card-cascade wider h-75">
@@ -41,10 +41,14 @@
                             
                                 
                             </div>
-                            @endforeach
+                            @empty
+                            <div class="text-center mt-3">
+                                <p>Cadastre um pet.</p>
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-create">Cadastrar</button>
+                            </div>
+                            @endforelse
                             <!--Grid column dinamic-->
                         </div>
-
                         
                         <div class="row">
                             <div class="col-md-12 text-center"> 
@@ -55,7 +59,11 @@
                         </div>
                     </form>
             </div>
-
+            <section>
+                <!-- Create modal -->
+                @include('layouts.pet-form', ['pet' => null])
+                <!-- Create modal -->
+            </section>
         </div>
         <!--/.Content-->
     </div>

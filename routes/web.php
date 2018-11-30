@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function(){
     ##### PET SOLICITATION #####
     Route::post('solicitation', 'SolicitationController@store')->name('pet.solicitation');
     Route::get('solicitation/show', 'SolicitationController@show')->name('solicitation.show');
+    Route::post('solicitation/update/{solicitation}', 'SolicitationController@update')->name('solicitation.update');
 
 });
 

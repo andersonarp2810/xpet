@@ -46,6 +46,7 @@ class SolicitationPolicy
      */
     public function update(User $user, Solicitation $solicitation)
     {
+        dd($solicitation);
         // alterar status(?)
         return $solicitation->requester_user_id == $user->id
         || $solicitation->requested_user_id == $user->id;

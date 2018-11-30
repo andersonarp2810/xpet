@@ -86,18 +86,22 @@ class PetController extends Controller
         $address = null;
         $user = Auth::user();
         $solicitations = [];
+
+        $accepts = Solicitation::all()->where('requesters_pet_id', $pet->id)->where('requested_user_id', $user->id)->where('status', 'pendente');
+        $no_accepts = Solicitation::all()->where('requesteds_pet_id', $pet->id)->where('requested_user_id', $pet->user->id)->where('status', 'aceito');
+
         if ($user->id == $pet->user_id) { //dono
             $solicitations = Solicitation::all()->where('requesters_pet_id', $pet->id)->merge(Solicitation::all()->where('requesteds_pet_id', $pet->id));
             $phones = $user->phones;
             $address = $user->address;
         } else { //user autenticado é requisitador
-            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id)->where('status', 'aceito');
+            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id);
             if (count($solicitations) > 0) {
                 $solicitations = $solicitations->merge(Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id));
                 $phones = $pet->user->phones;
                 $address = $pet->user->address;
             } else { //user autenticado é requisitado
-                $solicitations = Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id)->where('status', 'aceito');
+                $solicitations = Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id);
                 if (count($solicitations) > 0) {
                     $solicitations = $solicitations->merge(Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id));
                     $phones = $pet->user->phones;
@@ -125,6 +129,8 @@ class PetController extends Controller
                 'phones' => $phones,
                 'address' => $address,
                 'solicitations' => $solicitations,
+                'accepts' => $accepts,
+                'no_accepts' => $no_accepts,
             ]);
     }
 

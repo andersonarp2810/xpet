@@ -264,8 +264,8 @@
 
                         <div class="text-center mt-4">
 
-                            <button type="submit" class="btn btn-success">
-                                Login
+                            <button type="submit" class="btn btn-success" style="width: 160px;">
+                                Login 
                                 <i class="fa fa-sign-in ml-1"></i>
                             </button>
                             <a href="/register"  class="btn btn-cyan">

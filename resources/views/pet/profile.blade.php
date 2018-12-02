@@ -22,49 +22,45 @@
                         </div>
                     </a>
                     @endforeach
-                    <!-- Card content -->
-                <div class="card-body card-body-cascade text-center">
-                    <!-- Title -->
-                    <div class="card-title mt-5">
-                    <h6><strong>
-                            {{$pet->name}}
-                        </strong></h6>
-
-                        <div>
-                            @if(Auth::user()->id == $pet->user->id && count($pet->photos) < 5)
-                            <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
-                                @csrf
-                                <a href="">
-                                <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
-                                <label id="upload_btn" for="upload_file">
-                                    <i class="fas fa-camera-retro animated rotateIn"></i><h6><strong> Adicionar foto</strong></h6>
-                                </label>
-                                </a>
-                            </form>
-                            @else
-                            <i class="fas fa-camera-retro animated rotateIn" disabled></i><h6><strong>Limite de fotos</strong></h6>
-                            @endif
-                        </div>
-                        <div>
-                            
-                        @if(Auth::user()->id == $pet->user_id)
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar 
-                                <i class="fas fa-pencil-alt ml-1 animated rotateIn"></i>
-                            </button>
-                        @elseif(count($requesters) > 0)
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-requests' }}">Solicitações</button>
-                        @else
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
-                        @endif
-                        </div>
-                        
-                </div>
-                </div>
-                    </div>
-
                 </div>
             </div>
+                    <!-- Card content -->
+            <div class="card-body card-body-cascade text-center">
+                <!-- Title -->
+                <h6 class="card-title"><strong>{{$pet->name}}</strong></h6>
+                
+                @if(Auth::user()->id == $pet->user_id)
+                    @if(count($pet->photos) < 5)
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
+                                <label id="upload_btn" for="upload_file">
+                                        Imagem
+                                        <i class="fas fa-camera-retro ml-1 animated rotateIn"></i>
+                                </label>
+                            </form>
+                        </button>
+                    @endif
 
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
+                        Editar 
+                        <i class="fas fa-edit ml-1 animated rotateIn"></i>
+                    </button>
+
+                @elseif(count($requesters) > 0)
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-requests' }}">
+                        Solicitações
+                        <i class="fa fa-list-ul animated rotateIn ml-1"></i>
+                    </button>
+                @else
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">
+                        Combinar
+                        <i class="fa fa-paw ml-1 animated rotateIn"></i>
+                    </button>
+                @endif
+                </div>
+            </div>
         </div>
         <!--Grid column dinamic-->
 

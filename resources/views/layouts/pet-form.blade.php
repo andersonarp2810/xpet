@@ -37,7 +37,7 @@
 
                             <select name="race" id="{{ $pet ? 'race-' . $pet->id : 'race'}}" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->race : old('race') }}" {{ $pet ? '' : 'required' }} " required>
 
-                                            <option value="" disabled selected>Selecionar</option>
+                                            <option value="{{ $pet ? $pet->race : '' }}" disabled selected>{{ $pet ? $pet->race : 'Selecionar' }}</option>
                                             <!-- Letra A -->
                                             <option value="Affenpinscher">Affenpinscher</option>
                                             <option value="Africano">Africano</option>
@@ -216,7 +216,7 @@
                         <div class="col-md-9">
 
                             <select name="size" id="{{ $pet ? 'size-' . $pet->id : 'size'}}" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->size : old('size') }}" {{ $pet ? '' : 'required' }}>
-                                <option value="{{$pet ? $pet->size : ''}}" disabled selected>Selecionar</option>
+                                <option value="{{$pet ? $pet->size : ''}}" disabled selected>{{ $pet ? $pet->size : 'Selecionar' }}</option>
                                 <option value="Micro">Micro</option>
                                 <option value="Pequeno">Pequeno</option>
                                 <option value="Médio">Médio</option>
@@ -251,7 +251,7 @@
                         <div class="col-md-9">
 
                             <select name="gender" id="{{ $pet? 'gender-' . $pet->id : 'gender'}}" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" value="{{ $pet ? $pet->gender : old('gender') }}" {{ $pet ? '' : 'required' }}>
-                                <option value="{{$pet ? $pet->gender : ''}}" disabled selected>Selecionar</option>
+                                <option value="{{$pet ? $pet->gender : ''}}" disabled selected>{{ $pet ? $pet->gender : 'Selecionar' }}</option>
                                 <option value="Macho">Macho</option>
                                 <option value="Fêmea">Fêmea</option>
                             </select>
@@ -269,7 +269,7 @@
 
                         <div class="col-md-9">
                             <select name="pedigree" id="{{ $pet? 'pedigree-' . $pet->id : 'pedigree'}}" class="form-control{{ $errors->has('pedigree') ? ' is-invalid' : '' }}" value="{{ old('pedigree') }}" {{ $pet ? '' : 'required' }}>
-                                <option value="" disabled selected>Selecionar</option>
+                                <option value="{{ $pet ? $pet->pedigree : '' }}" disabled selected>{{ $pet ? $pet->pedigree ? 'Sim' : 'Não' : 'Selecionar' }}</option>
                                 <option value="true">Sim</option>
                                 <option value="false">Não</option>
                             </select>
@@ -295,7 +295,8 @@
                             @endif
                         </div>
                     </div>
-
+                    
+                    @if($pet == null)
                     <div class="form-group row">
                         <label for="images" class="col-md-3 col-form-label text-md-left">{{ __('Imagens') }}</label>
 
@@ -308,11 +309,17 @@
                             @endif
                         </div>
                     </div>
+                    @endif
 
                     <div class="form-group row mb-0">
-                        <div class="col-md-4 offset-md-4">
+                        <div class="offset-md-4">
                             <button type="submit" class="btn btn-primary btn-sm">
                                 {{ $pet ? 'Editar' : 'Cadastrar' }}
+                                @if($pet == null)
+                                    <i class="fa fa-sign-in ml-1 animated rotateIn"></i>
+                                @else
+                                    <i class="fas fa-edit ml-1 animated rotateIn"></i>
+                                @endif
                             </button>
                         </div>
                     </div>

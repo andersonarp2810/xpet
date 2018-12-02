@@ -29,10 +29,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('pets', 'PetController@index')->name('pet.index');
     Route::post('pet', 'PetController@store')->name('pet.store');
     Route::post('pet/{pet}', 'PetController@update')->name('pet.update');
+    Route::post('peterson/{pet}', 'PetController@destroy')->name('pet.delete');
 
     ##### PET PROFILE #####
     Route::get('pet/profile/{pet}', 'PetController@show')->name('pet.profile');
     Route::post('pet/profile/{pet}', 'PetController@addPhoto')->name('pet.addphoto');
+
+    ##### USER PROFILE #####
+    Route::post('pet/{pet}', 'PetController@update')->name('pet.update');
 
     ##### PET SOLICITATION #####
     Route::post('solicitation', 'SolicitationController@store')->name('pet.solicitation');

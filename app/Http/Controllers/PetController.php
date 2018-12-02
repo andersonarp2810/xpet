@@ -48,7 +48,6 @@ class PetController extends Controller
      */
     public function store(PetRequest $request)
     {
-        //dd($request);
         //
         $pet = new Pet([
             'name' => $request->name,
@@ -157,9 +156,8 @@ class PetController extends Controller
     {
         //
         $this->authorize('isOwner', $pet);
-        //dd($request->all());
         $pet->update($request->all());
-        return redirect('/pet');
+        return redirect('/pets');
     }
 
     /**
@@ -170,11 +168,12 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
+        dd($pet);
         //
         $this->authorize('isOwner', $pet);
         $pet->delete();
 
-        return redirect('/');
+        return redirect('/pets');
     }
 
     public function addPhoto(Request $request, Pet $pet)

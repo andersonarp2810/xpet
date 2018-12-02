@@ -5,7 +5,7 @@
 <div class="row wow fadeIn">
 
     <!-- botão novo pet -->
-    <div class="col-lg-4 col-md-12 mb-4">
+    <div class="col-lg-3 col-md-12 mb-4">
 
         <div class="card card-cascade wider">
 
@@ -24,8 +24,10 @@
                 <h6 class="card-title"><strong>Novo Pet</strong></h6>
                 <!-- Subtitle -->
 
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-create">Cadastrar </button>
-                <br>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-create">
+                    Cadastrar
+                    <i class="fa fa-paw ml-1 animated rotateIn"></i>
+                </button>
 
             </div>
 
@@ -36,7 +38,7 @@
 
     <!--Grid column dinamic-->
     @foreach($pets as $pet)
-    <div class="col-lg-4 col-md-12 mb-4">
+    <div class="col-lg-3 col-md-12 mb-4">
 
         <div class="card card-cascade wider">
 
@@ -46,13 +48,20 @@
             <div class="card-body card-body-cascade text-center">
 
                 <!-- Title -->
-                <h5 class="card-title"><strong>{{$pet->name}}</strong></h5>
+                <h6 class="card-title"><strong>{{$pet->name}}</strong></h6>
                 <!-- Subtitle -->
-
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar
-                    <i class="fas fa-pencil-alt ml-1"></i>
+                
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
+                    Editar
+                    <i class="fa fa-edit ml-1 animated rotateIn"></i>
                 </button>
-                <br>
+
+                <form method="POST" action="{{ route('pet.delete', ['pet' => $pet]) }}" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        Excluir
+                        <i class="fa fa-trash ml-1 animated rotateIn"></i>
+                    </button>
+                </form>
 
             </div>
 

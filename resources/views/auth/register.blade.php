@@ -17,7 +17,7 @@
                 <div class="card-body card-body-cascade text-center">
 
                     <!-- Title -->
-                    <h4 class="card-title"><strong>Cadastro do Usuário</strong></h4>
+                    <h5 class="card-title"><strong>Cadastro do Usuário</strong></h5>
                     <!-- Subtitle -->
 
                     <form method="POST" action="{{ route('register') }}">
@@ -182,7 +182,10 @@
                             @endif
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-primary btn-sm">Finalizar</button>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            Finalizar
+                            <i class="fa fa-sign-in ml-1 animated rotateIn"></i>
+                        </button>
                         <br>
 
                     </form>

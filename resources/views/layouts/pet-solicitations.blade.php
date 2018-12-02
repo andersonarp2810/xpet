@@ -1,5 +1,5 @@
 <!-- modal propostas direita -->
-<div class="modal fade right" id="fluidModalRightSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+<div class="modal fade right" id="fluidModalRightSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal-full-height modal-right modal-notify modal-success" role="document">
         <!--Content-->
         <div class="modal-content">
@@ -102,7 +102,7 @@
                 <!-- <a role="button" class="btn btn-success">Get it now
                             <i class="fa fa-diamond ml-1"></i>
                         </a>-->
-                <a role="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">Visualizado</a>
+                <a role="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">Fechar</a>
             </div>
         </div>
         <!--/.Content-->

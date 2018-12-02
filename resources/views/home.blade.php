@@ -16,16 +16,16 @@
                 <div class="card-body card-body-cascade text-center">
         
                     <!-- Title -->
-                    <h5 class="card-title"><strong>{{ $pet->name }}</strong></h5>
+                    <h6 class="card-title"><strong>{{ $pet->name }}</strong></h6>
                     
-                    <i class="fas fa-paw" style="font-size:24px;color:green"></i>
-                    <i class="fas fa-paw" style="font-size:24px"></i>
-                    <i class="fas fa-paw" style="font-size:24px"></i>
-                    <i class="fas fa-paw" style="font-size:24px"></i>
-                    <i class="fas fa-paw" style="font-size:24px"></i>
+                    <i class="fas fa-paw" style="color:green"></i>
+                    <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw"></i>
 
                     <!-- Subtitle -->
-                    <p class="card-title">{{$pet->user->address->city}}</p>
+                    <h6 class="mt-1">{{$pet->user->address->city}}</h6>
         
                 </div>
         

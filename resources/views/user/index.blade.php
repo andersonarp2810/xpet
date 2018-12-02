@@ -33,7 +33,7 @@
                         <h6 class="card-title"><strong>Complemento: </strong>{{ $user->address->complement }}</h6>
 
                     </div>
-                    <a href="/register">
+                    <a href="{{ route('user.edit', ['user' => $user]) }}">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal">
                             Editar
                             <i class="fas fa-edit ml-1 animated rotateIn"></i>

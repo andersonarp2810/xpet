@@ -48,14 +48,14 @@
                         <i class="fas fa-edit ml-1 animated rotateIn"></i>
                     </button>
 
-                @elseif(count($requesters) > 0)
+                @elseif(count($solicitations) > 0)
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-requests' }}">
                         Solicitações
                         <i class="fa fa-list-ul animated rotateIn ml-1"></i>
                     </button>
                 @else
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">
-                        Combinar
+                        Cruzar
                         <i class="fa fa-paw ml-1 animated rotateIn"></i>
                     </button>
                 @endif
@@ -135,9 +135,9 @@
                 <section>
                     @include('layouts.pet-form', ['pet' => $pet])
 
-                    @include('layouts.pet-match', ['pets' => Auth::User()->pet])
+                    @include('layouts.pet-match')
 
-                    @include('layouts.pet-requests', ['requesters' => $requesters, 'pets' => Auth::User()->pet, 'pets2' => Auth::User()->pet])
+                    @include('layouts.pet-requests', ['requesters' => $solicitations, 'pets' => Auth::User()->pet])
                     
                     @if(Auth::User()->id == $pet->user_id)
                         @include('layouts.pet-solicitations', ['solicitations' => $solicitations, 'pet' => $pet])

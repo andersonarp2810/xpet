@@ -9,6 +9,18 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
+    /**
+     * Determine whether the user can edit the model.
+     *
+     * @param  \App\User  $user
+     * @param  \App\User  $model
+     * @return mixed
+     */
+    public function edit(User $user, User $model)
+    {
+        //
+        return $user->id == $model->id;
+    }
 
     /**
      * Determine whether the user can update the model.

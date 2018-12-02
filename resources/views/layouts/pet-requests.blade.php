@@ -17,22 +17,22 @@
                 <div class="row wow fadeIn">
 
                     <!--Grid column dinamic -->
-                    @foreach ($requesters as $requester)
+                    @foreach ($solicitations as $solicitation)
                     
-                        @foreach($pets as $pet)
-                        
-                            @if($requester->requesters_pet_id == $pet->id)
-                                <div class="col-lg-4 col-md-4 mb-4">
+                        @foreach(Auth::User()->pet as $pet)
 
+                            @if($solicitation->requesters_pet_id == $pet->id)
+                                <div class="col-lg-4 col-md-4 mb-4">
                                     <div class="card card-cascade wider h-75">
-                                            @include('layouts.pet-card-image', ['pet' => $requester->requesters_pet])
+                                            @include('layouts.pet-card-image', ['pet' => $solicitation->requesters_pet])
                                         <!-- Card content -->
                                         <div class="card-body card-body-cascade text-center" style="padding: 10px 0px 0px !important">
                                 
                                             <!-- Title -->
                                             <h5 class="card-title" style="margin-bottom: 6px !important"><strong>{{ $pet->name }}</strong></h5>
-                                            
-                                            @if($requester->status == 'aceito')
+                                        
+
+                                            @if($solicitation->status == 'aceito')
                                                 <div class="row">
                                                     <div class="col-md-12 text-center"> 
                                                     
@@ -53,26 +53,25 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                
                                         </div>
                                     </div>
                                 </div>
                             @endif
                         @endforeach
                         
-                        @foreach($pets2 as $pet)    
-                            @if($requester->requesteds_pet_id == $pet->id)
+                        @foreach($pets as $pet)    
+                            @if($solicitation->requesteds_pet_id == $pet->id)
                                 <div class="col-lg-4 col-md-4 mb-4">
                                     
                                     <div class="card card-cascade wider h-75">
-                                            @include('layouts.pet-card-image', ['pet' => $requester->requested_pet])
+                                            @include('layouts.pet-card-image', ['pet' => $solicitation->requested_pet])
                                         <!-- Card content -->
                                         <div class="card-body card-body-cascade text-center" style="padding: 10px 0px 0px !important">
 
                                             <!-- Title -->
                                             <h5 class="card-title" style="margin-bottom: 6px !important"><strong>{{ $pet->name }}</strong></h5>
 
-                                            @if($requester->status == 'aceito')
+                                            @if($solicitation->status == 'aceito')
                                                 <div class="row">
                                                     <div class="col-md-12 text-center">
                                                         <button type="submit" class="btn btn-primary btn-sm" disabled>
@@ -83,7 +82,7 @@
                                                     </div>
                                                 </div>
                                             @else
-                                            <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $requester]) }}" enctype="multipart/form-data">
+                                            <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="status" value="aceito" >
                                                 <button type="submit" class="btn btn-primary btn-sm">
@@ -91,7 +90,7 @@
                                                     <i class="fa fa-check ml-1 animated rotateIn"></i>
                                                 </button>
                                             </form>
-                                            <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $requester]) }}" enctype="multipart/form-data">
+                                            <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="status" value="recusado" >
                                                 <button type="submit" class="btn btn-danger btn-sm">

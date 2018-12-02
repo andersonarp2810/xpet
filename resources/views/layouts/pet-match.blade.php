@@ -20,32 +20,22 @@
 
                     <div class="row wow fadeIn">
                         <!--Grid column dinamic -->
-                        @forelse ($pets as $pet)
+                        @forelse (Auth::user()->pet as $pet)
                         <div class="col-lg-4 col-md-4 mb-4">
-
                             <div class="card card-cascade wider h-75">
-                                
+                            
                                 @include('layouts.pet-card-image', ['pet' => $pet])
-                        
                                 <!-- Card content -->
                                 <div class="card-body card-body-cascade text-center" style="padding: 10px 0px 0px !important">
-                        
+
                                     <!-- Title -->
                                     <h6 class="card-title" style="margin-bottom: 6px !important"><strong>{{ $pet->name }}</strong></h6>
-                                    
-                                    <input type="hidden" name="requesters_pet_id" value="{{ $pet->id }}" >
 
-                                    @if(Auth::user()->id == $pet->user->id)
-                                        <button type="submit" class="btn btn-primary btn-sm" >
-                                            Ok
-                                            <i class="fa fa-paw ml-1 animated rotateIn"></i>
-                                        </button>
-                                    @endif
-                        
+                                    <input type="radio" name="requesters_pet_id" value="{{ $pet->id }}" >
+
+                                    
                                 </div>
                             </div>
-                        
-                            
                         </div>
                         @empty
                         <div class="text-center mt-3">
@@ -54,6 +44,12 @@
                         </div>
                         @endforelse
                         <!--Grid column dinamic-->
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-sm" >
+                            Ok
+                            <i class="fa fa-paw ml-1 animated rotateIn"></i>
+                        </button>
                     </div>
                 </form>
             </div>

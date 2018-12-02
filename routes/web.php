@@ -36,7 +36,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('pet/profile/{pet}', 'PetController@addPhoto')->name('pet.addphoto');
 
     ##### USER PROFILE #####
-    Route::post('pet/{pet}', 'PetController@update')->name('pet.update');
+    Route::post('user/{user}', 'UserController@update')->name('user.update');
+    Route::get('user/{user}', 'UserController@edit')->name('user.edit');
 
     ##### PET SOLICITATION #####
     Route::post('solicitation', 'SolicitationController@store')->name('pet.solicitation');

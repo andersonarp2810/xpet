@@ -104,6 +104,17 @@
 
 #upload_file{width:0.1px;height:0.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1;}
     </style>
+
+<!--
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+        res 	 = document.getElementById('notification');
+        window.setInterval(function(){
+            res.innerHTML = '2';
+        }, 1000);
+    });
+</script>
+-->
 </head>
 
 <body class="grey lighten-3">
@@ -144,7 +155,7 @@
                                 </button>   
                             </span>
                         @endif
-
+                        
                         @if(Auth::guest())
                         <li class="nav-item">
                             <a class="nav-link waves-effect" href="/register">
@@ -206,6 +217,7 @@
                 </a>
                 <a href="/solicitation/show" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
                     <img src="teste/img/icon/invitation.png" class="mr-2"> Solicitações
+                    <!--div id="notification"></div-->
                 </a>
                 <!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <img src="img/icon/exit.png"></i>  Sair</a>-->

@@ -27,13 +27,10 @@
                                 @include('layouts.pet-card-image', ['pet' => $pet])
                                 <!-- Card content -->
                                 <div class="card-body card-body-cascade text-center" style="padding: 10px 0px 0px !important">
-
                                     <!-- Title -->
                                     <h6 class="card-title" style="margin-bottom: 6px !important"><strong>{{ $pet->name }}</strong></h6>
 
                                     <input type="radio" name="requesters_pet_id" value="{{ $pet->id }}" >
-
-                                    
                                 </div>
                             </div>
                         </div>

@@ -34,11 +34,11 @@
                         </div>
 
                         <div class="md-form ml-0 mr-0" style="width:750px">
-                            <input id="e-mail" name="e-mail" type="email" class="form-control ml-0 {{ $errors->has('e-mail') ? ' is-invalid' : '' }}" value="{{ $user->email }}" required>
-                            <label for="e-mail" class="ml-0">E-mail</label>
+                            <input id="email" name="email" type="email" class="form-control ml-0 {{ $errors->has('e-mail') ? ' is-invalid' : '' }}" value="{{ $user->email }}" required>
+                            <label for="email" class="ml-0">E-mail</label>
                             @if ($errors->has('e-mail'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('e-mail') }}</strong>
+                                    <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
                         </div>

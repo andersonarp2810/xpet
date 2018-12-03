@@ -22,13 +22,13 @@ class CreateAddressesTable extends Migration
             $table->string('district');
             $table->string('street');
             $table->string('number');
-            $table->text('complement')->nullable();
+            $table->text('complement')->default('-');
             $table->string('coordinateX')->nullable();
             $table->string('coordinateY')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -173,6 +173,12 @@ class PetController extends Controller
     {
         //
         $this->authorize('isOwner', $pet);
+        $photos = $pet->photos;
+
+        foreach ($photos as $photo) {
+            $this->photoService->destroy($photo);
+        }
+
         $pet->delete();
 
         return redirect('/');

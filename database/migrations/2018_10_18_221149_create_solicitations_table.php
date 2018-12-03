@@ -24,10 +24,10 @@ class CreateSolicitationsTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('requester_user_id')->references('id')->on('users');
-            $table->foreign('requested_user_id')->references('id')->on('users');
-            $table->foreign('requesters_pet_id')->references('id')->on('pets');
-            $table->foreign('requesteds_pet_id')->references('id')->on('pets');
+            $table->foreign('requester_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('requested_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('requesters_pet_id')->references('id')->on('pets')->onDelete('cascade');
+            $table->foreign('requesteds_pet_id')->references('id')->on('pets')->onDelete('cascade');
         });
     }
 

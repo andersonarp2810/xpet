@@ -66,7 +66,7 @@
 
                         <div class="md-form ml-5 mr-0" style="width:350px">
                             <select id="whatsapp_available" name="whatsapp_available" class="custom-select d-block w-100 {{ $errors->has('whatsapp_available') ? ' is-invalid' : '' }}" >
-                                    <option value="{{ $user->whatsapp_available }}" disabled selected>{{ $user->whatsapp_available ? 'Sim' : 'Não' }}</option>
+                                    <option value="{{ $user->whatsapp_available }}" disabled selected>{{ $user->phones->first()->whatsapp_available ? 'Sim' : 'Não' }}</option>
                                     <option value="true">Sim</option>
                                     <option value="false">Não</option>
                             </select>

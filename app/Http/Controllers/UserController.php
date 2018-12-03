@@ -85,8 +85,13 @@ class UserController extends Controller
     {
         //
         $this->authorize('update', $user);
+
+        if($request['senha']){
+            $request['senha'] = bcrypt($request->senha);
+        }
+
         $user->update($request->all());
-        $user->phones->first()->update($request->all());
+        $user->phones->first()->update(['number' => $request->phone]);
         $user->address->update($request->all());
         
 

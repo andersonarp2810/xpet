@@ -1,5 +1,5 @@
 <!-- Card image -->
-<div class="view view-cascade overlay card-imagem">
+<div class="view view-cascade overlay">
     <a href="/pet/profile/{{ $pet->id }}">
         @if($pet->photos->first() != null)
             <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $pet->photos->first()->path)}}" alt="Card image cap" height="285" width="100" />

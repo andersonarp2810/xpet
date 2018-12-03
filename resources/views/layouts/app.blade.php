@@ -14,7 +14,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- Font Awesome -->
 		<!-- FontAwesome -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 		<!-- Bootstrap core CSS -->
 		<link href="teste/css/bootstrap.min.css" rel="stylesheet"/>

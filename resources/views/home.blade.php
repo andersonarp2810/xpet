@@ -25,7 +25,7 @@
                     <i class="fas fa-paw"></i>
 
                     <!-- Subtitle -->
-                    <h6 class="mt-1">{{$pet->user->address->city}}</h6>
+                    <h6 class="mt-1"><i class="mr-1 animated rotateIn fas fa-city"></i>{{$pet->user->address->city}}</h6>
         
                 </div>
         

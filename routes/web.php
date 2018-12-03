@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('pets', 'PetController@index')->name('pet.index');
     Route::post('pet', 'PetController@store')->name('pet.store');
     Route::post('pet/{pet}', 'PetController@update')->name('pet.update');
-    Route::post('peterson/{pet}', 'PetController@destroy')->name('pet.delete');
+    Route::post('pet/{pet}/delete', 'PetController@destroy')->name('pet.delete');
 
     ##### PET PROFILE #####
     Route::get('pet/profile/{pet}', 'PetController@show')->name('pet.profile');

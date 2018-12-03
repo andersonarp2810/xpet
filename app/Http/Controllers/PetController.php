@@ -89,15 +89,16 @@ class PetController extends Controller
             $phones = $user->phones;
             $address = $user->address;
             $solicitations = Solicitation::all()->where('requesters_pet_id', $pet->id)->merge(Solicitation::all()->where('requesteds_pet_id', $pet->id));
-        } else {
-            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requesteds_pet_id', $pet->id);
-            $solicitations = $solicitations->merge(Solicitation::all()->where('requested_user_id', $user->id)->where('requesters_pet_id', $pet->id));
-            
-            if ($pet->user->public_contact_info) {
-                $address = $pet->user->address;
+        } else { // se solicitação aceita
+            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requesteds_pet_id', $pet->id)->where('status', 'aceito');
+            $solicitations = $solicitations->merge(Solicitation::all()->where('requested_user_id', $user->id)->where('requesters_pet_id', $pet->id)->where('status', 'aceito'));
+            $address = $pet->user->address;
+            if(count($solicitations) > 0){
+                $phones = $pet->user->phones;
+            }
+            else if ($pet->user->public_contact_info) {
                 $phones = $pet->user->phones;
             } else {
-                $address = $pet->user->address;
                 unset($address['district']);
                 unset($address['street']);
                 unset($address['number']);
@@ -152,7 +153,6 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        dd($pet);
         //
         $this->authorize('isOwner', $pet);
         $photos = $pet->photos;

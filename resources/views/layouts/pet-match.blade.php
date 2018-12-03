@@ -50,13 +50,11 @@
                     </div>
                 </form>
             </div>
-            <section>
-                <!-- Create modal -->
-                @include('layouts.pet-form', ['pet' => null])
-                <!-- Create modal -->
-            </section>
         </div>
         <!--/.Content-->
     </div>
 </div>
+<!-- Create modal -->
+<!-- Create modal -->
+@include('layouts.pet-form', ['pet' => null])
 <!-- Create modal -->

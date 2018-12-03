@@ -6,7 +6,7 @@
 
         <!--Grid column dinamic -->
         @foreach ($pets as $pet)
-        <div class="col-lg-3 col-md-4 mb-4">
+        <div class="col-lg-3 col-md-4 mb-4 filtravel">
 
             <div class="card card-cascade wider">
         

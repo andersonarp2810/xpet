@@ -54,6 +54,7 @@
                 </button>
 
                 <form method="POST" action="{{ route('pet.delete', ['pet' => $pet]) }}" enctype="multipart/form-data">
+                    @csrf
                     <button type="submit" class="btn btn-danger btn-sm">
                         Excluir
                         <i class="fa fa-trash ml-1 animated rotateIn"></i>

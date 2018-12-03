@@ -88,7 +88,7 @@ class UserController extends Controller
         $user->update($request->all());
         
 
-        return redirect()->route('user.show', [$user])->with('status', 'Perfil atualizado');
+        return redirect()->route('user.index', ['user' => $user])->with('status', 'Perfil atualizado');
     }
 
     /**

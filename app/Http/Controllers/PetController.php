@@ -48,7 +48,6 @@ class PetController extends Controller
      */
     public function store(PetRequest $request)
     {
-        //dd($request);
         //
         $pet = new Pet([
             'name' => $request->name,
@@ -82,55 +81,38 @@ class PetController extends Controller
     {
         //
         //logica de ser pode ver contato ou não
-        $phones = [];
-        $address = null;
         $user = Auth::user();
         $solicitations = [];
-
-        $accepts = Solicitation::all()->where('requesters_pet_id', $pet->id)->where('requested_user_id', $user->id)->where('status', 'pendente');
-        $no_accepts = Solicitation::all()->where('requesteds_pet_id', $pet->id)->where('requested_user_id', $pet->user->id)->where('status', 'aceito');
+        $phones = [];
 
         if ($user->id == $pet->user_id) { //dono
-            $solicitations = Solicitation::all()->where('requesters_pet_id', $pet->id)->merge(Solicitation::all()->where('requesteds_pet_id', $pet->id));
             $phones = $user->phones;
             $address = $user->address;
-        } else { //user autenticado é requisitador
-            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id);
-            if (count($solicitations) > 0) {
-                $solicitations = $solicitations->merge(Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id));
-                $phones = $pet->user->phones;
+            $solicitations = Solicitation::all()->where('requesters_pet_id', $pet->id)->merge(Solicitation::all()->where('requesteds_pet_id', $pet->id));
+        } else {
+            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requesteds_pet_id', $pet->id);
+            $solicitations = $solicitations->merge(Solicitation::all()->where('requested_user_id', $user->id)->where('requesters_pet_id', $pet->id));
+            
+            if ($pet->user->public_contact_info) {
                 $address = $pet->user->address;
-            } else { //user autenticado é requisitado
-                $solicitations = Solicitation::all()->where('requester_user_id', $pet->user_id)->where('requested_user_id', $user->id);
-                if (count($solicitations) > 0) {
-                    $solicitations = $solicitations->merge(Solicitation::all()->where('requester_user_id', $user->id)->where('requested_user_id', $pet->user_id));
-                    $phones = $pet->user->phones;
-                    $address = $pet->user->address;
-                } else { // visualização pública
-                    if ($pet->user->public_contact_info) {
-                        $phones = $pet->user->phones;
-                        $address = $pet->user->address;
-                    } else {
-                        $address = $pet->user->address;
-                        unset($address['district']);
-                        unset($address['street']);
-                        unset($address['number']);
-                        unset($address['complement']);
-                        unset($address['coordinateX']);
-                        unset($address['coordinateY']);
-                    }
-                }
+                $phones = $pet->user->phones;
+            } else {
+                $address = $pet->user->address;
+                unset($address['district']);
+                unset($address['street']);
+                unset($address['number']);
+                unset($address['complement']);
+                unset($address['coordinateX']);
+                unset($address['coordinateY']);
             }
         }
 
         return view('pet.profile',
-            [
+            [ 
                 'pet' => $pet,
                 'phones' => $phones,
                 'address' => $address,
                 'solicitations' => $solicitations,
-                'accepts' => $accepts,
-                'no_accepts' => $no_accepts,
             ]);
     }
 
@@ -158,9 +140,8 @@ class PetController extends Controller
     {
         //
         $this->authorize('isOwner', $pet);
-        //dd($request->all());
         $pet->update($request->all());
-        return redirect('/pet');
+        return redirect('/pets');
     }
 
     /**
@@ -171,6 +152,7 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
+        dd($pet);
         //
         $this->authorize('isOwner', $pet);
         $photos = $pet->photos;
@@ -181,7 +163,7 @@ class PetController extends Controller
 
         $pet->delete();
 
-        return redirect('/');
+        return redirect('/pets');
     }
 
     public function addPhoto(Request $request, Pet $pet)

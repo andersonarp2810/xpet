@@ -49,7 +49,7 @@
         }
         .modal-content1{
         width: 800px;
-}
+        }
 
 
 .search-box {
@@ -244,9 +244,9 @@
                         <div class="md-form ml-0 mr-0">
                             <input name="email" type="email" id="email" class="form-control ml-0 {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus> 
                             @if ($errors->has('email'))
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('email') }}</strong>
-                            </span> 
+                                <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                                </span> 
                             @endif
 
                             <label for="email" class="ml-0">Email</label>
@@ -255,22 +255,22 @@
                         <div class="md-form ml-0 mr-0">
                             <input name="password" type="password" id="password" class="form-control ml-0 {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                             @if ($errors->has('password'))
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                                <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('password') }}</strong>
+                                </span>
                             @endif
                             <label for="password" class="ml-0">Senha</label>
                         </div>
 
                         <div class="text-center mt-4">
 
-                            <button type="submit" class="btn btn-success" style="width: 160px;">
+                            <button type="submit" class="btn btn-success btn-sm" style="width: 125px;">
                                 Login 
-                                <i class="fa fa-sign-in ml-1"></i>
+                                <i class="fa fa-sign-in ml-1 animated rotateIn"></i>
                             </button>
-                            <a href="/register"  class="btn btn-cyan">
+                            <a href="/register"  class="btn btn-cyan btn-sm">
                                 Cadastrar
-                                <i class="fa fa-sign-in ml-1"></i>
+                                <i class="fa fa-sign-in ml-1 animated rotateIn"></i>
                             </a>
                         </div>
                     </form>

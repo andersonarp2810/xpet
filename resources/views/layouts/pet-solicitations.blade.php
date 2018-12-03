@@ -1,5 +1,5 @@
 <!-- modal propostas direita -->
-<div class="modal fade right" id="fluidModalRightSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+<div class="modal fade right" id="fluidModalRightSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal-full-height modal-right modal-notify modal-success" role="document">
         <!--Content-->
         <div class="modal-content">
@@ -21,36 +21,50 @@
                 <ul class="list-group z-depth-0">
                     @forelse($solicitations as $solicitation)
                         @if($solicitation->status == 'pendente')
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 mb-4">
-                                <h6><strong>De:</strong></h6>
-                                <li class="list-group-item justify-content-between">
-                                    <p><strong>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
-                                    <p><strong>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
+                        
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <h6><strong>De:</strong></h6>
                                     <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
-                                        <i class="fa fa-eye animated rotateIn"></i>
+                                        <li class="list-group-item justify-content-between">
+                                            <p><strong>Pet:</strong> {{ $solicitation->requesters_pet->name }}</p>
+                                            <p><strong>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
+                                        </li>
                                     </a>
-                                    <a href="">
-                                        <i class="fa fa-check animated rotateIn"></i>
-                                    </a>
-                                </li>
-                            </div>
-                            <div class="col-lg-6 col-md-12 mb-4">
-                                <h6><strong>Para:</strong></h6>
-                                <li class="list-group-item justify-content-between">
-                                    <p><strong>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
-                                    <p><strong>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <h6><strong>Para:</strong></h6>
                                     <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
-                                        <i class="fa fa-eye animated rotateIn"></i>
+                                        <li class="list-group-item justify-content-between">
+                                            <p><strong>Pet:</strong> {{ $solicitation->requested_pet->name }}</p>
+                                            <p><strong>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                                        </li>
                                     </a>
-                                    <a href="">
-                                        <i class="fa fa-check animated rotateIn"></i>
-                                    </a>
-                                </li>
-                            </div>
-                        </div> <!--row-->
+                                </div>
+                            </div> <!--row-->
+                            @if(Auth::User()->id == $solicitation->requested->id)
+                                <div class="col-lg-12 col-md-12 mb-4">
+                                    <div class="text-center">
+                                        <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="status" value="aceito" >
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                Aceitar
+                                                <i class="fa fa-check ml-1 animated rotateIn"></i>
+                                            </button>
+                                        </form>
+                                        <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="status" value="recusado" >
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                Recusar
+                                                <i class="fa fa-times ml-1 animated rotateIn"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
                         @endif
-
                     @empty
                     <div class="text-center mt-3">
                         <p>Não há solicitações.</p>
@@ -67,23 +81,21 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-12 mb-4">
                                 <h6>De:</h6>
-                                <li class="list-group-item justify-content-between">
-                                    <p>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
-                                    <p>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
-                                    <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
-                                        <i class="fa fa-eye animated rotateIn"></i>
-                                    </a>
-                                </li>
+                                <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
+                                    <li class="list-group-item justify-content-between">
+                                        <p>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
+                                        <p>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
+                                    </li>
+                                </a>
                             </div>
                             <div class="col-lg-6 col-md-12 mb-4">
                                 <h6>Para:</h6>
-                                <li class="list-group-item justify-content-between">
-                                    <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
-                                    <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
-                                    <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
-                                        <i class="fa fa-eye animated rotateIn"></i>
-                                    </a>
-                                </li>
+                                <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
+                                    <li class="list-group-item justify-content-between">
+                                        <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
+                                        <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                                    </li>
+                                </a>
                             </div>
                         </div>
                         @endif
@@ -102,7 +114,7 @@
                 <!-- <a role="button" class="btn btn-success">Get it now
                             <i class="fa fa-diamond ml-1"></i>
                         </a>-->
-                <a role="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">Visualizado</a>
+                <a role="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">Fechar</a>
             </div>
         </div>
         <!--/.Content-->

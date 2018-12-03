@@ -22,96 +22,45 @@
                         </div>
                     </a>
                     @endforeach
+                </div>
+            </div>
                     <!-- Card content -->
-                <div class="card-body card-body-cascade text-center">
-                    <!-- Title -->
-                    <div class="card-title mt-5">
-                    <h6><strong>
-                            {{$pet->name}}
-                        </strong></h6>
-
-                        <div>
-                            @if(Auth::user()->id == $pet->user->id && count($pet->photos) < 5)
+            <div class="card-body card-body-cascade text-center">
+                <!-- Title -->
+                <h6 class="card-title"><strong>{{$pet->name}}</strong></h6>
+                
+                @if(Auth::user()->id == $pet->user_id)
+                    @if(count($pet->photos) < 5)
+                        <button type="button" class="btn btn-primary btn-sm">
                             <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
                                 @csrf
-                                <a href="">
                                 <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
                                 <label id="upload_btn" for="upload_file">
-                                    <i class="fas fa-camera-retro animated rotateIn"></i><h6><strong> Adicionar foto</strong></h6>
+                                        Imagem
+                                        <i class="fas fa-camera-retro ml-1 animated rotateIn"></i>
                                 </label>
-                                </a>
                             </form>
-                            @else
-                            <i class="fas fa-camera-retro animated rotateIn" disabled></i><h6><strong>Limite de fotos</strong></h6>
-                            @endif
-                        </div>
-                        <div>
-                        <!--    
-                        @if(Auth::user()->id == $pet->user_id)
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar 
-                                <i class="fas fa-pencil-alt ml-1 animated rotateIn"></i>
-                            </button>
-                        @elseif(count($accepts) > 0)
-                            @foreach($accepts as $accet)
-                                aceitar
-                            @endforeach
-                        @elseif(count($no_accepts) > 0)
-                            @foreach($no_accepts as $no_accet)
-                                aceito
-                            @endforeach
-                        @else
-                            pendente 
-                        @endif
-                        -->
+                        </button>
+                    @endif
 
-                        @if(Auth::user()->id == $pet->user_id)
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">Editar 
-                                <i class="fas fa-pencil-alt ml-1 animated rotateIn"></i>
-                            </button>
-                        @else
-                            @if(count($solicitations) > 0)
-                                @foreach($solicitations as $solicitation)
-                                    @if($solicitation->status == 'pendente')
-                                        @if($solicitation->requested_pet->id == $pet->id)
-                                            <button type="button" class="btn btn-primary btn-sm" disabled >Pendente</button>
-                                        @elseif($solicitation->requested->id != $pet->user_id)
-                                            <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
-                                                @csrf
-                                                <input type="hidden" name="status" value="aceito" >
-                                                <button type="submit" class="btn btn-primary btn-sm">Aceitar
-                                                    <i class="fa fa-check animated rotateIn"></i>
-                                                </button>
-                                                <button type="submit" class="btn btn-primary btn-sm">Recusar
-                                                    <i class="fa fa-check animated rotateIn"></i>
-                                                </button>
-                                            </form>
-                                        @else
-                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
-                                        @endif
-                                    @else
-                                        @if($solicitation->requested_pet->id == $pet->id)
-                                            <button type="button" class="btn btn-primary btn-sm" disabled >Aceito</button>
-                                        @else
-                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            @else
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">Combinar</button>
-                            @endif
-                        @endif
-                        </div>
-                        
-                </div>
-                </div>
-                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
+                        Editar 
+                        <i class="fas fa-edit ml-1 animated rotateIn"></i>
+                    </button>
 
+                @elseif(count($solicitations) > 0)
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-requests' }}">
+                        Solicitações
+                        <i class="fa fa-list-ul animated rotateIn ml-1"></i>
+                    </button>
+                @else
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">
+                        Cruzar
+                        <i class="fa fa-paw ml-1 animated rotateIn"></i>
+                    </button>
+                @endif
                 </div>
-                
-                
-
             </div>
-
         </div>
         <!--Grid column dinamic-->
 
@@ -186,7 +135,9 @@
                 <section>
                     @include('layouts.pet-form', ['pet' => $pet])
 
-                    @include('layouts.pet-match', ['pets' => Auth::User()->pet])
+                    @include('layouts.pet-match')
+
+                    @include('layouts.pet-requests', ['requesters' => $solicitations, 'pets' => Auth::User()->pet])
                     
                     @if(Auth::User()->id == $pet->user_id)
                         @include('layouts.pet-solicitations', ['solicitations' => $solicitations, 'pet' => $pet])

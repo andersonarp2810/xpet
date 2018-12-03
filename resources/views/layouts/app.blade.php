@@ -103,6 +103,16 @@
 }
 
 #upload_file{width:0.1px;height:0.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1;}
+
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    margin-bottom: 120px;
+}
+
     </style>
 </head>
 
@@ -297,38 +307,40 @@
         new WOW().init();
     </script-->
 
+        
+    <!--Footer-->
+    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn" style="background-color: #ff6a3b !important; position: absolute; width: 100%;">
+
+        <hr class="my-4" style="border-top: 0px">
+    
+        <!-- Social icons -->
+        <div class="pb-4">
+            <a href="https://www.facebook.com/" target="_blank">
+                <i class="fa fa-facebook mr-3"></i>
+            </a>
+    
+            <a href="https://twitter.com/" target="_blank">
+                <i class="fa fa-twitter mr-3"></i>
+            </a>
+    
+            <a href="https://www.youtube.com/" target="_blank">
+                <i class="fa fa-youtube mr-3"></i>
+            </a>
+    
+        </div>
+        <!-- Social icons -->
+    
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            Copyright © 2018 XPetX.
+        </div>
+        <!--/.Copyright-->
+    
+    </footer>
+    <!--/.Footer-->
+
 </body>
 
 
-<!--Footer-->
-<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn" style="background-color: #ff6a3b !important; position: absolute; width: 100%;">
-
-    <hr class="my-4" style="border-top: 0px">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-        <a href="https://www.facebook.com/" target="_blank">
-            <i class="fa fa-facebook mr-3"></i>
-        </a>
-
-        <a href="https://twitter.com/" target="_blank">
-            <i class="fa fa-twitter mr-3"></i>
-        </a>
-
-        <a href="https://www.youtube.com/" target="_blank">
-            <i class="fa fa-youtube mr-3"></i>
-        </a>
-
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-        Copyright © 2018 XPetX.
-    </div>
-    <!--/.Copyright-->
-
-</footer>
-<!--/.Footer-->
 
 </html>

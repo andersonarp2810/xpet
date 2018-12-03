@@ -282,37 +282,6 @@
     </div>
     <!--Modal Form Login with Avatar Demo-->
 
-    <!--Footer-->
-    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn" style="background-color: #ff6a3b !important">
-
-        <hr class="my-4">
-
-        <!-- Social icons -->
-        <div class="pb-4">
-            <a href="https://www.facebook.com/" target="_blank">
-                <i class="fa fa-facebook mr-3"></i>
-            </a>
-
-            <a href="https://twitter.com/" target="_blank">
-                <i class="fa fa-twitter mr-3"></i>
-            </a>
-
-            <a href="https://www.youtube.com/" target="_blank">
-                <i class="fa fa-youtube mr-3"></i>
-            </a>
-
-        </div>
-        <!-- Social icons -->
-
-        <!--Copyright-->
-        <div class="footer-copyright py-3">
-            Copyright © 2018 XPetX.
-        </div>
-        <!--/.Copyright-->
-
-    </footer>
-    <!--/.Footer-->
-
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="teste/js/jquery-3.3.1.min.js"></script>
@@ -329,5 +298,37 @@
     </script-->
 
 </body>
+
+
+<!--Footer-->
+<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn" style="background-color: #ff6a3b !important; position: absolute; width: 100%;">
+
+    <hr class="my-4" style="border-top: 0px">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+        <a href="https://www.facebook.com/" target="_blank">
+            <i class="fa fa-facebook mr-3"></i>
+        </a>
+
+        <a href="https://twitter.com/" target="_blank">
+            <i class="fa fa-twitter mr-3"></i>
+        </a>
+
+        <a href="https://www.youtube.com/" target="_blank">
+            <i class="fa fa-youtube mr-3"></i>
+        </a>
+
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+        Copyright © 2018 XPetX.
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
 
 </html>

@@ -12,25 +12,26 @@ background-color: #FFF;
 border: 1px solid #ddd;
 }
 #main-gallery .large-img{ 
-width: 330px; 
+width: 334px; 
 height: 250px; 
 overflow: hidden;
 }
 #main-gallery .large-img img{
-max-width: 330px;
+max-width: 334px;
 height: 300px;
 }
 #main-gallery .small-img{ 
-width: 330px; 
+width: 334px; 
 height: 60px; 
 background-color: #222;
 }
 #main-gallery .small-img .img-holder{ 
-width: 54px; 
+width: 61px; 
 height: 50px; 
 margin: 5px 0px 5px 5px;
 overflow: hidden;
 float: left;
+border: 1px solid #fafafa;
 }
 #main-gallery .small-img img{ 
 max-width: 200px; 

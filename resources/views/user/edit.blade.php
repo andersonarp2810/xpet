@@ -9,7 +9,7 @@
     <div class="row wow fadeIn">
 
         <!--Grid column-->
-        <div class="col-lg-40 col-md-11 mb-4">
+        <div class="col-lg-40 col-md-9 mb-4">
 
             <div class="card card-cascade wider">
 
@@ -23,7 +23,7 @@
                     <form method="POST" action="{{ route('user.update',  ['user' => $user]) }}">
                         @csrf
 
-                        <div class="md-form ml-0 mr-0" style="width:750px">
+                        <div class="md-form ml-0 mr-0">
                             <input id="name" name="name" type="text" class="form-control ml-0 {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $user->name }}" required autofocus>
                             <label for="name" class="ml-0">Nome completo</label>
                             @if ($errors->has('name'))
@@ -33,7 +33,7 @@
                             @endif
                         </div>
 
-                        <div class="md-form ml-0 mr-0" style="width:750px">
+                        <div class="md-form ml-0 mr-0">
                             <input id="email" name="email" type="email" class="form-control ml-0 {{ $errors->has('e-mail') ? ' is-invalid' : '' }}" value="{{ $user->email }}" required>
                             <label for="email" class="ml-0">E-mail</label>
                             @if ($errors->has('e-mail'))
@@ -43,7 +43,7 @@
                             @endif
                         </div>
 
-                        <div class="md-form ml-0 mr-0" style="width:750px">
+                        <div class="md-form ml-0 mr-0">
                             <input id="senha" name="senha" type="password" class="form-control ml-0 {{ $errors->has('senha') ? ' is-invalid' : '' }}" >
                             <label for="senha" class="ml-0">Senha</label>
                             @if ($errors->has('senha'))

@@ -5,7 +5,7 @@
         <div class="modal-content">
             <!--Header-->
             <div class="modal-header">
-                <p class="heading lead"><strong>Solicitações</strong></p>
+                <h6 class="heading lead"><strong>Solicitações</strong></h6>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="white-text">&times;</span>
@@ -26,18 +26,18 @@
                                 <div class="col-lg-6 col-md-12">
                                     <h6><strong>De:</strong></h6>
                                     <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
-                                        <li class="list-group-item justify-content-between">
-                                            <p><strong>Pet:</strong> {{ $solicitation->requesters_pet->name }}</p>
-                                            <p><strong>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
+                                        <li class="list-group-item list-group-item-action waves-effect justify-content">
+                                            <h6><strong>Pet:</strong> {{ $solicitation->requesters_pet->name }}</h6>
+                                            <h6><strong>Raça:</strong> {{ $solicitation->requesters_pet->race }}</h6>
                                         </li>
                                     </a>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <h6><strong>Para:</strong></h6>
                                     <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
-                                        <li class="list-group-item justify-content-between">
-                                            <p><strong>Pet:</strong> {{ $solicitation->requested_pet->name }}</p>
-                                            <p><strong>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                                        <li class="list-group-item list-group-item-action waves-effect justify-content-between">
+                                            <h6><strong>Pet:</strong> {{ $solicitation->requested_pet->name }}</h6>
+                                            <h6><strong>Raça:</strong> {{ $solicitation->requested_pet->race }}</h6>
                                         </li>
                                     </a>
                                 </div>
@@ -71,7 +71,9 @@
                     </div>
                         
                     @endforelse
-                    
+
+                    <hr style="box-sizing:border-box;">
+
                     <div class="text-center mt-3">
                         <p><strong>Aceitos</strong></p>
                     </div>
@@ -82,18 +84,18 @@
                             <div class="col-lg-6 col-md-12 mb-4">
                                 <h6>De:</h6>
                                 <a href="/pet/profile/{{$solicitation->requesters_pet->id}}">
-                                    <li class="list-group-item justify-content-between">
-                                        <p>Nome:</strong> {{ $solicitation->requesters_pet->name }}</p>
-                                        <p>Raça:</strong> {{ $solicitation->requesters_pet->race }}</p>
+                                    <li class="list-group-item list-group-item-action waves-effect justify-content-between">
+                                        <h6>Nome:</strong> {{ $solicitation->requesters_pet->name }}</h6>
+                                        <h6>Raça:</strong> {{ $solicitation->requesters_pet->race }}</h6>
                                     </li>
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-12 mb-4">
                                 <h6>Para:</h6>
                                 <a href="/pet/profile/{{$solicitation->requested_pet->id}}">
-                                    <li class="list-group-item justify-content-between">
-                                        <p>Nome:</strong> {{ $solicitation->requested_pet->name }}</p>
-                                        <p>Raça:</strong> {{ $solicitation->requested_pet->race }}</p>
+                                    <li class="list-group-item list-group-item-action waves-effect justify-content-between">
+                                        <h6>Nome:</strong> {{ $solicitation->requested_pet->name }}</h6>
+                                        <h6>Raça:</strong> {{ $solicitation->requested_pet->race }}</h6>
                                     </li>
                                 </a>
                             </div>

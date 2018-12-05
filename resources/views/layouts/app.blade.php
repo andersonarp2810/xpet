@@ -14,7 +14,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- Font Awesome -->
 		<!-- FontAwesome -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.0/css/all.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.0/css/all.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 		<!-- Bootstrap core CSS -->
 		<link href="teste/css/bootstrap.min.css" rel="stylesheet"/>
@@ -30,7 +30,7 @@
 			body,
 			header,
 			.view {
-			background-image: url("teste/img/background5.jpg");
+			background: #fafafa;
 			background-size: 1420px 750px;
 			}
 			.thumb-post {
@@ -55,7 +55,7 @@
 			padding: 10px;
 			}
 			.search-box:hover> .search-txt {
-			width:340px;
+			width:200px;
 			padding:0 6px;
 			}
 			.search-box:hover> .search-btn {
@@ -79,7 +79,7 @@
 			outline:none;
 			float:left;
 			color:white;
-			font-size:20px;
+			font-size:16px;
 			transition:0.4s;
 			line-height:10px;
 			width:0px;
@@ -154,20 +154,20 @@
 							@if(Auth::guest())
 							<li class="nav-item">
 								<a class="nav-link waves-effect" href="/register">
-								<img src="teste/img/icon/note.png" class="mr-2">Cadastro
+								<img src="teste/img/icon/note.png" class="mr-1"><strong>Cadastro</strong>
 								<span class="sr-only">(current)</span>
 								</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link waves-effect" data-toggle="modal" data-target="#modalLoginAvatarDemo" href="#">
-								<img src="teste/img/icon/enter.png" class="mr-2">Login
+								<img src="teste/img/icon/enter.png" class="mr-1"><strong>Login</strong>
 								<span class="sr-only">(current)</span>
 								</a>
 							</li>
 							@else
 							<li class="nav-item">
 								<a class="nav-link waves-effect" data-target="#modalLoginAvatarDemo" href="/logout">
-								<img src="teste/img/icon/exit.png" class="mr-2">Logout
+								<img src="teste/img/icon/exit.png" class="mr-1"><strong>Logout</strong>
 								<span class="sr-only">(current)</span>
 								</a>
 							</li>
@@ -184,26 +184,26 @@
 				</a>
 				<div class="list-group list-group-flush">
 					<a class="list-group-item list-group-item-action waves-effect" href="/home">
-					<img src="teste/img/icon/dog-house2.png" class="mr-2">Home
+					<img src="teste/img/icon/dog-house2.png" class="mr-2"><strong>Home</strong>
 					<span class="sr-only">(current)</span>
 					</a>
 					<a href="/pets" class="list-group-item list-group-item-action waves-effect">
-					<img src="teste/img/icon/dog.png" class="mr-2">Pets
+					<img src="teste/img/icon/dog.png" class="mr-2"><strong>Pets</strong>
 					</a>
 					<a href="/user" class="list-group-item list-group-item-action waves-effect">
-					<img src="teste/img/icon/boy.png" class="mr-2">Perfil
+					<img src="teste/img/icon/boy.png" class="mr-2"><strong>Perfil</strong>
 					</a>
 					<a href="#" class="list-group-item list-group-item-action waves-effect">
-					<img src="teste/img/icon/pdog2.png" class="mr-2">Adotar
+					<img src="teste/img/icon/pdog2.png" class="mr-2"><strong>Adotar</strong>
 					</a>
 					<a href="#" class="list-group-item list-group-item-action waves-effect">
-					<img src="teste/img/icon/donation.png" class="mr-2">Doar
+					<img src="teste/img/icon/donation.png" class="mr-2"><strong>Doar</strong>
 					</a>
 					<a href="#" class="list-group-item list-group-item-action waves-effect">
-					<img src="teste/img/icon/dog3.png" class="mr-2">Filhotes
+					<img src="teste/img/icon/dog3.png" class="mr-2"><strong>Filhotes</strong>
 					</a>
 					<a href="/solicitation/show" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
-						<img src="teste/img/icon/invitation.png" class="mr-2"> Solicitações
+						<img src="teste/img/icon/invitation.png" class="mr-2"><strong>Solicitações</strong>
 						<!--div id="notification"></div-->
 					</a>
 					<!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
@@ -214,7 +214,7 @@
 		</header>
 		<!--Main Navigation-->
 		<!--Main layout-->
-		<main class="pt-5 mx-lg-5">
+		<main class="pt-5 mx-lg-6 view">
 			@yield('content')
 		</main>
 		<!--Main layout-->

@@ -26,21 +26,17 @@
             </div>
                     <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
-                <!-- Title -->
-                <h6 class="card-title"><strong>{{$pet->name}}</strong></h6>
                 
                 @if(Auth::user()->id == $pet->user_id)
                     @if(count($pet->photos) < 5)
-                        <button type="button" class="btn btn-primary btn-sm">
+                        <label id="upload_btn" for="upload_file" class="btn btn-primary btn-sm">
                             <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
-                                <label id="upload_btn" for="upload_file">
-                                        Imagem
-                                        <i class="fas fa-camera-retro ml-1 animated rotateIn"></i>
-                                </label>
+                                Fotos
+                                <i class="fas fa-camera-retro ml-1 animated rotateIn"></i>
                             </form>
-                        </button>
+                        </label>
                     @endif
 
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
@@ -71,9 +67,15 @@
             <div class="card card-cascade wider">
 
                 <!-- Card content -->
-                <div class="card-body card-body-cascade text-center">
+                <div class="card-body card-body-cascade text-center" style="height: 383px">
+
+                    <h6 class="card-title"><strong>Dados do Pet<i class="fas fa-dog animated rotateIn ml-2"></i></strong></h6>
+                    
+
+                    <hr style="box-sizing:border-box;">
 
                     <div class="modal-body card-body-cascade text-left">
+                        <h6 class="card-title"><strong>Nome: </strong>{{ $pet->name }}</h6>
                         <h6 class="card-title"><strong>Raça: </strong>{{ $pet->race }}</h6>
                         <h6 class="card-title"><strong>Tamanho: </strong>{{ $pet->size }}</h6>
                         <h6 class="card-title"><strong>Cor: </strong>{{ $pet->color }}</h6>
@@ -96,20 +98,31 @@
             <div class="card card-cascade wider">
 
                 <!-- Card content -->
-                <div class="card-body card-body-cascade text-center">
+                <div class="card-body card-body-cascade text-center" style="height: 383px">
+
+                    <h6 class="card-title"><strong>Dados do Dono</strong><i class="fas fa-male animated rotateIn ml-2"></i></h6>
+
+                    <hr style="box-sizing:border-box;">
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h6 class="card-title"><strong>Dono: </strong>{{ $pet->user->name }}</h6>
-                        <h6 class="card-title"><strong>Rua: </strong>{{ $address->street ? $address->street : 'Oculto' }}</h6>
-                        <h6 class="card-title"><strong>Número: </strong>{{ $address->number ? $address->number : 'Oculto'  }}</h6>
-                        <h6 class="card-title"><strong>Complemento: </strong>{{ $address->complement ? $address->complement : 'Oculto' }}</h6>
-                        @foreach($phones as $phone)
-                            <h6 class="card-title"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h6>
-                        @endforeach
-                        <h6 class="card-title"><strong>Cidade: </strong>{{ $address->city }}</h6>
-                        <h6 class="card-title"><strong>Bairro: </strong>{{ $address->district ? $address->district : 'Oculto' }}</h6>
-                        <h6 class="card-title"><strong>Estado: </strong>{{ $address->state }}</h6>
-                        <h6 class="card-title"><strong>País: </strong>{{ $address->country }}</h6>
+                        <h6 class="card-title"><strong>Nome: </strong>{{ $pet->user->name }}</h6>
+                        @if($address != null)
+                            <h6 class="card-title"><strong>Rua: </strong>{{ $address->street }}</h6>
+                            <h6 class="card-title"><strong>Número: </strong>{{ $address->number }}</h6>
+                            @if($address->complement != null)
+                                <h6 class="card-title"><strong>Complemento: </strong>{{ $address->complement }}</h6>
+                            @endif
+                            @foreach($phones as $phone)
+                                <h6 class="card-title"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h6>
+                            @endforeach
+                            <h6 class="card-title"><strong>Cidade: </strong>{{ $address->city }}</h6>
+                            <h6 class="card-title"><strong>Bairro: </strong>{{ $address->district }}</h6>
+                            <h6 class="card-title"><strong>Estado: </strong>{{ $address->state }}</h6>
+                            <h6 class="card-title"><strong>País: </strong>{{ $address->country }}</h6>
+                        @else
+                            <h6 class="card-title"><strong>Cidade: </strong>{{ $pet->user->address->city }}</h6>
+                            <h6 class="card-title"><strong>Estado: </strong>{{ $pet->user->address->state }}</h6>
+                        @endif
 
                     </div>
 
@@ -137,7 +150,7 @@
 
                     @include('layouts.pet-match')
 
-                    @include('layouts.pet-requests', ['requesters' => $solicitations, 'pets' => Auth::User()->pet])
+                    @include('layouts.pet-requests', ['pets' => Auth::User()->pet])
                     
                     @if(Auth::User()->id == $pet->user_id)
                         @include('layouts.pet-solicitations', ['solicitations' => $solicitations, 'pet' => $pet])

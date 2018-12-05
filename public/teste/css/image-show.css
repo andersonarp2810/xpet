@@ -12,16 +12,16 @@ background-color: #FFF;
 border: 1px solid #ddd;
 }
 #main-gallery .large-img{ 
-width: 300px; 
+width: 335px; 
 height: 250px; 
 overflow: hidden;
 }
 #main-gallery .large-img img{
-max-width: 300px;
+max-width: 335px;
 height: 300px;
 }
 #main-gallery .small-img{ 
-width: 300px; 
+width: 335px; 
 height: 60px; 
 background-color: #222;
 }

@@ -82,29 +82,24 @@ class PetController extends Controller
         //
         //logica de ser pode ver contato ou não
         $user = Auth::user();
-        $solicitations = [];
+        
+        $address = null;
         $phones = [];
+        $solicitations = [];
 
         if ($user->id == $pet->user_id) { //dono
             $phones = $user->phones;
             $address = $user->address;
             $solicitations = Solicitation::all()->where('requesters_pet_id', $pet->id)->merge(Solicitation::all()->where('requesteds_pet_id', $pet->id));
         } else { // se solicitação aceita
-            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requesteds_pet_id', $pet->id)->where('status', 'aceito');
-            $solicitations = $solicitations->merge(Solicitation::all()->where('requested_user_id', $user->id)->where('requesters_pet_id', $pet->id)->where('status', 'aceito'));
-            $address = $pet->user->address;
-            if(count($solicitations) > 0){
+            $solicitations = Solicitation::all()->where('requester_user_id', $user->id)->where('requesteds_pet_id', $pet->id);
+            $solicitations = $solicitations->merge(Solicitation::all()->where('requested_user_id', $user->id)->where('requesters_pet_id', $pet->id));
+            
+            $accept = $solicitations->where('status', 'aceito');
+
+            if ($pet->user->public_contact_info || count($accept) > 0){
+                $address = $pet->user->address;
                 $phones = $pet->user->phones;
-            }
-            else if ($pet->user->public_contact_info) {
-                $phones = $pet->user->phones;
-            } else {
-                unset($address['district']);
-                unset($address['street']);
-                unset($address['number']);
-                unset($address['complement']);
-                unset($address['coordinateX']);
-                unset($address['coordinateY']);
             }
         }
 

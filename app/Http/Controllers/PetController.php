@@ -176,7 +176,7 @@ class PetController extends Controller
     {
         $this->authorize('isOwner', $pet);
 
-        $this->photoService->destroy($pet, $photo);
+        $this->photoService->destroy($photo);
 
         return redirect()->back();
     }

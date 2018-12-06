@@ -25,12 +25,14 @@
                     <div id="{{'imageModal-' . $photo->id}}" class="img-modal">
                         <span id="close" class="img-close">&times;</span>
                         <div class="img-modal-content">
+                            @if(Auth::user()->id == $pet->user->id)
                             <form method="POST" action="{{route('pet.destroyphoto', ['pet' => $pet, 'photo' => $photo])}}">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">
                                     Deletar imagem
                                 </button>
                             </form>
+                            @endif
                             <img class="img-view" src="{{ URL::asset('storage/' . $photo->path)}}">
                         </div>
                     </div>

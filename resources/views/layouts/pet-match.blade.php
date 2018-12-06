@@ -42,12 +42,14 @@
                         @endforelse
                         <!--Grid column dinamic-->
                     </div>
+                    @if(count(Auth::user()->pet) > 0)
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-sm" >
                             Ok
                             <i class="fa fa-paw ml-1 animated rotateIn"></i>
                         </button>
                     </div>
+                    @endif
                 </form>
             </div>
         </div>

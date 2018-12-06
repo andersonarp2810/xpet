@@ -172,11 +172,11 @@ class PetController extends Controller
         return redirect()->back();
     }
 
-    public function destroyPhoto($photo_id, Pet $pet)
+    public function destroyPhoto(Pet $pet, \App\Photo $photo)
     {
         $this->authorize('isOwner', $pet);
 
-        $this->photoService->delete($photo_id, $pet->id);
+        $this->photoService->destroy($pet, $photo);
 
         return redirect()->back();
     }

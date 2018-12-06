@@ -45,6 +45,8 @@
                             @if(Auth::User()->id == $solicitation->requested->id)
                                 <div class="col-lg-12 col-md-12 mb-4">
                                     <div class="text-center">
+                                        <div class="row">
+                                            <div class="col">
                                         <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
                                             @csrf
                                             <input type="hidden" name="status" value="aceito" >
@@ -53,6 +55,8 @@
                                                 <i class="fa fa-check ml-1 animated rotateIn"></i>
                                             </button>
                                         </form>
+                                    </div>
+                                    <div class="col">
                                         <form method="POST" action="{{ route('solicitation.update', ['solicitation' => $solicitation]) }}" enctype="multipart/form-data">
                                             @csrf
                                             <input type="hidden" name="status" value="recusado" >
@@ -61,6 +65,8 @@
                                                 <i class="fa fa-times ml-1 animated rotateIn"></i>
                                             </button>
                                         </form>
+                                    </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endif

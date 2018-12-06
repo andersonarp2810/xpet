@@ -40,7 +40,7 @@ class PhotoService
      * @param  \App\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Photo $photo)
+    public function destroy(\App\Pet $pet, Photo $photo)
     {
         //$this->authorize('isOwner', $photo);
         Storage::disk('public')->delete($photo->path);

@@ -107,6 +107,7 @@
 			</script>
             -->
 		<script type="text/javascript">
+		// script de filtro
 		var atributo = 6;
 		/*
 			@atributo: 0 = nome, 6 = cidade, 7 = raça, 1-5 = icones de pata
@@ -138,6 +139,7 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<!-- Left -->
 						<ul class="navbar-nav mr-auto">
+							@if(Route::currentRouteName() == 'home')
 							<div class="search-box nav-item">
 								<input class="search-txt" type="text" name="busca" placeholder="Busca" onkeyup="filtro(this.value)">
 								<a class="search-btn" href="#">
@@ -151,6 +153,7 @@
 									<option value="7">Raça</option>
 								</select>
 							</li>
+							@endif
 						</ul>
 						<!-- Right -->
 						<ul class="navbar-nav nav-flex-icons">
@@ -212,15 +215,6 @@
 					</a>
 					<a href="#" class="list-group-item list-group-item-action waves-effect">
 					<img src="teste/img/icon/dog3.png" class="mr-2"><strong>Filhotes</strong>
-					</a>
-					<a href="/solicitation/show" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
-						<img src="teste/img/icon/invitation.png" class="mr-2"><strong>Solicitações</strong>
-						@if(isset($solicitations))
-							@if(count($solicitations->where('status', 'pendente')) > 0)
-							<strong>( {{count($solicitations->where('status', 'pendente'))}} )</strong>
-							@endif
-						@endif
-						<!--div id="notification"></div-->
 					</a>
 					<!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
 						<img src="img/icon/exit.png"></i>  Sair</a>-->

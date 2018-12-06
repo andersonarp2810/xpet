@@ -26,6 +26,7 @@
 
                     <!-- Subtitle -->
                     <h6 class="mt-1"><i class="fas fa-city animated rotateIn mr-1"></i>{{$pet->user->address->city}}</h6>
+                    <h6 class="mt-1"><i class="fas fa-dog animated rotateIn ml-2"></i>{{$pet->race}}</h6>
                     
                 </div>
         

@@ -33,7 +33,7 @@
                             <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
-                                Fotos
+                                +Fotos
                                 <i class="fas fa-camera-retro ml-1 animated rotateIn"></i>
                             </form>
                         </label>

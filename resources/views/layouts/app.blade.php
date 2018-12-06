@@ -44,11 +44,11 @@
 			width: 800px;
 			}
 			.search-box {
-			position:absolute;
+			
 			top:50%;
 			left:23%;
 			/* transform:translate(-100%,-50%);*/
-			transform:translate(0%,-50%);
+			transform:translate(0%,-20%);
 			background:#ff6a3b;
 			height:40px;
 			border-radius:40px;
@@ -106,12 +106,16 @@
 			    });
 			</script>
             -->
-        <script type="text/javascript">
+		<script type="text/javascript">
+		var atributo = 6;
+		/*
+			@atributo: 0 = nome, 6 = cidade, 7 = raça, 1-5 = icones de pata
+		*/
             function filtro(nome){
                 var cards = document.getElementsByClassName('filtravel');
                 for(card of cards){
                     card.style.display = "block";
-                    cidade = card.children[0].children[1].children[6].innerText;
+                    cidade = card.children[0].children[1].children[atributo].innerText;
                     //console.log(cidade); // cidade do cachorro
                     if(cidade.toLowerCase().search(nome.toLowerCase())){
                         card.style.display = "none";
@@ -135,11 +139,18 @@
 						<!-- Left -->
 						<ul class="navbar-nav mr-auto">
 							<div class="search-box nav-item">
-								<input class="search-txt" type="text" name="busca" placeholder="Busca por cidade" onkeyup="filtro(this.value)">
+								<input class="search-txt" type="text" name="busca" placeholder="Busca" onkeyup="filtro(this.value)">
 								<a class="search-btn" href="#">
 								<i class="fas fa-search"></i>
 								</a>
 							</div>
+							<li>
+								<strong>Buscar por: </strong>
+								<select name="atributo" id="select-atributo" onchange="atributo = this.value">
+									<option value="6" selected >Cidade</option>
+									<option value="7">Raça</option>
+								</select>
+							</li>
 						</ul>
 						<!-- Right -->
 						<ul class="navbar-nav nav-flex-icons">

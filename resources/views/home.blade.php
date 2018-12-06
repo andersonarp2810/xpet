@@ -18,15 +18,15 @@
                     <!-- Title -->
                     <h6 class="card-title"><strong>{{ $pet->name }}</strong></h6>
                     
-                    <i class="fas fa-paw" style="color:green"></i>
+                    <!--i class="fas fa-paw" style="color:green"></i>
                     <i class="fas fa-paw"></i>
                     <i class="fas fa-paw"></i>
                     <i class="fas fa-paw"></i>
-                    <i class="fas fa-paw"></i>
+                    <i class="fas fa-paw"></i-->
 
                     <!-- Subtitle -->
                     <h6 class="mt-1"><i class="fas fa-city animated rotateIn mr-1"></i>{{$pet->user->address->city}}</h6>
-                    <h6 class="mt-1"><i class="fas fa-dog animated rotateIn ml-2"></i>{{$pet->race}}</h6>
+                    <h6 class="mt-1"><i class="fas fa-dog animated rotateIn mr-1"></i>{{$pet->race}}</h6>
                     
                 </div>
         

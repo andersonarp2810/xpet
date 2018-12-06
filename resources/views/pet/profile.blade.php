@@ -29,7 +29,8 @@
                             <form method="POST" action="{{route('pet.destroyphoto', ['pet' => $pet, 'photo' => $photo])}}">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">
-                                    Deletar imagem
+                                    Deletar
+                                    <i class="fa fa-trash ml-1 animated rotateIn"></i>
                                 </button>
                             </form>
                             @endif
@@ -48,7 +49,8 @@
                             <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
-                                +Fotos
+                                <i class="fas fa-plus mr-1 animated rotateIn"></i>
+                                Fotos
                                 <i class="fas fa-camera-retro ml-1 animated rotateIn"></i>
                             </form>
                         </label>

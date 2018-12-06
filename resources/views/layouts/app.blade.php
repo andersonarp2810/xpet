@@ -142,7 +142,7 @@
 							@if(Route::currentRouteName() == 'home')
 							<div class="search-box nav-item">
 								<input class="search-txt" type="text" name="busca" placeholder="Busca" onkeyup="filtro(this.value)">
-								<a class="search-btn" href="#">
+								<a class="search-btn" href="#" onclick="return false;">
 								<i class="fas fa-search"></i>
 								</a>
 							</div>

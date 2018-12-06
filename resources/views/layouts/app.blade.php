@@ -140,15 +140,15 @@
 						<!-- Left -->
 						<ul class="navbar-nav mr-auto">
 							@if(Route::currentRouteName() == 'home')
-							<div class="search-box nav-item">
+							<div class="search-box nav-item mr-3">
 								<input class="search-txt" type="text" name="busca" placeholder="Busca" onkeyup="filtro(this.value)">
 								<a class="search-btn" href="#" onclick="return false;">
-								<i class="fas fa-search"></i>
+									<i class="fas fa-search animated rotateIn"></i>
 								</a>
 							</div>
 							<li>
 								<strong>Buscar por: </strong>
-								<select name="atributo" id="select-atributo" onchange="atributo = this.value">
+								<select style="border-radius: 5px;" class="ml-1" name="atributo" id="select-atributo" onchange="atributo = this.value">
 									<option value="6" selected >Cidade</option>
 									<option value="7">Raça</option>
 								</select>

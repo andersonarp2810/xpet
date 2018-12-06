@@ -44,10 +44,25 @@
                         <i class="fas fa-edit ml-1 animated rotateIn"></i>
                     </button>
 
+                    <button type="button" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
+                        Solicitações 
+                        <i class="far fa-envelope ml-1 animated rotateIn"></i>
+                        @if(count($solicitations->where('status', 'pendente')) > 0)
+                        <span>
+                        ( {{count($solicitations->where('status', 'pendente'))}} pendente(s) )
+                        </span>
+                        @endif
+                    </button>
+
                 @elseif(count($solicitations) > 0)
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-requests' }}">
                         Solicitações
                         <i class="fa fa-list-ul animated rotateIn ml-1"></i>
+                        @if(count($solicitations->where('status', 'pendente')) > 0)
+                        <span>
+                        ( {{count($solicitations->where('status', 'pendente'))}} pendente(s) )
+                        </span>
+                        @endif
                     </button>
                 @else
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">

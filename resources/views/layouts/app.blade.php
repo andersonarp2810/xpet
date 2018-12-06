@@ -215,6 +215,11 @@
 					</a>
 					<a href="/solicitation/show" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
 						<img src="teste/img/icon/invitation.png" class="mr-2"><strong>Solicitações</strong>
+						@if(isset($solicitations))
+							@if(count($solicitations->where('status', 'pendente')) > 0)
+							<strong>( {{count($solicitations->where('status', 'pendente'))}} )</strong>
+							@endif
+						@endif
 						<!--div id="notification"></div-->
 					</a>
 					<!-- <a href="#" class="list-group-item list-group-item-action waves-effect">

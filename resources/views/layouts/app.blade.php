@@ -108,7 +108,7 @@
             -->
 		<script type="text/javascript">
 		// script de filtro
-		var atributo = 6;
+		var atributo = 1;
 		/*
 			@atributo: 0 = nome, 6 = cidade, 7 = raça, 1-5 = icones de pata
 		*/
@@ -149,8 +149,8 @@
 							<li>
 								<strong>Buscar por: </strong>
 								<select style="border-radius: 5px;" class="ml-1" name="atributo" id="select-atributo" onchange="atributo = this.value">
-									<option value="6" selected >Cidade</option>
-									<option value="7">Raça</option>
+									<option value="1" selected >Cidade</option>
+									<option value="2">Raça</option>
 								</select>
 							</li>
 							@endif
@@ -300,10 +300,7 @@
 				<i class="fa fa-facebook mr-3"></i>
 				</a>
 				<a href="https://twitter.com/" target="_blank">
-				<i class="fa fa-twitter mr-3"></i>
-				</a>
-				<a href="https://www.youtube.com/" target="_blank">
-				<i class="fa fa-youtube mr-3"></i>
+				<i class="fa fa-instagram mr-3"></i>
 				</a>
 			</div>
 			<!-- Social icons -->

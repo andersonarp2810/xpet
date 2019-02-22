@@ -23,7 +23,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="md-form ml-0 mr-0" style="width:750px">
+                        <div class="md-form ml-0 mr-0"  >
                             <input id="name" name="name" type="text" class="form-control ml-0 {{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus>
                             <label for="name" class="ml-0">Nome completo</label>
                             @if ($errors->has('name'))
@@ -33,7 +33,7 @@
                             @endif
                         </div>
 
-                        <div class="md-form ml-0 mr-0" style="width:750px">
+                        <div class="md-form ml-0 mr-0"  >
                             <input id="e-mail" name="e-mail" type="email" class="form-control ml-0 {{ $errors->has('e-mail') ? ' is-invalid' : '' }}" required>
                             <label for="e-mail" class="ml-0">E-mail</label>
                             @if ($errors->has('e-mail'))
@@ -43,7 +43,7 @@
                             @endif
                         </div>
 
-                        <div class="md-form ml-0 mr-0" style="width:750px">
+                        <div class="md-form ml-0 mr-0"  >
                             <input id="senha" name="senha" type="password" class="form-control ml-0 {{ $errors->has('senha') ? ' is-invalid' : '' }}" required>
                             <label for="senha" class="ml-0">Senha</label>
                             @if ($errors->has('senha'))
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="row ml-0" >
-                        <div class="md-form ml-0 mr-0" style="width:350px">
+                        <div class="md-form ml-0 mr-0" style="width:40%">
                             <input id="phone" name="phone" type="tel" class="form-control ml-0 {{ $errors->has('phone') ? ' is-invalid' : '' }}" required>
                             <label for="phone" class="ml-0">Telefone</label>
                             @if ($errors->has('phone'))
@@ -64,7 +64,7 @@
                             @endif
                         </div>
 
-                        <div class="md-form ml-5 mr-0" style="width:350px">
+                        <div class="md-form ml-5 mr-0" style="width:40%">
                             <select id="whatsapp_available" name="whatsapp_available" class="custom-select d-block w-100 {{ $errors->has('whatsapp_available') ? ' is-invalid' : '' }}" required >
                                     <option value="" disabled selected>WhatsApp nesse número?</option>
                                     <option value="true">Sim</option>
@@ -80,7 +80,7 @@
 
                         <div class="row ml-0">
 
-                        <div class="md-form ml-0 mr-0" style="width:350px">
+                        <div class="md-form ml-0 mr-0" style="width:40%">
                             <input id="city" name="city" type="text" class="form-control ml-0 {{ $errors->has('city') ? ' is-invalid' : '' }}" required>
                             <label for="city" class="ml-0">Cidade</label>
                             @if ($errors->has('city'))
@@ -90,7 +90,7 @@
                             @endif
                         </div>
 
-                        <div class="md-form ml-5 mr-0" style="width:350px">
+                        <div class="md-form ml-5 mr-0" style="width:40%">
                             <select id="state" name="state" class="custom-select d-block w-100 {{ $errors->has('state') ? ' is-invalid' : '' }}" required>
 
                                 <option value="" disabled selected>Estado</option>
@@ -131,7 +131,7 @@
 
                         </div>
                         <div class="row ml-0">
-                        <div class="md-form ml-0 mr-0" style="width:350px">
+                        <div class="md-form ml-0 mr-0" style="width:40%">
                             <input id="district" name="district" type="text" class="form-control ml-0 {{ $errors->has('district') ? ' is-invalid' : '' }}" required>
                             <label for="district" class="ml-0">Bairro</label>
                             @if ($errors->has('district'))
@@ -141,7 +141,7 @@
                             @endif
                         </div>
 
-                        <div class="md-form ml-5 mr-0" style="width:350px">
+                        <div class="md-form ml-5 mr-0" style="width:40%">
                             <input name="street" type="text" id="street" class="form-control ml-0 {{ $errors->has('street') ? ' is-invalid' : '' }}" required>
                             <label for="street" class="ml-0">Rua</label>
                             @if ($errors->has('street'))
@@ -153,7 +153,7 @@
                     </div>
 
                         <div class="row ml-0">
-                        <div class="md-form ml-0 mr-0" style="width:350px">
+                        <div class="md-form ml-0 mr-0" style="width:40%">
                             <input name="number" type="text" id="number" class="form-control ml-0 {{ $errors->has('number') ? ' is-invalid' : '' }}" required>
                             <label for="number" class="ml-0">Número</label>
                             @if ($errors->has('number'))
@@ -163,13 +163,13 @@
                             @endif
                         </div>
 
-                        <div class="md-form ml-5 mr-0" style="width:350px">
+                        <div class="md-form ml-5 mr-0" style="width:40%">
                             <input id="complement" name="complement" type="text" class="form-control ml-0">
                             <label for="complement" class="ml-0">Complemento</label>
                         </div>
                         </div>
 
-                        <div class="md-form ml-0 mr-0" style="width:350px">
+                        <div class="md-form ml-0 mr-0" style="width:40%">
                             <select name="public_contact_info" class="custom-select d-block w-100 {{ $errors->has('public_contact_info') ? ' is-invalid' : '' }}" id="whatsapp" required>
                                     <option value="" disabled selected>Permitir que qualquer um veja seus contatos?</option>
                                     <option value="true">Sim</option>

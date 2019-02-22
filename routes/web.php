@@ -62,3 +62,7 @@ Route::get('aaa', function () {
 Route::get('image', function () {
     return view('pet.image'); 
 });
+
+Route::get('emobra', function(){
+    return view('emobra');
+});

@@ -207,13 +207,13 @@
 					<a href="/user" class="list-group-item list-group-item-action waves-effect">
 					<img src="teste/img/icon/boy.png" class="mr-2"><strong>Perfil</strong>
 					</a>
-					<a href="#" class="list-group-item list-group-item-action waves-effect">
+					<a href="/emobra" class="list-group-item list-group-item-action waves-effect">
 					<img src="teste/img/icon/pdog2.png" class="mr-2"><strong>Adotar</strong>
 					</a>
-					<a href="#" class="list-group-item list-group-item-action waves-effect">
+					<a href="/emobra" class="list-group-item list-group-item-action waves-effect">
 					<img src="teste/img/icon/donation.png" class="mr-2"><strong>Doar</strong>
 					</a>
-					<a href="#" class="list-group-item list-group-item-action waves-effect">
+					<a href="/emobra" class="list-group-item list-group-item-action waves-effect">
 					<img src="teste/img/icon/dog3.png" class="mr-2"><strong>Filhotes</strong>
 					</a>
 					<!-- <a href="#" class="list-group-item list-group-item-action waves-effect">

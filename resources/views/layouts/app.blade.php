@@ -25,6 +25,12 @@
 		<!-- Image show profile -->
 		<link href="teste/css/image-show.css" rel="stylesheet"/>
 		<script src="teste/js/jquery.js"></script>
+
+		 <!-- Bootstrap core CSS -->
+		 <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="../../../css/simple-sidebar.css" rel="stylesheet">
 		<style type="text/css">
 			html,
 			body,
@@ -128,74 +134,19 @@
 	<body class="grey lighten-3">
 		<!--Main Navigation-->
 		<header>
-			<!-- Navbar -->
-			<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" style="background-color: #ffefc0 !important">
-				<div class="container-fluid">
-					<!-- Collapse -->
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-					</button>
-					<!-- Links -->
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<!-- Left -->
-						<ul class="navbar-nav mr-auto">
-							@if(Route::currentRouteName() == 'home')
-							<div class="search-box nav-item mr-3">
-								<input class="search-txt" type="text" name="busca" placeholder="Busca" onkeyup="filtro(this.value)">
-								<a class="search-btn" href="#" onclick="return false;">
-									<i class="fas fa-search animated rotateIn"></i>
-								</a>
-							</div>
-							<li>
-								<strong>Buscar por: </strong>
-								<select style="border-radius: 5px;" class="ml-1" name="atributo" id="select-atributo" onchange="atributo = this.value">
-									<option value="1" selected >Cidade</option>
-									<option value="2">Raça</option>
-								</select>
-							</li>
-							@endif
-						</ul>
-						<!-- Right -->
-						<ul class="navbar-nav nav-flex-icons">
-							@if(session('erro'))
-							<span class="nav-item alert alert-danger alert-dismissible fade show" role="alert">
-							<strong> {{ session('erro') }} </strong>
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-							</button>   
-							</span>
-							@endif
-							@if(Auth::guest())
-							<li class="nav-item">
-								<a class="nav-link waves-effect" href="/register">
-								<img src="teste/img/icon/note.png" class="mr-1"><strong>Cadastro</strong>
-								<span class="sr-only">(current)</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link waves-effect" data-toggle="modal" data-target="#modalLoginAvatarDemo" href="#">
-								<img src="teste/img/icon/enter.png" class="mr-1"><strong>Login</strong>
-								<span class="sr-only">(current)</span>
-								</a>
-							</li>
-							@else
-							<li class="nav-item">
-								<a class="nav-link waves-effect" data-target="#modalLoginAvatarDemo" href="/logout">
-								<img src="teste/img/icon/exit.png" class="mr-1"><strong>Logout</strong>
-								<span class="sr-only">(current)</span>
-								</a>
-							</li>
-							@endif
-						</ul>
-					</div>
-				</div>
-			</nav>
-			<!-- Navbar -->
+		</header>
+		<!--Main Navigation-->
+
+		<div class="d-flex" id="wrapper" >
+		
 			<!-- Sidebar -->
-			<div class="sidebar-fixed position-fixed" style="background-color: #ffefc0 !important">
-				<a class=" waves-effect" href="/home">
-				<img src="teste/img/logo.png" height="300" width="1100" class="img-fluid" alt="">
-				</a>
+			<div class="bg-light border-right" id="sidebar-wrapper" style="background-color: #ffefc0 !important">
+				<div class="sidebar-heading">
+					<a class="" href="/home">
+					<img src="teste/img/logo.png" class="img-fluid" alt="" style="width: 300px">
+					</a>
+				</div>
+				
 				<div class="list-group list-group-flush">
 					<a class="list-group-item list-group-item-action waves-effect" href="/home">
 					<img src="teste/img/icon/dog-house2.png" class="mr-2"><strong>Home</strong>
@@ -213,7 +164,7 @@
 					<a href="/emobra" class="list-group-item list-group-item-action waves-effect">
 					<img src="teste/img/icon/donation.png" class="mr-2"><strong>Doar</strong>
 					</a>
-					<a href="/emobra" class="list-group-item list-group-item-action waves-effect">
+					<a href="/emobra float-xs-right ml-auto" class="list-group-item list-group-item-action waves-effect">
 					<img src="teste/img/icon/dog3.png" class="mr-2"><strong>Filhotes</strong>
 					</a>
 					<!-- <a href="#" class="list-group-item list-group-item-action waves-effect">
@@ -221,13 +172,94 @@
 				</div>
 			</div>
 			<!-- Sidebar -->
-		</header>
-		<!--Main Navigation-->
-		<!--Main layout-->
-		<main class="pt-5 mx-lg-6 view">
-			@yield('content')
-		</main>
-		<!--Main layout-->
+
+			<!--Main layout-->
+			<div class="" id="page-content-wrapper">
+			
+				<!-- Navbar -->
+				<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" style="background-color: #ffefc0 !important">
+					<div class="container-fluid">
+						<button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+						<!-- Collapse -->
+						<button class="navbar-toggler float-xs-right ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+							aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<!-- Links -->
+						<div class="navbar-collapse collapse" id="navbarSupportedContent">
+							<!-- Left -->
+							<ul class="navbar-nav ml-auto mt-lg-0">
+								@if(Route::currentRouteName() == 'home')
+								<div class="search-box nav-item mr-3">
+									<input class="search-txt" type="text" name="busca" placeholder="Busca" onkeyup="filtro(this.value)">
+									<a class="search-btn" href="#" onclick="return false;">
+										<i class="fas fa-search animated rotateIn"></i>
+									</a>
+								</div>
+								<li class="nav-item active">
+									<strong>Buscar por: </strong>
+									<select style="border-radius: 5px;" class="ml-1" name="atributo" id="select-atributo" onchange="atributo = this.value">
+										<option value="1" selected >Cidade</option>
+										<option value="2">Raça</option>
+									</select>
+								</li>
+								@endif
+							</ul>
+							<!-- Right -->
+							<ul class="navbar-nav ml-auto mt-lg-0">
+								@if(session('erro'))
+								<span class="nav-item alert alert-danger alert-dismissible fade show" role="alert">
+								<strong> {{ session('erro') }} </strong>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>   
+								</span>
+								@endif
+								@if(Auth::guest())
+								<li class="nav-item active">
+									<a class="nav-link waves-effect" href="/register">
+									<img src="teste/img/icon/note.png" class="mr-1"><strong>Cadastro</strong>
+									<span class="sr-only">(current)</span>
+									</a>
+								</li>
+								<li class="nav-item active">
+									<a class="nav-link waves-effect" data-toggle="modal" data-target="#modalLoginAvatarDemo" href="#">
+									<img src="teste/img/icon/enter.png" class="mr-1"><strong>Login</strong>
+									<span class="sr-only">(current)</span>
+									</a>
+								</li>
+								@else
+								<li class="nav-item active">
+									<a class="nav-link waves-effect" data-target="#modalLoginAvatarDemo" href="/logout">
+									<img src="teste/img/icon/exit.png" class="mr-1"><strong>Logout</strong>
+									<span class="sr-only">(current)</span>
+									</a>
+								</li>
+								@endif
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<!-- Navbar -->
+				<div class="container-fluid">
+					@yield('content')
+				</div>
+			</div>
+			<!--Main layout-->
+		</div>	
+
+		<!-- Menu Toggle Script -->
+		<script>
+			$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+			});
+		</script>
+
+		<script src="../../../vendor/jquery/jquery.min.js"></script>
+		<script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
 		<!--Modal Form Login with Avatar Demo-->
 		<div class="modal fade" id="modalLoginAvatarDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" method="POST" action="{{ route('login') }}">
 			@csrf
@@ -286,6 +318,7 @@
 		<script type="text/javascript" src="teste/js/bootstrap.min.js"></script>
 		<!-- MDB core JavaScript -->
 		<script type="text/javascript" src="teste/js/mdb.min.js"></script>
+		
 		<!-- Initializations -->
 		<!--Friscura véa--script type="text/javascript">
 			// Animations initialization

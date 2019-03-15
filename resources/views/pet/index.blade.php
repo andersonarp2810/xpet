@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.teste')
 @section('content')
 <div class="container-fluid mt-5">
 
 <div class="row wow fadeIn">
 
     <!-- botão novo pet -->
-    <div class="col-lg-3 col-md-12 mb-4">
+    <div class="col-lg-2 col-md-12 mb-4">
 
         <div class="card card-cascade wider">
 
@@ -25,8 +25,7 @@
                 <!-- Subtitle -->
 
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-create">
-                    Cadastrar
-                    <i class="fa fa-paw ml-1 animated rotateIn"></i>
+                    <i class="fa fa-paw animated rotateIn"></i>
                 </button>
             </div>
         </div>
@@ -35,7 +34,7 @@
 
     <!--Grid column dinamic-->
     @foreach($pets as $pet)
-    <div class="col-lg-3 col-md-12 mb-4">
+    <div class="col-lg-2 col-md-12 mb-4">
 
         <div class="card card-cascade wider">
 

@@ -13,7 +13,7 @@
                 @include('layouts.pet-card-image', ['pet' => $pet])
         
                 <!-- Card content -->
-                <div class="card-body card-body-cascade text-center" style="white-space:nowrap">
+                <div class="card-body card-body-cascade text-center p-1">
         
                     <!-- Title -->
                     <h6 class="card-title"><strong>{{ $pet->name }}</strong></h6>
@@ -25,7 +25,7 @@
                     <i class="fas fa-paw"></i-->
 
                     <!-- Subtitle -->
-                    <h6 class="mt-1 small><i class="fas fa-dog animated rotateIn mr-1"></i>{{$pet->race}}</h6>
+                    <h6 class="mt-1 small" style=""><i class="fas fa-dog animated rotateIn mr-1"></i>{{$pet->race}}</h6>
                     <h6 class="mt-1 small"><i class="fas fa-city animated rotateIn mr-1"></i>{{$pet->user->address->city}}</h6>
                     
                     

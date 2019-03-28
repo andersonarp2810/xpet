@@ -1,5 +1,6 @@
 @extends('layouts.teste')
 @section('content')
+
 <div class="container-fluid mt-3">
     <!--Grid row-->
     <div class="row wow fadeIn">
@@ -16,7 +17,7 @@
                 <div class="card-body card-body-cascade text-center p-1">
         
                     <!-- Title -->
-                    <h6 class="card-title"><strong>{{ $pet->name }}</strong></h6>
+                    <h6 class="card-title small"><strong>{{ $pet->name }}</strong></h6>
                     
                     <!--i class="fas fa-paw" style="color:green"></i>
                     <i class="fas fa-paw"></i>
@@ -25,14 +26,28 @@
                     <i class="fas fa-paw"></i-->
 
                     <!-- Subtitle -->
-                    <h6 class="mt-1 small" style=""><i class="fas fa-dog animated rotateIn mr-1"></i>{{$pet->race}}</h6>
-                    <h6 class="mt-1 small"><i class="fas fa-city animated rotateIn mr-1"></i>{{$pet->user->address->city}}</h6>
-                    
-                    
+                    <div class="row p-0">
+                        <div class="col-md-1 p-0">
+                            <h6 class="mt-1 small"><i class="fas fa-dog animated rotateIn"></i></h6>
+                        </div>
+
+                        <div class="col p-0">
+                            <h6 class="mt-1 ml-1 mr-1 small">{{$pet->race}}</h6>
+                        </div>
+                    </div>
+
+                    <div class="row p-0">
+                        <div class="col-md-1 p-0">
+                        <h6 class="mt-1 small"><i class="fas fa-city animated rotateIn"></i></h6>
+                        </div>
+
+                        <div class="col p-0">
+                            <h6 class="mt-1 ml-1 mr-1 small">{{$pet->user->address->city}}</h6>
+                        </div>
+                    </div>
                 </div>
         
             </div>
-        
         </div>
         @endforeach
         <!--Grid column dinamic-->

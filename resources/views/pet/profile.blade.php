@@ -1,5 +1,6 @@
 @extends('layouts.teste')
 @section('content')
+
 <div class="container-fluid mt-5">
 
     <div class="row wow fadeIn">
@@ -99,7 +100,7 @@
             <div class="card card-cascade wider">
 
                 <!-- Card content -->
-                <div class="card-body card-body-cascade text-center" style="height: 383px">
+                <div class="card-body card-body-cascade text-center" style="height: 350px">
 
                     <h6 class="card-title"><strong>Dados do Pet<i class="fas fa-dog animated rotateIn ml-2"></i></strong></h6>
                     
@@ -107,13 +108,13 @@
                     <hr style="box-sizing:border-box;">
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h6 class="card-title"><strong>Nome: </strong>{{ $pet->name }}</h6>
-                        <h6 class="card-title"><strong>Raça: </strong>{{ $pet->race }}</h6>
-                        <h6 class="card-title"><strong>Tamanho: </strong>{{ $pet->size }}</h6>
-                        <h6 class="card-title"><strong>Cor: </strong>{{ $pet->color }}</h6>
-                        <h6 class="card-title"><strong>Gênero: </strong>{{ $pet->gender }}</h6>
-                        <h6 class="card-title"><strong>Pedigree: </strong>{{ $pet->pedigree ? 'Sim' : 'Não' }}</h6>
-                        <h6 class="card-title"><strong>Descrição: </strong>{{ $pet->description }}</h6>
+                        <h6 class="card-title small"><strong>Nome: </strong>{{ $pet->name }}</h6>
+                        <h6 class="card-title small"><strong>Raça: </strong>{{ $pet->race }}</h6>
+                        <h6 class="card-title small"><strong>Tamanho: </strong>{{ $pet->size }}</h6>
+                        <h6 class="card-title small"><strong>Cor: </strong>{{ $pet->color }}</h6>
+                        <h6 class="card-title small"><strong>Gênero: </strong>{{ $pet->gender }}</h6>
+                        <h6 class="card-title small"><strong>Pedigree: </strong>{{ $pet->pedigree ? 'Sim' : 'Não' }}</h6>
+                        <h6 class="card-title small"><strong>Descrição: </strong>{{ $pet->description }}</h6>
 
                     </div>
 
@@ -130,30 +131,30 @@
             <div class="card card-cascade wider">
 
                 <!-- Card content -->
-                <div class="card-body card-body-cascade text-center" style="height: 383px">
+                <div class="card-body card-body-cascade text-center" style="height: 350px">
 
                     <h6 class="card-title"><strong>Dados do Dono</strong><i class="fas fa-male animated rotateIn ml-2"></i></h6>
 
                     <hr style="box-sizing:border-box;">
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h6 class="card-title"><strong>Nome: </strong>{{ $pet->user->name }}</h6>
+                        <h6 class="card-title small"><strong>Nome: </strong>{{ $pet->user->name }}</h6>
                         @if($address != null)
-                            <h6 class="card-title"><strong>Rua: </strong>{{ $address->street }}</h6>
-                            <h6 class="card-title"><strong>Número: </strong>{{ $address->number }}</h6>
+                            <h6 class="card-title small"><strong>Rua: </strong>{{ $address->street }}</h6>
+                            <h6 class="card-title small"><strong>Número: </strong>{{ $address->number }}</h6>
                             @if($address->complement != null)
-                                <h6 class="card-title"><strong>Complemento: </strong>{{ $address->complement }}</h6>
+                                <h6 class="card-title small"><strong>Complemento: </strong>{{ $address->complement }}</h6>
                             @endif
                             @foreach($phones as $phone)
-                                <h6 class="card-title"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h6>
+                                <h6 class="card-title small"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h6>
                             @endforeach
-                            <h6 class="card-title"><strong>Cidade: </strong>{{ $address->city }}</h6>
-                            <h6 class="card-title"><strong>Bairro: </strong>{{ $address->district }}</h6>
-                            <h6 class="card-title"><strong>Estado: </strong>{{ $address->state }}</h6>
-                            <h6 class="card-title"><strong>País: </strong>{{ $address->country }}</h6>
+                            <h6 class="card-title small"><strong>Cidade: </strong>{{ $address->city }}</h6>
+                            <h6 class="card-title small"><strong>Bairro: </strong>{{ $address->district }}</h6>
+                            <h6 class="card-title small"><strong>Estado: </strong>{{ $address->state }}</h6>
+                            <h6 class="card-title small"><strong>País: </strong>{{ $address->country }}</h6>
                         @else
-                            <h6 class="card-title"><strong>Cidade: </strong>{{ $pet->user->address->city }}</h6>
-                            <h6 class="card-title"><strong>Estado: </strong>{{ $pet->user->address->state }}</h6>
+                            <h6 class="card-title small"><strong>Cidade: </strong>{{ $pet->user->address->city }}</h6>
+                            <h6 class="card-title small"><strong>Estado: </strong>{{ $pet->user->address->state }}</h6>
                         @endif
 
                     </div>
@@ -188,7 +189,6 @@
                         @include('layouts.pet-solicitations', ['solicitations' => $solicitations, 'pet' => $pet])
                    @endif
 
-                   
                 </section>
             </div>
         </div>
@@ -203,12 +203,12 @@
       $('.large-img img').attr('src', imgSrc);
     });
   });
-  </script>
+</script>
 
-  <script>
-      //script de modal de imagem
-      // Get the modal
-      var modal = document.getElementById('imageModal-1');
+<script>
+    //script de modal de imagem
+    // Get the modal
+    var modal = document.getElementById('imageModal-1');
 
     // Get the image and insert it inside the modal - use its "alt" text as a caption
     function showImage(el, id) {
@@ -232,106 +232,106 @@
             modal.style.display = "none";
         }
     }
-  </script>
+</script>
 
-  <style>
-  
-#myImg {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+<style>
 
-.img-view{
-    max-width:70vw !important;
-    opacity: 1 !important;
-    margin-bottom: 10vh;
-}
+    #myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    }
 
-/* The Modal (background) */
-.img-modal {
-  display: none;
-  /* Hidden by default */
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  padding-top: 100px;
-  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.9);
-  /* Black w/ opacity */
-}
+    .img-view{
+        max-width:70vw !important;
+        opacity: 1 !important;
+        margin-bottom: 10vh;
+    }
 
-/* Modal Content (image) */
-.img-modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-}
+    /* The Modal (background) */
+    .img-modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.9);
+        /* Black w/ opacity */
+    }
 
-/* Add Animation */
-.img-modal-content,
-#caption {
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 0.6s;
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
+    /* Modal Content (image) */
+    .img-modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
 
-@-webkit-keyframes zoom {
-  from {
-    -webkit-transform: scale(0)
-  }
+    /* Add Animation */
+    .img-modal-content,
+    #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
 
-  to {
-    -webkit-transform: scale(1)
-  }
-}
+    @-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
 
-@keyframes zoom {
-  from {
-    transform: scale(0)
-  }
+    to {
+        -webkit-transform: scale(1)
+    }
+    }
 
-  to {
-    transform: scale(1)
-  }
-}
+    @keyframes zoom {
+    from {
+        transform: scale(0)
+    }
 
-/* The Close Button */
-.img-close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-}
+    to {
+        transform: scale(1)
+    }
+    }
 
-.img-close:hover,
-.img-close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
+    /* The Close Button */
+    .img-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    }
 
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px) {
-  .img-modal-content {
-    width: 100%;
-  }
-}
-  </style>
+    .img-close:hover,
+    .img-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+    .img-modal-content {
+        width: 100%;
+    }
+    }
+</style>
 @endsection

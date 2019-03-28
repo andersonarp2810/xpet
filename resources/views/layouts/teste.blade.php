@@ -15,7 +15,7 @@
 
   <!-- Icon -->
   <link rel="shortcut icon" type="image/png" href="teste/img/logo2.png"/>
-
+  
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.0/css/all.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -237,6 +237,9 @@
   </div>
   <!--Modal Form Login with Avatar Demo-->
 
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="teste/js/mdb.min.js"></script>
+		
   <!--Footer-->
   <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn" style="background-color: #ff6a3b !important; position: inherit; width: 100%;">
 			<hr class="my-4" style="border-top: 0px">

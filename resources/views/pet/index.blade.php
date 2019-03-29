@@ -35,7 +35,7 @@
 
         <!--Grid column dinamic-->
         @foreach($pets as $pet)
-        <div class="col-lg-2 col-md-12 mb-4">
+        <div class="col-lg-2 col-md-12 mb-4 p-0">
 
             <div class="card card-cascade wider">
 
@@ -48,15 +48,15 @@
                     <h6 class="card-title small"><strong>{{$pet->name}}</strong></h6>
                     <!-- Subtitle -->
                     <div class="row">
-                        <div class="col-lg-6 col-md-auto">
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
+                        <div class="col" style="width: 50%;">
+                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
                                 <i class="fa fa-edit animated rotateIn"></i>
                             </button>
                         </div>
-                        <div class="col-lg-6 col-md-auto">
+                        <div class="col" style="width: 50%;">
                             <form method="POST" action="{{ route('pet.delete', ['pet' => $pet]) }}" enctype="multipart/form-data">
                                 @csrf
-                                <button type="submit" class="btn btn-danger btn-sm">
+                                <button type="submit" class="btn btn-danger btn-sm btn-block">
                                     <i class="fa fa-trash animated rotateIn"></i>
                                 </button>
                             </form>

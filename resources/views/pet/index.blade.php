@@ -50,7 +50,7 @@
                     <!-- Title -->
                     <h6 class="card-title small"><strong>{{$pet->name}}</strong></h6>
                     <!-- Subtitle -->
-                    <div class="row">
+                    <div class="row" style="margin-left: -20px!important">
                         <div class="col-md-3">
                             <button type="button" class="btn btn-primary btn-sm btn-block d-flex justify-content-center align-items-center" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
                                 <i class="fa fa-edit animated rotateIn"></i>

@@ -10,38 +10,26 @@
 
             <div class="card card-cascade wider">
 
-                <div id="main-gallery">
-                    <div class="large-img">
+                <div id="main-gallery" style="width: 100%; height: 100%">
+                    <div class="large-img" style="width: 100%">
                         @include('layouts.pet-card-image', ['pet' => $pet])
                     </div>
                     
-                    <div class="small-img">
+                    <div class="small-img" style="width: 100%">
                     @foreach($pet->photos as $photo)
-                    <a>
+                    <a style="height: 50px; width: 61px">
                         <div class="img-holder">
-                        <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $photo->path)}}" alt="Card image cap" height="285" width="100" onclick="showImage(this, {{$photo->id}}) " />
+                            <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $photo->path)}}" alt="Card image cap" height="285" width="100" onclick="showImage(this, {{$photo->id}}) ">
                         </div>
                     </a>
-
-                    <div id="{{'imageModal-' . $photo->id}}" class="img-modal">
-                        <span id="close" class="img-close">&times;</span>
-                        <div class="img-modal-content">
-                            @if(Auth::user()->id == $pet->user->id)
-                            <form method="POST" action="{{route('pet.destroyphoto', ['pet' => $pet, 'photo' => $photo])}}">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">
-                                    Deletar
-                                    <i class="fa fa-trash ml-1 animated rotateIn"></i>
-                                </button>
-                            </form>
-                            @endif
-                            <img class="img-view" src="{{ URL::asset('storage/' . $photo->path)}}">
-                        </div>
-                    </div>
                     @endforeach
+                    </div>
                 </div>
+
+                
             </div>
-                    <!-- Card content -->
+
+            <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
                 
                 @if(Auth::user()->id == $pet->user_id)
@@ -90,6 +78,7 @@
                 @endif
                 </div>
             </div>
+                    
         </div>
         <!--Grid column dinamic-->
 
@@ -175,10 +164,28 @@
         <div class="col-md-6 mb-4">
 
             <!--Card-->
-            <div class="card">
+            <div class="card" style="border: none">
 
                 <!--Section: Modals-->
                 <section>
+                    @foreach($pet->photos as $photo)
+                    <div id="{{'imageModal-' . $photo->id}}" class="img-modal">
+                        <span id="close" class="img-close">&times;</span>
+                        <div class="img-modal-content">
+                            @if(Auth::user()->id == $pet->user->id)
+                            <form method="POST" action="{{route('pet.destroyphoto', ['pet' => $pet, 'photo' => $photo])}}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">
+                                    Deletar
+                                    <i class="fa fa-trash ml-1 animated rotateIn"></i>
+                                </button>
+                            </form>
+                            @endif
+                            <img class="img-view" src="{{ URL::asset('storage/' . $photo->path)}}">
+                        </div>
+                    </div>
+                    @endforeach
+
                     @include('layouts.pet-form', ['pet' => $pet])
 
                     @include('layouts.pet-match')

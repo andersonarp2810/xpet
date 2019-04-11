@@ -14,73 +14,61 @@
                     <div class="large-img" style="width: 100%">
                         @include('layouts.pet-card-image', ['pet' => $pet])
                     </div>
-                    
-                    <div class="small-img" style="width: 100%">
-                    @foreach($pet->photos as $photo)
-                    <a style="height: 50px; width: 61px">
-                        <div class="img-holder">
+
+                    <div class="small-img" style="width: 100%; overflow: hidden; height: max-content">
+                        @foreach($pet->photos as $photo)
+                        <div class="img-holder" style="cursor: pointer;">
                             <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $photo->path)}}" alt="Card image cap" height="285" width="100" onclick="showImage(this, {{$photo->id}}) ">
                         </div>
-                    </a>
-                    @endforeach
+                        @endforeach
                     </div>
                 </div>
 
-                
-            </div>
+                <!-- Card content -->
+                <div class="card-body card-body-cascade text-center">
 
-            <!-- Card content -->
-            <div class="card-body card-body-cascade text-center">
-                
-                @if(Auth::user()->id == $pet->user_id)
-                    @if(count($pet->photos) < 5)
-                        <label id="upload_btn" for="upload_file" class="btn btn-primary btn-sm">
-                            <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
-                                @csrf
-                                <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
-                                <i class="fas fa-plus mr-1 animated rotateIn"></i>
-                                Fotos
-                                <i class="fas fa-camera-retro ml-1 animated rotateIn"></i>
-                            </form>
+                    @if(Auth::user()->id == $pet->user_id) @if(count($pet->photos)
+                    < 5) <label id="upload_btn" for="upload_file" class="btn btn-primary btn-sm">
+                        <form method="POST" action="{{ route('pet.addphoto', ['pet' => $pet->id]) }}" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" id="upload_file" name="images[]" accept="image/*" multiple onChange="this.form.submit()">
+                            <i class="fas fa-plus mr-1 animated rotateIn"></i> Fotos
+                            <i class="fas fa-camera-retro ml-1 animated rotateIn"></i>
+                        </form>
                         </label>
-                    @endif
-
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
-                        Editar 
-                        <i class="fas fa-edit ml-1 animated rotateIn"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-secondary btn-sm"  data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
-                        Solicitações 
-                        <i class="far fa-envelope ml-1 animated rotateIn"></i>
-                        @if(count($solicitations->where('status', 'pendente')) > 0)
-                        <span>
-                        ( {{count($solicitations->where('status', 'pendente'))}} pendente(s) )
-                        </span>
                         @endif
-                    </button>
 
-                @elseif(count($solicitations) > 0)
-                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="{{ '#modal-requests' }}">
-                        Solicitações
-                        <i class="fa fa-list-ul animated rotateIn ml-1"></i>
-                        @if(count($solicitations->where('status', 'pendente')) > 0)
-                        <span>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-edit-' . $pet->id}}">
+                            Editar
+                            <i class="fas fa-edit ml-1 animated rotateIn"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#fluidModalRightSuccessDemo">
+                            Solicitações
+                            <i class="far fa-envelope ml-1 animated rotateIn"></i> @if(count($solicitations->where('status', 'pendente')) > 0)
+                            <span>
                         ( {{count($solicitations->where('status', 'pendente'))}} pendente(s) )
-                        </span>
+                        </span> @endif
+                        </button>
+
+                        @elseif(count($solicitations) > 0)
+                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="{{ '#modal-requests' }}">
+                            Solicitações
+                            <i class="fa fa-list-ul animated rotateIn ml-1"></i> @if(count($solicitations->where('status', 'pendente')) > 0)
+                            <span>
+                        ( {{count($solicitations->where('status', 'pendente'))}} pendente(s) )
+                        </span> @endif
+                        </button>
+                        @else
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">
+                            Cruzar
+                            <i class="fa fa-paw ml-1 animated rotateIn"></i>
+                        </button>
                         @endif
-                    </button>
-                @else
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="{{ '#modal-match' }}">
-                        Cruzar
-                        <i class="fa fa-paw ml-1 animated rotateIn"></i>
-                    </button>
-                @endif
                 </div>
             </div>
-                    
+
         </div>
-        <!--Grid column dinamic-->
 
         <!--Grid column-->
 
@@ -92,7 +80,6 @@
                 <div class="card-body card-body-cascade text-center" style="height: 350px">
 
                     <h6 class="card-title"><strong>Dados do Pet<i class="fas fa-dog animated rotateIn ml-2"></i></strong></h6>
-                    
 
                     <hr style="box-sizing:border-box;">
 
@@ -127,24 +114,17 @@
                     <hr style="box-sizing:border-box;">
 
                     <div class="modal-body card-body-cascade text-left">
-                        <h6 class="card-title small"><strong>Nome: </strong>{{ $pet->user->name }}</h6>
-                        @if($address != null)
-                            <h6 class="card-title small"><strong>Rua: </strong>{{ $address->street }}</h6>
-                            <h6 class="card-title small"><strong>Número: </strong>{{ $address->number }}</h6>
-                            @if($address->complement != null)
-                                <h6 class="card-title small"><strong>Complemento: </strong>{{ $address->complement }}</h6>
-                            @endif
-                            @foreach($phones as $phone)
-                                <h6 class="card-title small"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h6>
-                            @endforeach
-                            <h6 class="card-title small"><strong>Cidade: </strong>{{ $address->city }}</h6>
-                            <h6 class="card-title small"><strong>Bairro: </strong>{{ $address->district }}</h6>
-                            <h6 class="card-title small"><strong>Estado: </strong>{{ $address->state }}</h6>
-                            <h6 class="card-title small"><strong>País: </strong>{{ $address->country }}</h6>
-                        @else
-                            <h6 class="card-title small"><strong>Cidade: </strong>{{ $pet->user->address->city }}</h6>
-                            <h6 class="card-title small"><strong>Estado: </strong>{{ $pet->user->address->state }}</h6>
-                        @endif
+                        <h6 class="card-title small"><strong>Nome: </strong>{{ $pet->user->name }}</h6> @if($address != null)
+                        <h6 class="card-title small"><strong>Rua: </strong>{{ $address->street }}</h6>
+                        <h6 class="card-title small"><strong>Número: </strong>{{ $address->number }}</h6> @if($address->complement != null)
+                        <h6 class="card-title small"><strong>Complemento: </strong>{{ $address->complement }}</h6> @endif @foreach($phones as $phone)
+                        <h6 class="card-title small"><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</h6> @endforeach
+                        <h6 class="card-title small"><strong>Cidade: </strong>{{ $address->city }}</h6>
+                        <h6 class="card-title small"><strong>Bairro: </strong>{{ $address->district }}</h6>
+                        <h6 class="card-title small"><strong>Estado: </strong>{{ $address->state }}</h6>
+                        <h6 class="card-title small"><strong>País: </strong>{{ $address->country }}</h6> @else
+                        <h6 class="card-title small"><strong>Cidade: </strong>{{ $pet->user->address->city }}</h6>
+                        <h6 class="card-title small"><strong>Estado: </strong>{{ $pet->user->address->state }}</h6> @endif
 
                     </div>
 
@@ -153,63 +133,55 @@
             </div>
 
         </div>
-
     </div>
+    <!--Grid column dinamic-->
 
-    <div class="row wow fadeIn">
+</div>
 
-        <!--Grid column-->
+<div class="row wow fadeIn">
 
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
+    <!--Grid column-->
 
-            <!--Card-->
-            <div class="card" style="border: none">
+    <!--Grid column-->
+    <div class="col-md-6 mb-4">
 
-                <!--Section: Modals-->
-                <section>
-                    @foreach($pet->photos as $photo)
-                    <div id="{{'imageModal-' . $photo->id}}" class="img-modal">
-                        <span id="close" class="img-close">&times;</span>
-                        <div class="img-modal-content">
-                            @if(Auth::user()->id == $pet->user->id)
-                            <form method="POST" action="{{route('pet.destroyphoto', ['pet' => $pet, 'photo' => $photo])}}">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">
-                                    Deletar
-                                    <i class="fa fa-trash ml-1 animated rotateIn"></i>
-                                </button>
-                            </form>
-                            @endif
-                            <img class="img-view" src="{{ URL::asset('storage/' . $photo->path)}}">
-                        </div>
+        <!--Card-->
+        <div class="card" style="border: none">
+
+            <!--Section: Modals-->
+            <section>
+                @foreach($pet->photos as $photo)
+                <div id="{{'imageModal-' . $photo->id}}" class="img-modal">
+                    <span id="close" class="img-close">&times;</span>
+                    <div class="img-modal-content">
+                        @if(Auth::user()->id == $pet->user->id)
+                        <form method="POST" action="{{route('pet.destroyphoto', ['pet' => $pet, 'photo' => $photo])}}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                Deletar
+                                <i class="fa fa-trash ml-1 animated rotateIn"></i>
+                            </button>
+                        </form>
+                        @endif
+                        <img class="img-view" src="{{ URL::asset('storage/' . $photo->path)}}">
                     </div>
-                    @endforeach
+                </div>
+                @endforeach @include('layouts.pet-form', ['pet' => $pet]) @include('layouts.pet-match') @include('layouts.pet-requests', ['pets' => Auth::User()->pet]) @if(Auth::User()->id == $pet->user_id) @include('layouts.pet-solicitations', ['solicitations' => $solicitations, 'pet' => $pet]) @endif
 
-                    @include('layouts.pet-form', ['pet' => $pet])
-
-                    @include('layouts.pet-match')
-
-                    @include('layouts.pet-requests', ['pets' => Auth::User()->pet])
-                    
-                    @if(Auth::User()->id == $pet->user_id)
-                        @include('layouts.pet-solicitations', ['solicitations' => $solicitations, 'pet' => $pet])
-                   @endif
-
-                </section>
-            </div>
+            </section>
         </div>
     </div>
 </div>
+</div>
 
 <script type="text/javascript">
-//script de lista de imagens
-  $(function() {
-    $('.small-img img').hover(function() {
-      var imgSrc = $(this).attr('src');
-      $('.large-img img').attr('src', imgSrc);
+    //script de lista de imagens
+    $(function() {
+        $('.small-img img').hover(function() {
+            var imgSrc = $(this).attr('src');
+            $('.large-img img').attr('src', imgSrc);
+        });
     });
-  });
 </script>
 
 <script>
@@ -229,7 +201,7 @@
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on <span> (x), close the modal
-    document.getElementById("close").onclick = function () {
+    document.getElementById("close").onclick = function() {
         modal.style.display = "none";
     }
 
@@ -242,20 +214,19 @@
 </script>
 
 <style>
-
     #myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
     }
-
-    .img-view{
-        max-width:70vw !important;
+    
+    .img-view {
+        max-width: 70vw !important;
         opacity: 1 !important;
         margin-bottom: 10vh;
     }
-
     /* The Modal (background) */
+    
     .img-modal {
         display: none;
         /* Hidden by default */
@@ -278,16 +249,16 @@
         background-color: rgba(0, 0, 0, 0.9);
         /* Black w/ opacity */
     }
-
     /* Modal Content (image) */
+    
     .img-modal-content {
         margin: auto;
         display: block;
         width: 80%;
         max-width: 700px;
     }
-
     /* Add Animation */
+    
     .img-modal-content,
     #caption {
         -webkit-animation-name: zoom;
@@ -295,50 +266,48 @@
         animation-name: zoom;
         animation-duration: 0.6s;
     }
-
+    
     @-webkit-keyframes zoom {
-    from {
-        -webkit-transform: scale(0)
+        from {
+            -webkit-transform: scale(0)
+        }
+        to {
+            -webkit-transform: scale(1)
+        }
     }
-
-    to {
-        -webkit-transform: scale(1)
-    }
-    }
-
+    
     @keyframes zoom {
-    from {
-        transform: scale(0)
+        from {
+            transform: scale(0)
+        }
+        to {
+            transform: scale(1)
+        }
     }
-
-    to {
-        transform: scale(1)
-    }
-    }
-
     /* The Close Button */
+    
     .img-close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
     }
-
+    
     .img-close:hover,
     .img-close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
     }
-
     /* 100% Image Width on Smaller Screens */
+    
     @media only screen and (max-width: 700px) {
-    .img-modal-content {
-        width: 100%;
-    }
+        .img-modal-content {
+            width: 100%;
+        }
     }
 </style>
 @endsection

@@ -17,7 +17,7 @@
 
                     <div class="small-img" style="width: 100%; overflow: hidden; height: max-content">
                         @foreach($pet->photos as $photo)
-                        <div class="img-holder" style="cursor: pointer;">
+                        <div class="img-holder" style="cursor: pointer; width: 18%; height: 4vw; min-height:50px;">
                             <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $photo->path)}}" alt="Card image cap" height="285" width="100" onclick="showImage(this, {{$photo->id}}) ">
                         </div>
                         @endforeach
@@ -74,7 +74,7 @@
 
         <div class="col-lg-4 col-md-12 mb-4">
 
-            <div class="card card-cascade wider">
+            <div class="card card-cascade wider" style="height:100%">
 
                 <!-- Card content -->
                 <div class="card-body card-body-cascade text-center" style="height: 350px">
@@ -83,7 +83,7 @@
 
                     <hr style="box-sizing:border-box;">
 
-                    <div class="modal-body card-body-cascade text-left">
+                    <div class="modal-body card-body-cascade text-left" style="height:90%; overflow: auto">
                         <h6 class="card-title small"><strong>Nome: </strong>{{ $pet->name }}</h6>
                         <h6 class="card-title small"><strong>Raça: </strong>{{ $pet->race }}</h6>
                         <h6 class="card-title small"><strong>Tamanho: </strong>{{ $pet->size }}</h6>
@@ -104,7 +104,7 @@
 
         <div class="col-lg-4 col-md-12 mb-4">
 
-            <div class="card card-cascade wider">
+            <div class="card card-cascade wider" style="height:100%">
 
                 <!-- Card content -->
                 <div class="card-body card-body-cascade text-center" style="height: 350px">
@@ -113,7 +113,7 @@
 
                     <hr style="box-sizing:border-box;">
 
-                    <div class="modal-body card-body-cascade text-left">
+                    <div class="modal-body card-body-cascade text-left" style="height:90%; overflow: auto">
                         <h6 class="card-title small"><strong>Nome: </strong>{{ $pet->user->name }}</h6> @if($address != null)
                         <h6 class="card-title small"><strong>Rua: </strong>{{ $address->street }}</h6>
                         <h6 class="card-title small"><strong>Número: </strong>{{ $address->number }}</h6> @if($address->complement != null)

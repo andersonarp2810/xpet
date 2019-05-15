@@ -41,7 +41,7 @@
                         <h6 class="mt-1 small"><i class="fas fa-city animated rotateIn"></i></h6>
                         </div>
 
-                        <div class="col p-0">
+                        <div class="col p-0 ml-1">
                             <h6 class="mt-1 ml-1 mr-1 small">{{$pet->user->address->city}}</h6>
                         </div>
                     </div>

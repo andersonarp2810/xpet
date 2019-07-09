@@ -50,7 +50,7 @@
 			width: 800px;
 			}
 			.search-box {
-			
+
 			top:50%;
 			left:23%;
 			/* transform:translate(-100%,-50%);*/
@@ -138,7 +138,7 @@
 		<!--Main Navigation-->
 
 		<div class="d-flex" id="wrapper" >
-		
+
 			<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper" style="background-color: #ffefc0 !important">
 				<div class="sidebar-heading">
@@ -146,7 +146,7 @@
 					<img src="teste/img/logo.png" class="img-fluid" alt="" style="width: 300px">
 					</a>
 				</div>
-				
+
 				<div class="list-group list-group-flush">
 					<a class="list-group-item list-group-item-action waves-effect" href="/home">
 					<img src="teste/img/icon/dog-house2.png" class="mr-2"><strong>Home</strong>
@@ -175,13 +175,13 @@
 
 			<!--Main layout-->
 			<div class="" id="page-content-wrapper">
-			
+
 				<!-- Navbar -->
 				<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" style="background-color: #ffefc0 !important">
 					<div class="container-fluid">
 						<button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
 						<!-- Collapse -->
-						<button class="navbar-toggler float-xs-right ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+						<button class="navbar-toggler float-xs-right ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 							aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
@@ -212,7 +212,7 @@
 								<strong> {{ session('erro') }} </strong>
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
-								</button>   
+								</button>
 								</span>
 								@endif
 								@if(Auth::guest())
@@ -246,7 +246,7 @@
 				</div>
 			</div>
 			<!--Main layout-->
-		</div>	
+		</div>
 
 		<!-- Menu Toggle Script -->
 		<script>
@@ -275,11 +275,11 @@
 						<form method="POST" action="{{ route('login') }}">
 							@csrf
 							<div class="md-form ml-0 mr-0">
-								<input name="email" type="email" id="email" class="form-control ml-0 {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus> 
+								<input name="email" type="email" id="email" class="form-control ml-0 {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
 								@if ($errors->has('email'))
 								<span class="invalid-feedback" role="alert">
 								<strong>{{ $errors->first('email') }}</strong>
-								</span> 
+								</span>
 								@endif
 								<label for="email" class="ml-0">Email</label>
 							</div>
@@ -294,7 +294,7 @@
 							</div>
 							<div class="text-center mt-4">
 								<button type="submit" class="btn btn-success btn-sm" style="width: 125px;">
-								Login 
+								Login
 								<i class="fa fa-sign-in ml-1 animated rotateIn"></i>
 								</button>
 								<a href="/register"  class="btn btn-cyan btn-sm">
@@ -318,7 +318,7 @@
 		<script type="text/javascript" src="teste/js/bootstrap.min.js"></script>
 		<!-- MDB core JavaScript -->
 		<script type="text/javascript" src="teste/js/mdb.min.js"></script>
-		
+
 		<!-- Initializations -->
 		<!--Friscura véa--script type="text/javascript">
 			// Animations initialization

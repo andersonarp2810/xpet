@@ -1,200 +1,171 @@
-@extends('layouts.teste')
+@extends('layouts.base')
 @section('content')
 
-<div class="container-fluid mt-5">
-
-    <!--Grid row-->
-    <div class="row wow fadeIn justify-content-md-center">
-
-        <!--Grid column-->
-        <div class="col-lg-40 col-md-9 mb-4">
-
-            <div class="card card-cascade wider">
-
-                <!-- Card content -->
-                <div class="card-body card-body-cascade text-center">
-
-                    <!-- Title -->
-                    <h5 class="card-title"><strong>Cadastro do Usuário</strong></h5>
-                    
-                    <hr style="box-sizing:border-box;">
-
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="md-form ml-0 mr-0"  >
-                            <input id="name" name="name" type="text" class="form-control ml-0 {{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus>
-                            <label for="name" class="ml-0">Nome completo</label>
-                            @if ($errors->has('name'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="md-form ml-0 mr-0"  >
-                            <input id="e-mail" name="e-mail" type="email" class="form-control ml-0 {{ $errors->has('e-mail') ? ' is-invalid' : '' }}" required>
-                            <label for="e-mail" class="ml-0">E-mail</label>
-                            @if ($errors->has('e-mail'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('e-mail') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="md-form ml-0 mr-0"  >
-                            <input id="senha" name="senha" type="password" class="form-control ml-0 {{ $errors->has('senha') ? ' is-invalid' : '' }}" required>
-                            <label for="senha" class="ml-0">Senha</label>
-                            @if ($errors->has('senha'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('senha') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="row ml-0" >
-                            <div class="md-form ml-0 mr-0" style="width:40%">
-                                <input id="phone" name="phone" type="tel" class="form-control ml-0 {{ $errors->has('phone') ? ' is-invalid' : '' }}" required>
-                                <label for="phone" class="ml-0">Telefone</label>
-                                @if ($errors->has('phone'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="md-form ml-5 mr-0" style="width:40%">
-                                <select id="whatsapp_available" name="whatsapp_available" class="custom-select d-block w-100 {{ $errors->has('whatsapp_available') ? ' is-invalid' : '' }}" required >
-                                        <option value="" disabled selected>WhatsApp nesse número?</option>
-                                        <option value="true">Sim</option>
-                                        <option value="false">Não</option>
-                                </select>
-                                @if ($errors->has('whatsapp_available'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('whatsapp_available') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="row ml-0">
-
-                            <div class="md-form ml-0 mr-0" style="width:40%">
-                                <input id="city" name="city" type="text" class="form-control ml-0 {{ $errors->has('city') ? ' is-invalid' : '' }}" required>
-                                <label for="city" class="ml-0">Cidade</label>
-                                @if ($errors->has('city'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="md-form ml-5 mr-0" style="width:40%">
-                                <select id="state" name="state" class="custom-select d-block w-100 {{ $errors->has('state') ? ' is-invalid' : '' }}" required>
-
-                                    <option value="" disabled selected>Estado</option>
-                                    <option value="AC">Acre</option>
-                                    <option value="AL">Alagoas</option>
-                                    <option value="AP">Amapá</option>
-                                    <option value="AM">Amazonas</option>
-                                    <option value="BA">Bahia</option>
-                                    <option value="CE">Ceará</option>
-                                    <option value="DF">Distrito Federal</option>
-                                    <option value="ES">Espírito Santo</option>
-                                    <option value="GO">Goiás</option>
-                                    <option value="MA">Maranhão</option>
-                                    <option value="MT">Mato Grosso</option>
-                                    <option value="MS">Mato Grosso do Sul</option>
-                                    <option value="MG">Minas Gerais</option>
-                                    <option value="PA">Pará</option>
-                                    <option value="PB">Paraíba</option>
-                                    <option value="PR">Paraná</option>
-                                    <option value="PE">Pernambuco</option>
-                                    <option value="PI">Piauí</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="RN">Rio Grande do Norte</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="RO">Rondônia</option>
-                                    <option value="RR">Roraima</option>
-                                    <option value="SC">Santa Catarina</option>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="SE">Sergipe</option>
-                                    <option value="TO">Tocantins</option>
-                                </select>
-                                @if ($errors->has('state'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('state') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="row ml-0">
-                            <div class="md-form ml-0 mr-0" style="width:40%">
-                                <input id="district" name="district" type="text" class="form-control ml-0 {{ $errors->has('district') ? ' is-invalid' : '' }}" required>
-                                <label for="district" class="ml-0">Bairro</label>
-                                @if ($errors->has('district'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('district') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="md-form ml-5 mr-0" style="width:40%">
-                                <input name="street" type="text" id="street" class="form-control ml-0 {{ $errors->has('street') ? ' is-invalid' : '' }}" required>
-                                <label for="street" class="ml-0">Rua</label>
-                                @if ($errors->has('street'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('street') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="row ml-0">
-                            <div class="md-form ml-0 mr-0" style="width:40%">
-                                <input name="number" type="text" id="number" class="form-control ml-0 {{ $errors->has('number') ? ' is-invalid' : '' }}" required>
-                                <label for="number" class="ml-0">Número</label>
-                                @if ($errors->has('number'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('number') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="md-form ml-5 mr-0" style="width:40%">
-                                <input id="complement" name="complement" type="text" class="form-control ml-0">
-                                <label for="complement" class="ml-0">Complemento</label>
-                            </div>
-                        </div>
-
-                        <div class="md-form ml-0 mr-0" style="width:40%">
-                            <select name="public_contact_info" class="custom-select d-block w-100 {{ $errors->has('public_contact_info') ? ' is-invalid' : '' }}" id="whatsapp" required>
-                                    <option value="" disabled selected>Permitir que qualquer um veja seus contatos?</option>
-                                    <option value="true">Sim</option>
-                                    <option value="false">Não</option>
-                            </select>
-                            @if ($errors->has('public_contact_info'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('public_contact_info') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary btn-sm">
-                            Finalizar
-                            <i class="fa fa-sign-in ml-1 animated rotateIn"></i>
-                        </button>
-                        <br>
-
-                    </form>
-                </div>
-
+<div class="row justify-content-center">
+    <div class="col-10 ">
+        <form class="card p-5" method="POST" action="{{ route('register') }}">
+            @csrf
+            <div class="text-center">
+                <h1 class="">Crie sua conta</h1>
             </div>
 
-        </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-12">
+                    <label class="font-weight-bolder mt-4" for="name" class="ml-0">Nome completo</label>
+                    <input id="name" name="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus>
+                    @if ($errors->has('name'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                    @endif
+                </div>
 
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="e-mail" class="ml-0">E-mail</label>
+                    <input id="e-mail" name="e-mail" type="email" class="form-control ml-0 {{ $errors->has('e-mail') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('e-mail'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('e-mail') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="senha" class="ml-0">Senha</label>
+                    <input id="senha" name="senha" type="password" class="form-control ml-0 {{ $errors->has('senha') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('senha'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('senha') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="phone" class="ml-0">Telefone</label>
+                    <input id="phone" name="phone" type="tel" class="form-control ml-0 {{ $errors->has('phone') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('phone'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('phone') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="whatsapp_available">WhatsApp nesse número?</label>
+                    <select id="whatsapp_available" name="whatsapp_available" class="custom-select d-block w-100 {{ $errors->has('whatsapp_available') ? ' is-invalid' : '' }}" required>
+                        <option value="true" selected>Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    @if ($errors->has('whatsapp_available'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('whatsapp_available') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="city" class="ml-0">Cidade</label>
+                    <input id="city" name="city" type="text" class="form-control ml-0 {{ $errors->has('city') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('city'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('city') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="state">Estado</label>
+                    <select id="state" name="state" class="custom-select d-block w-100 {{ $errors->has('state') ? ' is-invalid' : '' }}" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                    @if ($errors->has('state'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('state') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-5">
+                    <label class="font-weight-bolder mt-4" for="district" class="ml-0">Bairro</label>
+                    <input id="district" name="district" type="text" class="form-control ml-0 {{ $errors->has('district') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('district'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('district') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-5">
+                    <label class="font-weight-bolder mt-4" for="street" class="ml-0">Rua</label>
+                    <input name="street" type="text" id="street" class="form-control ml-0 {{ $errors->has('street') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('street'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('street') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="font-weight-bolder mt-4" for="number" class="ml-0">Número</label>
+                    <input name="number" type="text" id="number" class="form-control ml-0 {{ $errors->has('number') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('number'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('number') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-12">
+                    <label class="font-weight-bolder mt-4" for="complement" class="ml-0">Complemento</label>
+                    <input id="complement" name="complement" type="text" class="form-control ml-0">
+                </div>
+
+                <div class="col-sm-12">
+                    <label class="font-weight-bolder mt-4" for="whatsapp">Permitir que qualquer um veja seus contatos?</label>
+                    <select name="public_contact_info" class="custom-select d-block w-100 {{ $errors->has('public_contact_info') ? ' is-invalid' : '' }}" id="whatsapp" required size="2">
+                        <option value="true" selected>Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    @if ($errors->has('public_contact_info'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('public_contact_info') }}</strong>
+                    </span>
+                    @endif
+
+                </div>
+
+                <button type="submit" class="col-sm-6 col-lg-4 btn btn-info mt-4">Criar minha conta</button>
+
+            </div>
+        </form>
     </div>
-
 </div>
+
 @endsection

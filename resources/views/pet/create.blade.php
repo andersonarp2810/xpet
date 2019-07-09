@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            
+
         </div>
     </div>
     <div class="row justify-content-center">
@@ -15,13 +15,13 @@
                 <div class="card-body">
                         <form method="POST" action="{{ route('pet.store') }}">
                                 @csrf
-        
+
                                 <div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
-        
+
                                     <div class="col-md-6">
                                         <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-        
+
                                         @if ($errors->has('name'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('name') }}</strong>
@@ -32,7 +32,7 @@
 
                                 <div class="form-group row">
                                     <label for="race" class="col-md-4 col-form-label text-md-right">{{ __('Raça') }}</label>
-        
+
                                     <div class="col-md-6">
                                         <select name="size" id="race" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}" name="race" value="{{ old('race') }}" required>
                                             <option value="" disabled selected>Selecionar</option>
@@ -70,24 +70,24 @@
                                             <option value="Cairn-Terrier">Cairn Terrier</option>
                                             <option value="Cattledog-Australiano">Cattledog Australiano</option>
                                             <option value="Chihuahua">Chihuahua</option>
-                                            <option value="Chow-chow">Chow-chow</option>  
+                                            <option value="Chow-chow">Chow-chow</option>
                                             <option value="Clumber-Spaniel">Clumber Spaniel</option>
-                                            <option value="Cockapoo">Cockapoo</option>                                              
+                                            <option value="Cockapoo">Cockapoo</option>
                                             <option value="Collie">Collie</option>
-                                            <option value="Collie-Border">Collie Border</option>  
+                                            <option value="Collie-Border">Collie Border</option>
                                             <option value="Coonhound">Coonhound</option>
-                                            <option value="Corgi">Corgi</option>  
+                                            <option value="Corgi">Corgi</option>
                                             <option value="Corgi-Cardigan">Corgi Cardigan</option>
-                                            <option value="Coton-de-Tulear">Coton de Tulear</option>  
+                                            <option value="Coton-de-Tulear">Coton de Tulear</option>
                                             <option value="Cão-de-Santo-Humberto">Cão de Santo Humberto</option>
-                                            <option value="Coonhound-Inglês">Coonhound Inglês</option>  
+                                            <option value="Coonhound-Inglês">Coonhound Inglês</option>
                                             <option value="Cão-de-Montanha-dos-Pirenéus">Cão de Montanha dos Pirenéus</option>
                                             <option value="Chesapeake-Bay-Retriever">Chesapeake Bay Retriever</option>
                                             <option value="Curly-Coated-Retriever">Curly Coated Retriever</option>
                                             <option value="Cão-d'água-Irlandês">Cão d'água Irlandês</option>
                                             <option value="Cocker-Spaniel-inglês">Cocker Spaniel inglês</option>
                                             <option value="Cavalier-King-Charles-Spaniel">Cavalier King Charles Spaniel</option>
-                                            <!-- Letra D -->  
+                                            <!-- Letra D -->
                                             <option value="Dachshund">Dachshund</option>
                                             <option value="Dálmata">Dálmata</option>
                                             <option value="Dogue-Alemão">Dogue Alemão</option>
@@ -96,42 +96,42 @@
                                             <option value="Dingo">Dingo</option>
                                             <option value="Doberman">Doberman</option>
                                             <option value="Dandie-Dinmont-Derrier">Dandie Dinmont Derrier</option>
-                                            <!-- Letra E -->  
+                                            <!-- Letra E -->
                                             <option value="Elkhound">Elkhound</option>
                                             <option value="Entlebucher">Entlebucher</option>
                                             <option value="Eskimo">Eskimo</option>
-                                            <!-- Letra F -->  
+                                            <!-- Letra F -->
                                             <option value="Flat-Coated-Retriever">Flat-coated Retriever</option>
                                             <option value="Fox-Terrier-de-pelo-duro">Fox Terrier de pelo duro</option>
-                                            <!-- Letra G -->  
+                                            <!-- Letra G -->
                                             <option value="Galgo-Espanhol">Galgo Espanhol</option>
                                             <option value="Galgo-Italiano">Galgo Italiano</option>
                                             <option value="Galgo-Afegão">Galgo Afegão</option>
                                             <option value="Golden-Retriever">Golden Retriever</option>
-                                            <!-- Letra H -->  
+                                            <!-- Letra H -->
                                             <option value="Husky">Husky</option>
-                                            <!-- Letra I -->  
+                                            <!-- Letra I -->
                                             <option value="Ibizan-Hound">Ibizan Hound</option>
-                                            <!-- Letra J -->  
+                                            <!-- Letra J -->
                                             <option value="Jack-Russell-Terrier">Jack Russell Terrier</option>
-                                             <!-- Letra K -->  
+                                             <!-- Letra K -->
                                             <option value="Keeshond">Keeshond</option>
                                             <option value="Kelpie">Kelpie</option>
                                             <option value="Komondor">Komondor</option>
                                             <option value="Kuvasz">Kuvasz</option>
                                             <option value="Kerry-Blue-Terrier">Kerry Blue Terrier</option>
-                                             <!-- Letra L -->  
+                                             <!-- Letra L -->
                                             <option value="Labrador">Labrador</option>
                                             <option value="Leonberg">Leonberg</option>
                                             <option value="Lhasa-Apso">Lhasa Apso</option>
                                             <option value="Lakeland-Terrier">Lakeland Terrier</option>
-                                             <!-- Letra M -->  
+                                             <!-- Letra M -->
                                             <option value="Malamute-do-Alasca">Malamute-do-Alasca</option>
                                             <option value="Maltês">Maltês</option>
                                             <option value="Mastiff-Tibetano">Mastiff Tibetano</option>
                                             <option value="Mexican-Hairless">Mexican Hairless</option>
                                             <option value="Manchester-Terrier">Manchester Terrier</option>
-                                             <!-- Letra N -->  
+                                             <!-- Letra N -->
                                             <option value="Norfolk-Terrier">Norfolk Terrier</option>
                                             <option value="Norwich-Terrier">Norwich Terrier</option>
                                             <!-- Letra O -->
@@ -200,7 +200,7 @@
 
                                         </select>
                                         <!--<input id="race" type="text" class="form-control{{ $errors->has('race') ? ' is-invalid' : '' }}" name="race" value="{{ old('race') }}" required> -->
-        
+
                                         @if ($errors->has('race'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('race') }}</strong>
@@ -208,12 +208,12 @@
                                         @endif
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Tamanho') }}</label>
-        
+
                                     <div class="col-md-6">
-                                        
+
                                         <select name="size" id="size" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" value="{{ old('size') }}" required >
                                             <option value="" disabled selected>Selecionar</option>
                                             <option value="Micro">Micro</option>
@@ -222,7 +222,7 @@
                                             <option value="Grande">Grande</option>
                                             <option value="Gigante">Gigante</option>
                                         </select>
-        
+
                                         @if ($errors->has('size'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('size') }}</strong>
@@ -233,10 +233,10 @@
 
                                 <div class="form-group row">
                                     <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Cor') }}</label>
-        
+
                                     <div class="col-md-6">
                                         <input id="color" type="text" class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}" name="color" value="{{ old('color') }}">
-        
+
                                         @if ($errors->has('color'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('color') }}</strong>
@@ -245,18 +245,18 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="form-group row">
                                     <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gênero') }}</label>
-        
+
                                     <div class="col-md-6">
-                                        
+
                                         <select name="gender" id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" value="{{ old('gender') }}" required >
                                             <option value="" disabled selected>Selecionar</option>
                                             <option value="Macho">Macho</option>
                                             <option value="Fêmea">Fêmea</option>
                                         </select>
-        
+
                                         @if ($errors->has('gender'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('gender') }}</strong>
@@ -265,10 +265,10 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="form-group row">
                                     <label for="pedigree" class="col-md-4 col-form-label text-md-right">{{ __('Pedigree') }}</label>
-        
+
                                     <div class="col-md-6">
                                         <select name="pedigree" id="pedigree" class="form-control{{ $errors->has('pedigree') ? ' is-invalid' : '' }}" value="{{ old('pedigree') }}" required >
                                             <option value="" disabled selected>Selecionar</option>
@@ -276,7 +276,7 @@
                                             <option value="false">Não</option>
                                         </select>
 
-        
+
                                         @if ($errors->has('pedigree'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('pedigree') }}</strong>
@@ -287,10 +287,10 @@
 
                                 <div class="form-group row">
                                     <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
-        
+
                                     <div class="col-md-6">
                                         <textarea name="description" id="description" cols="30" rows="3" style="resize: vertical" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" value="{{ old('description') }}" ></textarea>
-        
+
                                         @if ($errors->has('description'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('description') }}</strong>
@@ -301,10 +301,10 @@
 
                                 <div class="form-group row">
                                     <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Imagens') }}</label>
-        
+
                                     <div class="col-md-6">
                                         <input type="file" name="images" id="images" accept="image/*" multiple class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" value="{{ old('images') }}">
-        
+
                                         @if ($errors->has('images'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('images') }}</strong>
@@ -312,7 +312,7 @@
                                         @endif
                                     </div>
                                 </div>
-        
+
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">

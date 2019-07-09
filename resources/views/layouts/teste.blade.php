@@ -15,7 +15,7 @@
 
   <!-- Icon -->
   <link rel="shortcut icon" type="image/png" href="teste/img/logo2.png"/>
-  
+
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.0/css/all.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -75,7 +75,7 @@
 					  <img src="teste/img/logo.png" class="img-fluid" alt="" style="width: 200px">
 					</a>
       </div>
-        
+
       <div class="list-group list-group-flush">
 					<a class="list-group-item list-group-item-action waves-effect" href="/home">
 					<img src="teste/img/icon/dog-house2.png" class="mr-2"><strong>Home</strong>
@@ -138,7 +138,7 @@
               <strong> {{ session('erro') }} </strong>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>   
+              </button>
             </span>
             @endif
             @if(Auth::guest())
@@ -202,11 +202,11 @@
           <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="md-form ml-0 mr-0">
-              <input name="email" type="email" id="email" class="form-control ml-0 {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus> 
+              <input name="email" type="email" id="email" class="form-control ml-0 {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
               @if ($errors->has('email'))
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $errors->first('email') }}</strong>
-                </span> 
+                </span>
               @endif
                 <label for="email" class="ml-0">Email</label>
             </div>
@@ -221,7 +221,7 @@
             </div>
             <div class="text-center mt-4">
               <button type="submit" class="btn btn-success btn-sm" style="width: 125px;">
-                Login 
+                Login
                 <i class="fa fa-sign-in ml-1 animated rotateIn"></i>
               </button>
               <a href="/register"  class="btn btn-cyan btn-sm">
@@ -239,7 +239,7 @@
 
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="teste/js/mdb.min.js"></script>
-		
+
   <!--Footer-->
   <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn" style="background-color: #ff6a3b !important; position: inherit; width: 100%;">
 			<hr class="my-4" style="border-top: 0px">

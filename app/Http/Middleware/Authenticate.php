@@ -15,7 +15,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        Session::flash('erro', 'Login necessário');
+        Session::flash('erro', 'Você deve estar autenticado para acessar esta página.');
 
         return route('home');
     }

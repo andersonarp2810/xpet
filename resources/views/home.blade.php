@@ -1,57 +1,51 @@
-@extends('layouts.teste')
+@extends('layouts.base')
 @section('content')
 
-<div class="container-fluid mt-3">
-    <!--Grid row-->
+
+<div class="row justify-content-center">
+    <div class="col-10 ">
+        <form class="card p-4">
+            <div class="text-center">
+                <h1 class="mb-4">Busca</h1>
+                <h2 class="mb-4">Encontre um par para o seu pet.</h2>
+            </div>
+
+            <label class="font-weight-bolder" for="select-atributo">Buscar por: </label>
+            <select class="custom-select" size="2" name="atributo" id="select-atributo" onchange="atributo = this.value">
+                <option selected value="1">Raça</option>
+                <option value="2">Localidade</option>
+            </select>
+
+            <label class="mt-4 font-weight-bolder" id="label-busca" for="busca"></label>
+            <input class="form-control mb-4" name="busca" id="busca" onkeyup="filtro(this.value)">
+            <div class="row">
+                <div class="col-sm-3 col-lg-4"></div>
+                <button class="col-sm-6 col-lg-4 btn btn-info mt-4" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr class="mt-5 mb-5" />
+
+<div class="mt-3">
     <div class="row wow fadeIn">
-
-        <!--Grid column dinamic -->
         @foreach ($pets as $pet)
-        <div class="col-lg-2 col-md-4 mb-4 filtravel">
-
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
             <div class="card card-cascade wider">
-        
                 @include('layouts.pet-card-image', ['pet' => $pet])
-        
-                <!-- Card content -->
-                <div class="card-body card-body-cascade text-center p-1">
-        
-                    <!-- Title -->
-                    <h6 class="card-title small"><strong>{{ $pet->name }}</strong></h6>
-                    
-                    <!--i class="fas fa-paw" style="color:green"></i>
-                    <i class="fas fa-paw"></i>
-                    <i class="fas fa-paw"></i>
-                    <i class="fas fa-paw"></i>
-                    <i class="fas fa-paw"></i-->
-
-                    <!-- Subtitle -->
-                    <div class="row p-0 m-0">
-                        <div class="col-md-1 p-0 m-auto pl-1">
-                            <h6 class="small text-center"><i class="fas fa-dog animated rotateIn"></i></h6>
-                        </div>
-
-                        <div class="col">
-                            <h6 class="mt-1 ml-1 mr-1 small">{{$pet->race}}</h6>
-                        </div>
-                    </div>
-
-                    <div class="row p-0 m-0">
-                        <div class="col-md-1 p-0 m-auto pl-1">
-                        <h6 class="mt-1 small"><i class="fas fa-city animated rotateIn"></i></h6>
-                        </div>
-
-                        <div class="col p-0 ml-1">
-                            <h6 class="mt-1 ml-1 mr-1 small">{{$pet->user->address->city}}</h6>
-                        </div>
-                    </div>
+                <div class="card-body card-body-cascade text-center">
+                    <h3 class="card-title">{{$pet->name}}</h3>
+                    <hr />
+                    <i class="fas fa-dog float-left"></i>
+                    <h4 class="h6">{{$pet->race}}</h4>
+                    <br />
+                    <i class="fas fa-city float-left"></i>
+                    <h4 class="h6">{{$pet->user->address->city}} - {{$pet->user->address->state}}</h4>
                 </div>
-        
             </div>
         </div>
         @endforeach
-        <!--Grid column dinamic-->
     </div>
-    <!-- Grid Row -->
 </div>
 @endsection

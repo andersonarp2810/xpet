@@ -1,0 +1,25 @@
+#upload_file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.card-imagem {
+    height: 20vh;
+}
+
+/* /////// */
+
+@media (min-width: 370px) {
+    .pb-md-0-nav {
+        padding-bottom: 0 !important;
+    }
+}
+
+.card-img-pet {
+    height: 250px;
+    width: auto;
+}

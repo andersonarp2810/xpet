@@ -1,12 +1,9 @@
-<!-- Card image -->
-<div class="view view-cascade overlay">
+<div class="text-center mt-4">
     <a href="/pet/profile/{{ $pet->id }}">
         @if($pet->photos->first() != null)
-            <img class="card-img-top thumb-post card-imagem" src="{{ URL::asset('storage/' . $pet->photos->first()->path)}}" alt="Card image cap" height="285" width="100" />
+        <img class="card-img-top card-img-pet rounded img-fluid" src="{{ URL::asset('storage/' . $pet->photos->first()->path)}}" alt="{{$pet->name}}" />
         @else
-            <img class="card-img-top thumb-post" src="teste/img/pet1.jpg" alt="Card image cap" height="285" width="100" />
+        <img class="card-img-top card-img-pet rounded img-fluid" src="assets/img/card-pet-default.jpg" alt="{{$pet->name}}" style="    opacity: 0.5;" />
         @endif
-        <div class="mask rgba-white-slight"></div>
     </a>
-        
 </div>

@@ -20,6 +20,30 @@
     <link href="assets/css/simple-sidebar.css" rel="stylesheet">
     <link href="assets/css/image-show.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+		// script de filtro
+        // eita
+		var atributo = "3";
+        //console.log(atributo);
+		/*
+			@atributo: 0 = nome, 6 = cidade, 3 = raça, 2 = icones dog, 5 = icon city, 1 = hr, 4 = br
+		*/
+        function filtro(nome){
+            //console.log(nome);
+            var cards = document.getElementsByClassName('filtravel');
+            //console.log(cards);
+            for(card of cards){
+                card.style.display = "block";
+                filtrado = card.children[0].children[1].children[atributo].innerText;
+                //console.log(filtrado); // cidade ou raça do cachorro
+                if(filtrado.toLowerCase().search(nome.toLowerCase()) == -1){ // search retorna -1 se não encontrar e pra JS 0 é falso o resto é verdade
+                    card.style.display = "none";
+                }
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -173,6 +197,11 @@
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/mdb.min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
+    
+    <script type="text/javascript">
+        var atributo = "3";
+    </script>
+    <!-- botar a declaração aqui resolveu não sei por que mas ela tava sendo sobrescrita com '1' por algum motivo -->
 </body>
 
 </html>

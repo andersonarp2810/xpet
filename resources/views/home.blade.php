@@ -11,16 +11,17 @@
             </div>
 
             <label class="font-weight-bolder" for="select-atributo">Buscar por: </label>
-            <select class="custom-select" size="2" name="atributo" id="select-atributo" onchange="atributo = this.value">
-                <option selected value="1">Raça</option>
-                <option value="2">Localidade</option>
+            
+            <select class="custom-select" size="2" name="atribute" id="select-atributo" onchange="atributo = this.value;">
+                <option selected value="3">Raça</option>
+                <option value="6">Localidade</option>
             </select>
 
             <label class="mt-4 font-weight-bolder" id="label-busca" for="busca"></label>
-            <input class="form-control mb-4" name="busca" id="busca" onkeyup="filtro(this.value)">
+            <input class="form-control mb-4" name="busca" id="busca" onkeyup="filtro(this.value);">
             <div class="row">
                 <div class="col-sm-3 col-lg-4"></div>
-                <button class="col-sm-6 col-lg-4 btn btn-info mt-4" type="submit">Buscar</button>
+                <button class="col-sm-6 col-lg-4 btn btn-info mt-4" type="button" onclick="filtro(''); document.getElementById('busca').value=''">Limpar busca</button>
             </div>
         </form>
     </div>
@@ -31,7 +32,7 @@
 <div class="mt-3">
     <div class="row wow fadeIn">
         @foreach ($pets as $pet)
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4 filtravel">
             <div class="card card-cascade wider">
                 @include('layouts.pet-card-image', ['pet' => $pet])
                 <div class="card-body card-body-cascade text-center">

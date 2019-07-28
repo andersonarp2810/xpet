@@ -197,7 +197,7 @@
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/mdb.min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-    
+
     <script type="text/javascript">
         var atributo = "3";
     </script>

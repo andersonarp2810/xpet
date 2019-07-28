@@ -23,3 +23,22 @@
     height: 250px;
     width: auto;
 }
+
+/* Galeria */
+.galeria-item {
+    max-width: 700px;
+}
+
+.galeria-button-right {
+    top: 50%;
+    right: 0%;
+    transform: translate(0%,-50%);
+    -ms-transform: translate(0%,-50%)
+}
+
+.galeria-button-left{
+    top: 50%;
+    left: 0%;
+    transform: translate(0%,-50%);
+    -ms-transform: translate(-0%,-50%);
+}

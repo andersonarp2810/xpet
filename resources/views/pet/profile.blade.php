@@ -6,18 +6,21 @@
         <div class="col-sm-12 mb-4 text-center">
             <div class="card p-5">
                 <h1>{{ $pet->name }}</h1>
-                <div id="main-gallery">
-                    <div class="large-img">
-                        @include('layouts.pet-card-image', ['pet' => $pet])
-                    </div>
-                    <div class="small-img">
+                <!--
                         @foreach($pet->photos as $photo)
-                        <div class="img-holder">
-                            <img class="card-img-top thumb-post" src="{{ URL::asset('storage/' . $photo->path)}}" alt="{{ $pet->name }}" onclick="showImage(this, {{$photo->id}}) ">
-                        </div>
                         @endforeach
-                    </div>
+                -->
+                @if (count($pet->photos) > 1)
+                <div id="galeria-pet">
+                    @foreach($pet->photos as $photo)
+                    <img class="galeria-item img-fluid rounded mx-auto" src="{{ URL::asset('storage/' . $photo->path)}}" alt="{{ $pet->name }}">
+                    @endforeach
+                    <button class="btn btn-sm btn-info galeria-button-left" onclick="plusDivs(-1)"><i class="fas fa-2x fa-angle-left"></i></button>
+                    <button class="btn btn-sm btn-info galeria-button-right" onclick="plusDivs(+1)"><i class="fas fa-2x fa-angle-right"></i></button>
                 </div>
+                @elseif (count($pet->photos) == 1)
+                <img class="galeria-item img-fluid rounded mx-auto" src="{{ URL::asset('storage/' . $photo->path)}}" alt="{{ $pet->name }}">
+                @endif
 
                 <div class="card-body card-body-cascade">
                     @if(Auth::user()->id == $pet->user_id) @if(count($pet->photos)

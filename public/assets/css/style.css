@@ -26,7 +26,8 @@
 
 /* Galeria */
 .galeria-item {
-    max-width: 700px;
+    max-height: 300px;
+    width: auto;
 }
 
 .galeria-button-right {

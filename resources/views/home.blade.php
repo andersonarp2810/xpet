@@ -6,7 +6,7 @@
     <div class="col-10 ">
         <form class="card p-3">
             <div class="text-center">
-                <h1 class="mb-1">Busca</h1>
+                <!-- <h1 class="mb-1">Busca</h1> -->
                 <h2 class="mb-1">Encontre um par para o seu pet.</h2>
             </div>
 

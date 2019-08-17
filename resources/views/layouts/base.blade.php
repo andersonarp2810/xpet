@@ -12,7 +12,7 @@
 
     <title>XPetX</title>
 
-    <link rel="shortcut icon" type="image/png" href="assets/img/logo2.png" />
+    <link rel="shortcut icon" href="assets/img/ico.ico" />
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
         <div class="border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">
                 <a class="" href="/home">
-                    <img src="assets/img/logo.png" class="img-fluid" style="width: 200px">
+                    <img src="assets/img/logo.jpg" class="img-fluid" style="width: 200px">
                 </a>
             </div>
             <div class="list-group">

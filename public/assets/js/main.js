@@ -65,6 +65,7 @@ showDivs(slideIndex);
 
 function plusDivs(n) {
     showDivs((slideIndex += n));
+    plusDivsDelete(n);
 }
 
 function showDivs(n) {
@@ -81,3 +82,27 @@ function showDivs(n) {
     }
     x[slideIndex - 1].style.display = "block";
 }
+
+// btn deletar
+var slideIndexDelete = 1;
+showDivsDelete(slideIndexDelete);
+
+function plusDivsDelete(n) {
+    showDivsDelete((slideIndexDelete += n));
+}
+
+function showDivsDelete(n) {
+    var i;
+    var x = document.getElementsByClassName("galeria-item-delete");
+    if (n > x.length) {
+        slideIndexDelete = 1;
+    }
+    if (n < 1) {
+        slideIndexDelete = x.length;
+    }
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[slideIndexDelete - 1].style.display = "block";
+}
+

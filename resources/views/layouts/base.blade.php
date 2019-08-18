@@ -83,7 +83,7 @@
         <div id="page-content-wrapper">
             <!-- NAVBAR -->
             <nav>
-                <div class="ml-0 deep-orange lighten-1 pr-3 pb-5 pb-md-0 pb-md-0-nav">
+                <div class="ml-0 danger-color-dark pr-3 pb-5 pb-md-0 pb-md-0-nav">
                     <button class="btn btn-sm btn-info" id="menu-toggle"><i class="fas fa-caret-left fa-2x"></i></button>
                     @if(Auth::guest())
                     <a class="btn btn-sm btn-info float-right" data-toggle="modal" data-target="#modalLoginAvatarDemo" href="#">
@@ -144,7 +144,7 @@
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h1 class="mt-3">Entrar</h1>
-                    <p><i class="fa-4x fa-bone fas deep-orange-text animated rotateIn"></i></p>
+                    <p><i class="fa-4x fas fa-bone text-danger animated rotateIn"></i></p>
                 </div>
                 <div class="modal-body mb-1">
                     <form method="POST" action="{{ route('login') }}">
@@ -178,7 +178,7 @@
     </div>
     <!-- /MODAL LOGIN -->
 
-    <footer class="page-footer text-center font-small deep-orange lighten-1 mt-5">
+    <footer class="page-footer text-center font-small danger-color-dark mt-5">
         <div class="p-1">
             <a href="https://www.facebook.com/" target="_blank">
                 <i class="fab fa-facebook-square mr-3"></i>

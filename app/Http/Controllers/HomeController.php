@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pet;
+use Mail;
+use Auth;
+use App\Mail\DemoMail;
 
 class HomeController extends Controller
 {
@@ -25,5 +28,11 @@ class HomeController extends Controller
     {
         $pets = Pet::all();
         return view('home', ['pets' => $pets]);
+    }
+
+    public function demoMail(){
+        $email = Auth::user()->email;
+        Mail::to($email)->send(new DemoMail($email));
+        return redirect('/');
     }
 }

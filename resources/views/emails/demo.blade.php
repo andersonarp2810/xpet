@@ -1,0 +1,2 @@
+eita 
+{{ $email }}

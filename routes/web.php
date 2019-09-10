@@ -66,3 +66,7 @@ Route::get('image', function () {
 Route::get('emobra', function(){
     return view('emobra');
 });
+
+Route::post('demoMail', 'HomeController@demoMail');
+
+Route::get('verificar/{code}', 'UserController@verify')->name('email.verify');

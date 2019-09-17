@@ -54,11 +54,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/', function () {return redirect('home');});
 
-Route::get('aaa', function () {
-    dd(new App\Pet());
-    return redirect('home'); 
-});
-
 Route::get('image', function () {
     return view('pet.image'); 
 });
@@ -69,4 +64,4 @@ Route::get('emobra', function(){
 
 Route::post('demoMail', 'HomeController@demoMail');
 
-Route::get('verificar/{code}', 'UserController@verify')->name('email.verify');
+Route::get('verificar/{code}', 'EmailVerificationController@verify')->name('email.verify');

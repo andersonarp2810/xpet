@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\EmailVerification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -16,9 +17,10 @@ class VerificationEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(EmailVerification $emailVerification)
     {
         //
+        $this->emailVerification = $emailVerification;
     }
 
     /**
@@ -28,6 +30,7 @@ class VerificationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $this->subject("Confirmação de cadastro XPetx");
+        return $this->view('emails.verify', ['emailVerification' => $this->emailVerification]);
     }
 }

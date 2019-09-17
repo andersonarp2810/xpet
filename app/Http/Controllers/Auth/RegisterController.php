@@ -5,10 +5,17 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Phone;
 use App\Address;
+use App\EmailVerification;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+
+use Mail;
+use App\Mail\VerificationEmail;
+use DateInterval;
+use DateTime;
 
 class RegisterController extends Controller
 {
@@ -96,6 +103,25 @@ class RegisterController extends Controller
             'number' => $data['number'] ,
             'complement' => $data['complement'] 
         ]);
+
+        $code = str_random(40);
+
+        while(EmailVerification::where('code', $code)->first() != null){
+            $code = str_random(40);
+        }
+
+
+        $amanha = new DateTime("tomorrow");
+
+        $emailVerification = new EmailVerification([
+            'user_id' => $user->id,
+            'code' => $code,
+            'expire' => $amanha
+        ]);
+
+        $emailVerification->save();
+
+        Mail::to($user->email)->send(new VerificationEmail($emailVerification));
 
         return $user;
     }

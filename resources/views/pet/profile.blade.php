@@ -104,17 +104,26 @@
                 <h2 class="text-center"><strong>Ficha do Dono</strong><i class="fas fa-male ml-2"></i></h2>
                 <hr />
                 <div class="">
-                    <p><strong>Nome: </strong>{{ $pet->user->name }}</p> @if($address != null)
+                    <p><strong>Nome: </strong>{{ $pet->user->name }}</p>
+                    @if($address != null)
                     <p><strong>Rua: </strong>{{ $address->street }}</p>
                     <p><strong>Número: </strong>{{ $address->number }}</p> @if($address->complement != null)
-                    <p><strong>Complemento: </strong>{{ $address->complement }}</p> @endif @foreach($phones as $phone)
-                    <p><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</p> @endforeach
+                    <p><strong>Complemento: </strong>{{ $address->complement }}</p>
+                    @endif
+                    @foreach($phones as $phone)
+                    <p><strong>Telefone {{ $loop->iteration }}: </strong>{{ $phone->number }}</p>
+                    @endforeach
                     <p><strong>Cidade: </strong>{{ $address->city }}</p>
                     <p><strong>Bairro: </strong>{{ $address->district }}</p>
                     <p><strong>Estado: </strong>{{ $address->state }}</p>
-                    <p><strong>País: </strong>{{ $address->country }}</p> @else
+                    <p><strong>País: </strong>{{ $address->country }}</p>
+                    @else
                     <p><strong>Cidade: </strong>{{ $pet->user->address->city }}</p>
-                    <p><strong>Estado: </strong>{{ $pet->user->address->state }}</p> @endif
+                    <p><strong>Estado: </strong>{{ $pet->user->address->state }}</p>
+                    @endif
+                    @if($pet->user->email_verified_at)
+                    <p><strong>Conta verificada em: </strong>{{$pet->user->email_verified_at}}</p>
+                    @endif
                 </div>
             </div>
         </div>

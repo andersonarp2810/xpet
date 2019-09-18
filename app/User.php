@@ -39,4 +39,12 @@ class User extends Authenticatable
     public function address(){
         return $this->hasOne('App\Address');
     }
+
+    public function passwordReset(){
+        return $this->hasOne(PasswordReset::class, 'user_id', 'id');
+    }
+
+    public function emailVerification(){
+        return $this->hasOne(EmailVerification::class, 'user_id', 'id');
+    }
 }

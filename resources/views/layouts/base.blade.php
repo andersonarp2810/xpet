@@ -129,6 +129,24 @@
             <!-- CONTEÚDO -->
             <div class="container-fluid">
                 <div class="mt-5 p-2">
+                    <!-- bem que podia botar as caixas de mensagem aqui -->
+                    @if(session('status'))
+                    <span class="nav-item alert alert-info alert-dismissible fade show" role="alert">
+                        <strong> {{ session('status') }} </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </span>
+                    @endif
+                    @if(session('erro'))
+                    <span class="nav-item alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong> {{ session('erro') }} </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </span>
+                    @endif
+
                     @yield('content')
                 </div>
             </div>
@@ -170,6 +188,7 @@
                                 Entrar <i class="fas fa-sign-in-alt"></i>
                             </button>
                             <p class="mt-4">Ainda não tem uma conta? <a href="/register">Criar uma.</a></p>
+                            <p class="mt-4">Esqueceu a senha? <a href="/novasenha">Recuperar via email.</a></p>
                         </div>
                     </form>
                 </div>

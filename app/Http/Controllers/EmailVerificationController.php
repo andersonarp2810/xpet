@@ -8,6 +8,7 @@ use DateInterval;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\VerificationEmail;
+use Auth;
 
 class EmailVerificationController extends Controller
 {
@@ -17,7 +18,8 @@ class EmailVerificationController extends Controller
         
         $emailVerification = EmailVerification::where('code', $code)->first();
         $agora = new DateTime();
-        $amanha = new DateTime("tomorrow");
+        $amanha = new DateTime();
+        $amanha->add(new DateInterval("P1D"));
         //dd([$agora, $amanha, $emailVerification, new DateTime($emailVerification->expire)]);
 
         if(isset($emailVerification)){
@@ -30,7 +32,6 @@ class EmailVerificationController extends Controller
                 while(EmailVerification::where('code', $code)->first() != null){
                     $code = str_random(40);
                 }
-                $amanha = new DateTime("tomorrow");
                 $emailVerification->code = $code;
                 $emailVerification->expire = $amanha;
                 $emailVerification->save();
@@ -56,5 +57,28 @@ class EmailVerificationController extends Controller
             return redirect('/');
         }
 
+    }
+
+    public function reSend(Request $request){
+        $user = Auth::user();
+        $code = str_random(40);
+
+        while(EmailVerification::where('code', $code)->first() != null){
+            $code = str_random(40);
+        }
+
+        $amanha = new DateTime();
+        $amanha->add(new DateInterval("P1D"));
+
+        $emailVerification = $user->emailVerification;
+        $emailVerification->code = $code;
+        $emailVerification->expire = $amanha;
+        $emailVerification->save();
+
+        Mail::to($user->email)->send(new VerificationEmail($emailVerification));
+
+        $request->session()->flash('status', 'Email reenviado com sucesso!');
+
+        return redirect('/');
     }
 }

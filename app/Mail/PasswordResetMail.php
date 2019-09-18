@@ -2,13 +2,14 @@
 
 namespace App\Mail;
 
-use App\EmailVerification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerificationEmail extends Mailable
+use App\PasswordReset;
+
+class PasswordResetMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,10 +18,10 @@ class VerificationEmail extends Mailable
      *
      * @return void
      */
-    public function __construct(EmailVerification $emailVerification)
+    public function __construct(PasswordReset $passwordReset)
     {
         //
-        $this->emailVerification = $emailVerification;
+        $this->passwordReset = $passwordReset;
     }
 
     /**
@@ -30,7 +31,7 @@ class VerificationEmail extends Mailable
      */
     public function build()
     {
-        $this->subject("XPetx: Confirmação de cadastro");
-        return $this->view('emails.verify', ['emailVerification' => $this->emailVerification]);
+        $this->subject("XPetx: redefinição de senha");
+        return $this->view('emails.password', ['passwordReset' => $this->passwordReset]);
     }
 }

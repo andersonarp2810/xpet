@@ -24,6 +24,9 @@
                         echo '<p><strong>Complemento: </strong>' . $user->address->complement . '</p>';
                     }
                     ?>
+                    @if($user->email_verified_at)
+                    <p><strong>Conta verificada em: </strong>{{$user->email_verified_at}}</p>
+                    @endif
                 </div>
                 <hr />
                 <a class="row justify-content-center" href="{{ route('user.edit', ['user' => $user]) }}">

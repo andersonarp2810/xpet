@@ -65,3 +65,10 @@ Route::get('emobra', function(){
 Route::post('demoMail', 'HomeController@demoMail');
 
 Route::get('verificar/{code}', 'EmailVerificationController@verify')->name('email.verify');
+Route::post('verificar/reenviar', 'EmailVerificationController@resend')->name('email.resend')->middleware('auth'); // tem que tar logado
+
+Route::get('novasenha', 'PasswordResetController@forgot')->name('password.forgot');
+Route::get('novaSenha/{token}', 'PasswordResetController@editPassword')->name('password.edit');
+Route::post('novaSenha/redefinir/{passwordreset}', 'PasswordResetController@store')->name('password.store');
+Route::post('novaSenha/enviarEmail', 'PasswordResetController@sendMail')->name('password.sendMail');
+

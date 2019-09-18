@@ -3,7 +3,8 @@
 
 <div class="row justify-content-center">
     <div class="col-10 ">
-        <form class="card p-5" method="POST" action="{{ route('register') }}">
+        <form class="card p-5" method="POST" action="{{ route('register') }}"
+        oninput='confirmation.setCustomValidity(confirmation.value != senha.value ? "As senhas não são iguais." : "")'>
             @csrf
             <div class="text-center">
                 <h1 class="">Crie sua conta</h1>
@@ -46,6 +47,16 @@
                     @if ($errors->has('phone'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('phone') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="confirmation" class="ml-0">Confirmar Senha</label>
+                    <input id="confirmation" name="confirmation" type="password" class="form-control ml-0 {{ $errors->has('confirmation') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('confirmation'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('confirmation') }}</strong>
                     </span>
                     @endif
                 </div>

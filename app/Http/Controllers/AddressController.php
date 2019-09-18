@@ -87,7 +87,7 @@ class AddressController extends Controller
     {
         //
         $this->authorize('isOwner', $address);
-        $endereço->update($request->all());
+        $address->update($request->all());
 
         return redirect()->route('address.show', [$address])->with('status', 'Endereco atualizado');
     }

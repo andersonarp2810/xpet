@@ -72,3 +72,6 @@ Route::get('novaSenha/{token}', 'PasswordResetController@editPassword')->name('p
 Route::post('novaSenha/redefinir/{passwordreset}', 'PasswordResetController@store')->name('password.store');
 Route::post('novaSenha/enviarEmail', 'PasswordResetController@sendMail')->name('password.sendMail');
 
+Route::get('termos', function(){
+    return view('termos');
+});

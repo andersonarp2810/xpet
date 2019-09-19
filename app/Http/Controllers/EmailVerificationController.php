@@ -38,7 +38,7 @@ class EmailVerificationController extends Controller
 
                 Mail::to($emailVerification->user->email)->send(new VerificationEmail($emailVerification));
 
-                return redirect('/');
+                return redirect('/home');
             }
             else{ // tudo ok
 
@@ -48,13 +48,13 @@ class EmailVerificationController extends Controller
                 $user->save();
                 $request->session()->flash('status', 'Email verificado com sucesso!');
                 $emailVerification->delete();
-                return redirect('/');
+                return redirect('/home');
             }
         }
         else {
             $request->session()->flash('status', 'Código de verificação inválido.');
 
-            return redirect('/');
+            return redirect('/home');
         }
 
     }
@@ -79,6 +79,6 @@ class EmailVerificationController extends Controller
 
         $request->session()->flash('status', 'Email reenviado com sucesso!');
 
-        return redirect('/');
+        return redirect('/home');
     }
 }

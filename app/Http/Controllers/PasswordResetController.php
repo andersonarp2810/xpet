@@ -32,7 +32,7 @@ class PasswordResetController extends Controller
 
         //dd($email, $user);
         if($user == null){
-            return redirect('/')->with('error', 'Email não cadastrado!');
+            return redirect('/home')->with('error', 'Email não cadastrado!');
         }
 
         $reset = $user->passwordReset;
@@ -55,7 +55,7 @@ class PasswordResetController extends Controller
         }
 
         Mail::to($email)->send(new PasswordResetMail($reset));
-        return redirect('/')->with('status', 'Email enviado com sucesso!');
+        return redirect('/home')->with('status', 'Email enviado com sucesso!');
     }
 
     /*
@@ -84,12 +84,12 @@ class PasswordResetController extends Controller
                 $reset->save();
 
                 Mail::to($reset->user->email)->send(new PasswordResetMail($reset));
-                return redirect('/')->with('status', 'Código expirado, email reenviado. Por favor, verifique sua caixa de entrada.');
+                return redirect('/home')->with('status', 'Código expirado, email reenviado. Por favor, verifique sua caixa de entrada.');
             }
 
         }
         else {
-            return redirect('/')->with('error', 'Código inválido.');
+            return redirect('/home')->with('error', 'Código inválido.');
         }
     }
 
@@ -102,7 +102,7 @@ class PasswordResetController extends Controller
         $reset = PasswordReset::where('token', $token)->first();
 
         if(!isset($reset)){
-            return redirect('/')->with('error', 'Token inválido!');
+            return redirect('/home')->with('error', 'Token inválido!');
         }
         else{
             $novaSenha = $request['senha'];
@@ -114,7 +114,7 @@ class PasswordResetController extends Controller
                 $user->password = bcrypt($novaSenha);
                 $user->save();
                 $reset->delete();
-                return redirect('/')->with('status', 'Senha redefinida com sucesso!');
+                return redirect('/home')->with('status', 'Senha redefinida com sucesso!');
             }
             else {
                 return redirect()->back()->with('error', 'Nova senha e confirmação não são iguais!');

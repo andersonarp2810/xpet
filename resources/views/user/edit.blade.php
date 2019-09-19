@@ -3,7 +3,8 @@
 <div class="row justify-content-center">
     <div class="col-10 ">
 
-        <form class="card p-5" method="POST" action="{{ route('user.update',  ['user' => $user]) }}">
+        <form class="card p-5" method="POST" action="{{ route('user.update',  ['user' => $user]) }}"
+            oninput='confirmation.setCustomValidity(confirmation.value != senha.value ? "As senhas não são iguais." : "")'>
             @csrf
             <div class="text-center">
                 <h1 class="">Editar Meu Perfil</h1>
@@ -20,7 +21,7 @@
                     @endif
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <label class="font-weight-bolder mt-4" for="e-mail" class="ml-0">E-mail</label>
                     <input id="e-mail" name="e-mail" type="email" class="form-control ml-0 {{ $errors->has('e-mail') ? ' is-invalid' : '' }}" required value="{{ $user->email }}">
                     @if ($errors->has('e-mail'))
@@ -36,6 +37,18 @@
                     @if ($errors->has('senha'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('senha') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+
+
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="confirmation" class="ml-0">Confirmar Senha (Opcional)</label>
+                    <input id="confirmation" name="confirmation" type="password" class="form-control ml-0 {{ $errors->has('confirmation') ? ' is-invalid' : '' }}">
+                    @if ($errors->has('confirmation'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('confirmation') }}</strong>
                     </span>
                     @endif
                 </div>
@@ -113,22 +126,22 @@
                     @endif
                 </div>
 
-                <div class="col-sm-5">
-                    <label class="font-weight-bolder mt-4" for="district" class="ml-0">Bairro</label>
-                    <input id="district" name="district" type="text" class="form-control ml-0 {{ $errors->has('district') ? ' is-invalid' : '' }}" required value="{{ $user->address->district }}">
-                    @if ($errors->has('district'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('district') }}</strong>
-                    </span>
-                    @endif
-                </div>
-
-                <div class="col-sm-5">
+                <div class="col-sm-6">
                     <label class="font-weight-bolder mt-4" for="street" class="ml-0">Rua</label>
                     <input name="street" type="text" id="street" class="form-control ml-0 {{ $errors->has('street') ? ' is-invalid' : '' }}" required value="{{ $user->address->street }}">
                     @if ($errors->has('street'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('street') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-4">
+                    <label class="font-weight-bolder mt-4" for="district" class="ml-0">Bairro</label>
+                    <input id="district" name="district" type="text" class="form-control ml-0 {{ $errors->has('district') ? ' is-invalid' : '' }}" required value="{{ $user->address->district }}">
+                    @if ($errors->has('district'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('district') }}</strong>
                     </span>
                     @endif
                 </div>
@@ -143,14 +156,14 @@
                     @endif
                 </div>
 
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                     <label class="font-weight-bolder mt-4" for="complement" class="ml-0">Complemento</label>
                     <input id="complement" name="complement" type="text" class="form-control ml-0" value="{{ $user->address->complement }}">
                 </div>
 
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                     <label class="font-weight-bolder mt-4" for="whatsapp">Permitir que qualquer um veja seus contatos?</label>
-                    <select name="public_contact_info" class="custom-select d-block w-100 {{ $errors->has('public_contact_info') ? ' is-invalid' : '' }}" id="whatsapp" required size="2">
+                    <select name="public_contact_info" class="custom-select d-block w-100 {{ $errors->has('public_contact_info') ? ' is-invalid' : '' }}" id="whatsapp" required>
                         <option value="{{ $user->public_contact_info }}" disabled selected>{{ $user->public_contact_info ? 'Sim' : 'Não' }}</option>
                         <option value="true">Sim</option>
                         <option value="false">Não</option>

@@ -68,7 +68,7 @@ class PetController extends Controller
             $this->photoService->store($request, $pet->id);
         }
 
-        return redirect('/');
+        return redirect('/home')->with('status', 'Pet cadastrado com sucesso!');
     }
 
     /**

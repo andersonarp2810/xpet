@@ -21,7 +21,7 @@
                     @endif
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <label class="font-weight-bolder mt-4" for="e-mail" class="ml-0">E-mail</label>
                     <input id="e-mail" name="e-mail" type="email" class="form-control ml-0 {{ $errors->has('e-mail') ? ' is-invalid' : '' }}" required>
                     @if ($errors->has('e-mail'))
@@ -42,21 +42,21 @@
                 </div>
 
                 <div class="col-sm-6">
-                    <label class="font-weight-bolder mt-4" for="phone" class="ml-0">Telefone</label>
-                    <input id="phone" name="phone" type="tel" class="form-control ml-0 {{ $errors->has('phone') ? ' is-invalid' : '' }}" required>
-                    @if ($errors->has('phone'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('phone') }}</strong>
-                    </span>
-                    @endif
-                </div>
-
-                <div class="col-sm-6">
                     <label class="font-weight-bolder mt-4" for="confirmation" class="ml-0">Confirmar Senha</label>
                     <input id="confirmation" name="confirmation" type="password" class="form-control ml-0 {{ $errors->has('confirmation') ? ' is-invalid' : '' }}" required>
                     @if ($errors->has('confirmation'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('confirmation') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="phone" class="ml-0">Telefone</label>
+                    <input id="phone" name="phone" type="tel" class="form-control ml-0 {{ $errors->has('phone') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('phone'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('phone') }}</strong>
                     </span>
                     @endif
                 </div>
@@ -123,22 +123,22 @@
                     @endif
                 </div>
 
-                <div class="col-sm-5">
-                    <label class="font-weight-bolder mt-4" for="district" class="ml-0">Bairro</label>
-                    <input id="district" name="district" type="text" class="form-control ml-0 {{ $errors->has('district') ? ' is-invalid' : '' }}" required>
-                    @if ($errors->has('district'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('district') }}</strong>
-                    </span>
-                    @endif
-                </div>
-
-                <div class="col-sm-5">
+                <div class="col-sm-6">
                     <label class="font-weight-bolder mt-4" for="street" class="ml-0">Rua</label>
                     <input name="street" type="text" id="street" class="form-control ml-0 {{ $errors->has('street') ? ' is-invalid' : '' }}" required>
                     @if ($errors->has('street'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('street') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="col-sm-4">
+                    <label class="font-weight-bolder mt-4" for="district" class="ml-0">Bairro</label>
+                    <input id="district" name="district" type="text" class="form-control ml-0 {{ $errors->has('district') ? ' is-invalid' : '' }}" required>
+                    @if ($errors->has('district'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('district') }}</strong>
                     </span>
                     @endif
                 </div>
@@ -153,14 +153,14 @@
                     @endif
                 </div>
 
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                     <label class="font-weight-bolder mt-4" for="complement" class="ml-0">Complemento</label>
                     <input id="complement" name="complement" type="text" class="form-control ml-0">
                 </div>
 
-                <div class="col-sm-12">
-                    <label class="font-weight-bolder mt-4" for="whatsapp">Permitir que qualquer um veja seus contatos?</label>
-                    <select name="public_contact_info" class="custom-select d-block w-100 {{ $errors->has('public_contact_info') ? ' is-invalid' : '' }}" id="whatsapp" required size="2">
+                <div class="col-sm-6">
+                    <label class="font-weight-bolder mt-4" for="public_contact_info">Permitir que qualquer um veja seus contatos?</label>
+                    <select name="public_contact_info" class="custom-select d-block w-100 {{ $errors->has('public_contact_info') ? ' is-invalid' : '' }}" id="public_contact_info" required>
                         <option value="true" selected>Sim</option>
                         <option value="false">Não</option>
                     </select>
@@ -172,7 +172,12 @@
 
                 </div>
 
-                <button type="submit" class="col-sm-6 col-lg-4 btn btn-info mt-4">Criar minha conta</button>
+                <div class="col-sm-12">
+                    <label class="font-weight-bolder mt-4" for="agree">Concorda com os <a href="/termos" target="_blank">termos de uso e serviço</a>?</label>
+                    <input type="checkbox" name="agree" id="agree" onclick="document.getElementById('submeter').disabled = !this.checked">
+                </div>
+
+                <button id="submeter" type="submit" class="col-sm-6 col-lg-4 btn btn-primary mt-4" disabled>Criar minha conta</button>
 
             </div>
         </form>

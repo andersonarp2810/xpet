@@ -131,7 +131,8 @@
                 <div class="mt-5 p-2">
                     <!-- bem que podia botar as caixas de mensagem aqui -->
                     @if(session('status'))
-                    <span class="nav-item alert alert-info alert-dismissible fade show" role="alert">
+                    <span class="row justify-content-center
+                     nav-item alert alert-info alert-dismissible fade show" role="alert">
                         <strong> {{ session('status') }} </strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
                             <span aria-hidden="true">&times;</span>

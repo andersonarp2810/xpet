@@ -62,8 +62,6 @@ Route::get('emobra', function(){
     return view('emobra');
 });
 
-Route::post('demoMail', 'HomeController@demoMail');
-
 Route::get('verificar/{code}', 'EmailVerificationController@verify')->name('email.verify');
 Route::post('verificar/reenviar', 'EmailVerificationController@resend')->name('email.resend')->middleware('auth'); // tem que tar logado
 

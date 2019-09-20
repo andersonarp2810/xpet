@@ -11,12 +11,6 @@
                 <img src="teste/img/obradocao.jpg">
             </div>
 
-            <div class="col-md-4">
-                <form action="/demoMail" method="post">
-                    @csrf
-                    <button type="submit">Demo Mail</button>
-                </form>
-            </div>
         </div>
     </div>
     <!-- Grid Row -->

@@ -67,7 +67,7 @@
                     <img src="assets/img/icon/boy.png" alt="Perfil" class="mr-2"><strong>Perfil</strong>
                 </a>
                 @endif
-                <a href="/emobra" class="list-group-item list-group-item-action">
+                <!-- <a href="/emobra" class="list-group-item list-group-item-action">
                     <img src="assets/img/icon/pdog2.png" alt="Adotar" class="mr-2"><strong>Adotar</strong>
                 </a>
                 <a href="/emobra" class="list-group-item list-group-item-action">
@@ -75,7 +75,7 @@
                 </a>
                 <a href="/emobra" class="list-group-item list-group-item-action">
                     <img src="assets/img/icon/dog3.png" alt="Filhotes" class="mr-2"><strong>Filhotes</strong>
-                </a>
+                </a> -->
             </div>
         </div>
         <!-- /SIDEBAR -->
@@ -156,7 +156,7 @@
         </div>
     </div>
 
-    <!-- /MODAL LOGIN -->
+    <!-- MODAL LOGIN -->
     <div class="modal row" id="modalLoginAvatarDemo" tabindex="-1" role="dialog" aria-hidden="true">
         @csrf
         <div class="modal-dialog modal-dialog-centered pl-5 pr-5" role="document">
@@ -199,14 +199,14 @@
     <!-- /MODAL LOGIN -->
 
     <footer class="page-footer text-center font-small danger-color-dark mt-5">
-        <div class="p-1">
+        <!-- <div class="p-1">
             <a href="https://www.facebook.com/" target="_blank">
                 <i class="fab fa-facebook-square mr-3"></i>
             </a>
             <a href="https://twitter.com/" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
-        </div>
+        </div> -->
         <div class="footer-copyright p-2">
             <i class="far fa-copyright mr-1"></i><span id="anoAtual"></span> XPetX
         </div>

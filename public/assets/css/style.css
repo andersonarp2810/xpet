@@ -43,3 +43,8 @@
     transform: translate(0%,-50%);
     -ms-transform: translate(-0%,-50%);
 }
+
+.alert {
+    z-index: 99;
+    display: block;
+}
